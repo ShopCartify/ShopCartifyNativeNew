@@ -1,11 +1,11 @@
 import { Text, Keyboard, Alert,View } from 'react-native'
 import React from 'react'
-import COLORS from './const/Colors'
+import COLORS from '../const/Colors'
 import { SafeAreaView } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler';
-import Input from './const/Input';
-import Button from './const/Button'
-import Loader from './const/Loader';
+import Input from '../const/Input';
+import Button from '../const/Button'
+import Loader from '../const/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import HomeScreen from './HomeScreen';
 import LottieView from 'lottie-react-native';
@@ -86,7 +86,7 @@ const handleError =(errorMessage,input)=>{
 
             <View className="Image">
                 <LottieView 
-                source={require('../assets/theme/animationbb.json')}
+                source={require('../../assets/theme/animationbb.json')}
                 autoPlay
                 loop
                 style={{width: 550, height: 350,top:0,right:50,

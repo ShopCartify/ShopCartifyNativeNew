@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
-import Button from './const/Button'
-import COLORS from './const/Colors'
+import Button from '../const/Button'
+import COLORS from '../const/Colors'
 
 const HomeScreen = ({navigation}) => {
   const [userDetails,setUserDetails] = React.useState();

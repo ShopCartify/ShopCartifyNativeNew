@@ -1,11 +1,11 @@
 import { View ,Text, TouchableOpacity} from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
-import COLORS from './const/Colors'
+import COLORS from '../const/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
 import LottieView from 'lottie-react-native';
 // import Button from './const/Button'
-import Butt from './const/Butt'
+import Butt from '../const/Butt'
 
 
 
@@ -29,7 +29,7 @@ const WelcomeScreen = ({navigation}) => {
             </Text>
             <View className="Image">
                 <LottieView 
-                source={require('../assets/theme/animation.json')}
+                source={require('../../assets/theme/animation.json')}
                 autoPlay
                 loop
                 style={{width: 350, height: 350,top:120,left:10,
