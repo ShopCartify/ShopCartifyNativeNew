@@ -9,6 +9,7 @@ import SignUpScreen from './pages/sign/SignUpScreen';
 import Loader from './pages/const/Loader';
 import PersonalScreen from './pages/personal/personalScreen'
 import SupermarketScreen from './pages/supermarket/SupermarketScreen'
+import AddproductScreen from './pages/addproduct/AddproductScreen'
 
 
 const Stack = createStackNavigator();
@@ -37,19 +38,21 @@ const App = () => {
     };
   return (
     <NavigationContainer>
-      {/* {initialRouteName === '' ? (
+       {initialRouteName === '' ? (
         <Loader visible={true} />
-      ) : ( */}
+      ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> */}
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
           {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
           {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
           {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
-          <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} />
+          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
+          {/* <Stack.Screen name="AddproductScreen" component={AddproductScreen} /> */}
+          
 
         </Stack.Navigator>
-      {/* )} */}
+      )}  
     </NavigationContainer>
   );
 };
