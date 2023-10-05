@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Input from '../const/Input';
 import Button from '../const/Button'
 import Loader from '../const/Loader';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -23,6 +23,7 @@ const SignUpScreen = ({navigation})=> {
   
 const [error,setError]= React.useState({});
 const [loading,setLoading]= React.useState(false);
+
   const validate = () => {
     let valid = true;
   Keyboard.dismiss();
@@ -35,38 +36,50 @@ const [loading,setLoading]= React.useState(false);
   valid = false
   }
 
-  if(!inputs.fullName){
-    handleError("please input fullname",'fullName')
-    valid = false
-  }
+  // if(!inputs.fullName){
+  //   handleError("please input fullname",'fullName')
+  //   valid = false
+  // }
 
-  if(!inputs.password){
-    handleError("please input password",'password')
-    valid = false
-  }
+  // if(!inputs.password){
+  //   handleError("please input password",'password')
+  //   valid = false
+  // }
 
-  if(!inputs.phoneNumber){
-    handleError("please input phone Number",'phoneNumber')
-    valid = false
-  }else if(inputs.password.length < 5){
-    handleError("Min password length of 5",'phoneNumber')
-  }
+  // if(!inputs.phoneNumber){
+  //   handleError("please input phone Number",'phoneNumber')
+  //   valid = false
+  // }else if(inputs.password.length < 5){
+  //   handleError("Min password length of 5",'phoneNumber')
+  // }
 
-  if(!inputs.userName){
-    handleError("please input user Name",'userName')
-    valid = false
-  }
+  // if(!inputs.userName){
+  //   handleError("please input user Name",'userName')
+  //   valid = false
+  // }
 
   if(valid){
     register();
   }
 
-  const register = ()=>{
+  const register = async ()=>{
+    
+		try {
+			const response = await axios.get(
+				NG_ROK_URL+"/api/v1/auth/register" ,
+					inputs
+			
+			)
+      console.log(response);
+		} catch (error) {
+      console.log(error);
+		}
     setLoading(true);
+
     setTimeout(()=>{
       setLoading(false);
       try{
-        AsyncStorage.setItem("user",JSON.stringify(inputs))
+        AsyncStorage.setItem("user",JSON.stringify(response.data))
         navigation.navigate('LoginScreen')
       }catch (eror){
         Alert.alert('Error','Something went wrong')

@@ -5,10 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 // import adminStyles from './adminStyles';
 
 const SupermarketAdmin = () => {
-  const user = {
-    profileName: 'Admin Hemba',
-    email: 'ayodeji@gmail.com',
-  };
+  const admin ={
+    name: 'Hemba Cephas',
+    email: 'hembacephas@gmail.com',
+  }
 
   const navigation = useNavigation;
 
@@ -23,23 +23,23 @@ const SupermarketAdmin = () => {
 
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Products</Text>
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Search product</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>View all products</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('AddproductScreen')}>
                 <Text style={styles.inputs}>Add products</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Remove products</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Update products</Text>
             </View>
 
@@ -47,48 +47,48 @@ const SupermarketAdmin = () => {
 
           <View style={styles.sectionsTwo}>
             <Text style={styles.pro}>Payments</Text>
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Confirm/Approve payment</Text>
             </View>
           </View>
 
           <View style={styles.sections}>
             <Text style={styles.pro}>History</Text>
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Purchase history</Text>
             </View>  
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Transaction history</Text>
             </View>          
           </View>     
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Admin</Text>
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Invite admin</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>All supermarket admins</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>All checkout admins</Text>
             </View>
           </View>       
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Reports</Text>
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>View notifications</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Send Report</Text>
             </View>          
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={styles.inputs}>Respond to reports</Text>
             </View>
           </View>

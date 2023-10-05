@@ -14,12 +14,17 @@ import COLORS from '../const/Colors';
 // import DocumentPicker from '@react-native-document-picker';
 import ImagePicker from 'react-native-image-picker'; 
 
+let userId = ""
+let supermarketCode =  "" 
+
 const SupermarketScreen = ({ navigation }) => {
   const [inputs, setInputs] = useState({
-    email: '',
-    companyName: '',
-    password: '',
-    companyLocation: '',
+    "supermarketName": "",
+    "supermarketEmail": "",
+    "cacUrl": "",
+    "registeredUserId": userId,
+    "supermarketLocation": "",
+    "supermarketCode": supermarketCode
   });
 
   const [error, setError] = useState({});
@@ -54,18 +59,39 @@ const SupermarketScreen = ({ navigation }) => {
       register();
     }
   };
-
-  const register = async () => {
+  const register = async ()=>{
+    alert(inputs)
+		try {
+			const response = await axios.get(
+				NG_ROK_URL+"/api/v1/auth/register" ,
+					inputs
+			
+			)
+      console.log(response);
+      // {
+      //   "supermarketName": "",
+      //   "supermarketEmail": "",
+      //   "supermarketCode": "",
+      //   "message": "",
+      //   "emailOfRegisteredUser": "",
+      //   "emailUrl": ""
+      // }
+		} catch (error) {
+      console.log(error);
+		}
     setLoading(true);
-    try {
-      await AsyncStorage.setItem('user', JSON.stringify(inputs));
+
+    setTimeout(()=>{
       setLoading(false);
-      navigation.navigate('LoginScreen');
-    } catch (error) {
-      setLoading(false);
-      Alert.alert('Error', 'Something went wrong');
-    }
-  };
+      try{
+        AsyncStorage.setItem("supermarket",JSON.stringify(response.data))
+        navigation.navigate('SupermarketScreen')
+      }catch (eror){
+        Alert.alert('Error','Something went wrong')
+      }
+    })
+
+  }
 
   const handleOnChange = (text, input) => {
     setInputs((prevState) => ({ ...prevState, [input]: text }));
@@ -97,17 +123,7 @@ const SupermarketScreen = ({ navigation }) => {
       },
     };
 
-    ImagePicker.launchImageLibrary(options, (response) => {
-      if (response.didCancel) {
-        console.log('Image picker cancelled');
-      } else if (response.error) {
-        console.error('Image picker error:', response.error);
-      } else {
-        // Image selected successfully, you can use 'response.uri' for the image URI
-        setSelectedImage(response.uri);
-      }
-    });
-  };
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
@@ -135,7 +151,7 @@ const SupermarketScreen = ({ navigation }) => {
             label="Company Name"
             error={error.companyName}
             onFocus={() => handleError(null, 'companyName')}
-            onChangeText={(text) => handleOnChange(text, 'companyName')}
+            onChangeText={(text) => handleOnChange(text, 'supermarketName')}
           />
           <Input
             placeholder="Enter your password"

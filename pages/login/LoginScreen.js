@@ -65,8 +65,7 @@ const handleOnChange = (text,input)=>{
   setInputs(prevState => ({...prevState,[input]: text}))
 };
 const handleError =(errorMessage,input)=>{
-  setError(prevState => ({...prevState,[input]: errorMessage}))
-    
+  setError(prevState => ({...prevState,[input]: errorMessage}))   
 }
 
   return (

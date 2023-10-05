@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, ScrollView, Text, SafeAreaView, StyleSheet} from 'react-native';
+import { View, ScrollView, Text, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 // import Line from './Line';
 import { useNavigation } from '@react-navigation/native';
 
 const CheckoutAdmin = () => {
+  
   const user = {
     profileName: 'Admin Cephas',
     email: 'ayodeji@gmail.com',
@@ -23,26 +24,26 @@ const CheckoutAdmin = () => {
             <View style={checky.sect}>  
                 <Text style={checky.pro}>Products</Text> 
 
-                <View>
+                <View onPress={()=>navigation.navigate('')}>
                     <Text style={checky.inputs}>Search products</Text>
                 </View>
 
-                <View>
+                <View onPress={()=>navigation.navigate('')}>
                     <Text style={checky.inputs}>View products</Text>
                 </View>
             </View>          
 
           <View style={checky.sect}>
             <Text style={checky.pro}>Reports</Text>
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={checky.inputs}>View notifications</Text>
             </View>
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={checky.inputs}>Send Report</Text>
             </View>          
 
-            <View>
+            <View onPress={()=>navigation.navigate('')}>
                 <Text style={checky.inputs}>Respond to reports</Text>
             </View>
           </View>
