@@ -70,7 +70,7 @@ const handleError =(errorMessage,input)=>{
 }
 
   return (
-    <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,paddingTop: '250%',height:900}}>
+    <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,height:900}}>
     <Loader visible ={loading}/>
       <ScrollView
          contentContainerStyle={{
