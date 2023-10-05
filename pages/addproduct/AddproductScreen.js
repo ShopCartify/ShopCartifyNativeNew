@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-    View,
-    Text,
-    SafeAreaView,
-    ScrollView,
-    TouchableOpacity,
-    
-  } from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 // import Loader from '../const/Loader';
 import ImagePicker from 'react-native-image-picker';
 import COLORS from '../const/Colors'

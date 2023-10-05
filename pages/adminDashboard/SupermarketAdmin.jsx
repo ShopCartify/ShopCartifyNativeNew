@@ -31,7 +31,7 @@ const SupermarketAdmin = () => {
                 <Text style={styles.inputs}>View all products</Text>
             </View>
 
-            <View onPress={()=>navigation.navigate('')}>
+            <View onPress={()=>navigation.navigate('AddproductScreen')}>
                 <Text style={styles.inputs}>Add products</Text>
             </View>
 

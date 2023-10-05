@@ -15,18 +15,18 @@ const items = [
 		price: 250,
 		productName: "Coke",
 	},
-	{
+	// {
 
-		desc: "product desc",
-		price: 100,
-		productName: "Water",
-	},
-	{
+	// 	desc: "product desc",
+	// 	price: 100,
+	// 	productName: "Water",
+	// },
+	// {
 
-		desc: "product desc",
-		price: 4500,
-		productName: "Pizza",
-	},
+	// 	desc: "product desc",
+	// 	price: 4500,
+	// 	productName: "Pizza",
+	// },
 ];
 
 
