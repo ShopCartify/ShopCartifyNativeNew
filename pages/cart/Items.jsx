@@ -5,6 +5,7 @@ import addCartStyles from './addCartStyles.js';
 import { ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ItemButton from '../const/ItemButton.js'
 
 
 const products = "products"
@@ -58,9 +59,10 @@ const Items = ({navigation}) => {
           <Text style={addCartStyles.price}>{item.price}</Text>
                 <View  style={{ flexDirection: 'row' }}>
                 {/* <Text style={addCartStyles.remove}>REMOVE</Text> */}
-            <Icon name="shopping-cart" size={24} color="black" />
+            <Icon name="shopping-cart" size={24} color="red" top={8} left={45} />
+            <Icon name="trash-o" size={30} color="red" top= {35} right={230} />
           <TouchableOpacity style={addCartStyles.incrementDecrementButton} onPress={decrement}>
-          <Text style={addCartStyles.buttonWrite}> - </Text>
+          <Text style={addCartStyles.buttonWritee}> - </Text>
           </TouchableOpacity>
           <Text style={addCartStyles.buttonTe}>0</Text>
               <View style={addCartStyles.incrementSection}>
@@ -78,6 +80,10 @@ const Items = ({navigation}) => {
   return (
     <ScrollView style={addCartStyles.container}>
     <View style={addCartStyles.houseall}>
+    <Image
+            source={require('../../assets/theme/applogo.png')}
+            style={addCartStyles.logo}
+          />
     <View style={addCartStyles.allItems}>
     <View style={addCartStyles.form}>
     
@@ -96,11 +102,12 @@ const Items = ({navigation}) => {
         <Text style={addCartStyles.amount}>Total amount</Text>
         <Text style={addCartStyles.n}>N {4500}</Text>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('productDisplay')}>
-        <Text style={addCartStyles.buttonTet}>VIEW WISH LIST</Text>
+      <TouchableOpacity style={{height:80}} onPress={() => navigation.navigate('productDisplay')}>
+        <ItemButton title= "VIEW WISH LIST"/>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => storageRetrival()}>
-        <Text style={addCartStyles.buttonTex}>CHECK OUT</Text>
+      <ItemButton title="CHECK OUT"/>
+        {/* <Button style={addCartStyles.buttonTex}>CHECK OUT</Button> */}
       </TouchableOpacity>
     </View>
     </View>
