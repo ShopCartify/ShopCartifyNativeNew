@@ -9,7 +9,15 @@ import SignUpScreen from './pages/sign/SignUpScreen';
 import Loader from './pages/const/Loader';
 import PersonalScreen from './pages/personal/personalScreen'
 import SupermarketScreen from './pages/supermarket/SupermarketScreen'
+
+import DashHome from './pages/adminDashboard/DashHome';
+import CheckoutAdmin from './pages/adminDashboard/CheckoutAdmin';
+import SignUps from './pages/adminDashboard/adminSign';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin';
+
 import AddproductScreen from './pages/addproduct/AddproductScreen'
+
 
 
 const Stack = createStackNavigator();
@@ -37,23 +45,40 @@ const App = () => {
       }
     };
   return (
+    <SafeAreaProvider>
     <NavigationContainer>
        {initialRouteName === '' ? (
         <Loader visible={true} />
       ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="SignUpScreen" component={SignUpScreen} /> 
-          <Stack.Screen name="PersonalScreen" component={PersonalScreen} />
-          <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} />
+
+          {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
+          {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
+          {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
+          {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
+          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
           <Stack.Screen name="AddproductScreen" component={AddproductScreen} />
-          
+
+          {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
+          {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
+          {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
+          {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
+
+          <Stack.Screen name="signn" component={SignUps} />
+          <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} />
+          <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} />
+          {/* <Stack.Screen name="AdminScreen" component={DashHome} /> */}
+
+
+          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
+          {/* <Stack.Screen name="AddproductScreen" component={AddproductScreen} /> */}
+
 
         </Stack.Navigator>
       )}  
     </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
