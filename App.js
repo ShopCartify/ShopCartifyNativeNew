@@ -9,6 +9,11 @@ import SignUpScreen from './pages/sign/SignUpScreen';
 import Loader from './pages/const/Loader';
 import PersonalScreen from './pages/personal/personalScreen'
 import SupermarketScreen from './pages/supermarket/SupermarketScreen'
+import DashHome from './pages/adminDashboard/DashHome';
+import CheckoutAdmin from './pages/adminDashboard/CheckoutAdmin';
+import SignUps from './pages/adminDashboard/adminSign';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin';
 
 
 const Stack = createStackNavigator();
@@ -36,6 +41,7 @@ const App = () => {
       }
     };
   return (
+    <SafeAreaProvider>
     <NavigationContainer>
       {/* {initialRouteName === '' ? (
         <Loader visible={true} />
@@ -46,11 +52,16 @@ const App = () => {
           {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
           {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
           {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
-          <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} />
+          <Stack.Screen name="signn" component={SignUps} />
+          <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} />
+          <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} />
+          {/* <Stack.Screen name="AdminScreen" component={DashHome} /> */}
+
 
         </Stack.Navigator>
       {/* )} */}
     </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
