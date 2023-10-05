@@ -7,16 +7,14 @@ import { useNavigation } from "@react-navigation/core";
 
 const SignUps = () => {
   const [role, setRole] = useState("");
+
   const navigation = useNavigation();
 
-  const handleSignUp = () => {
+  const handleSignUp = (event) => {
+    event.preventDefault();
     {role === "SupermarketAdmin" && navigation.navigate("SupermarketScreen")}
     {role === "CheckoutAdmin" && navigation.navigate("CheckoutScreen")}
-    // if (role === "SupermarketAdmin") {
-    //     <SupermarketAdmin />
-    // }else{
-    //     <CheckoutAdmin/>
-    // }
+
   };
 
   return (
@@ -39,7 +37,7 @@ const SignUps = () => {
       </Picker>
 
       <Button title="Sign Up" onPress={handleSignUp} />
-      
+
     </ScrollView>
     </SafeAreaView>
   );
@@ -48,6 +46,7 @@ const SignUps = () => {
 const signer = StyleSheet.create({
     wrap:{
         marginTop: 100,
+        // backgroundColor:'#4b4b88',
     }
 })
 export default SignUps;

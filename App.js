@@ -9,15 +9,15 @@ import SignUpScreen from './pages/sign/SignUpScreen';
 import Loader from './pages/const/Loader';
 import PersonalScreen from './pages/personal/personalScreen'
 import SupermarketScreen from './pages/supermarket/SupermarketScreen'
-
 import DashHome from './pages/adminDashboard/DashHome';
 import CheckoutAdmin from './pages/adminDashboard/CheckoutAdmin';
 import SignUps from './pages/adminDashboard/adminSign';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin';
-
-import AddproductScreen from './pages/addproduct/AddproductScreen'
-
+import Items from './pages/cart/Items';
+import AddProduct from './pages/addproduct/AddproductScreen';
+import WishList from './pages/wishlist/WishList';
+import ProductDisplay from './pages/scan/ProductDisplay'
 
 
 const Stack = createStackNavigator();
@@ -59,12 +59,17 @@ const App = () => {
           {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
           {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
           {/* <Stack.Screen name="AddproductScreen" component={AddproductScreen} /> */}
+          {/* <Stack.Screen name="AddproductScreen" component={AddProduct} /> */}
+          {/* <Stack.Screen name="WishList" component={WishList} /> */}
+          {/* <Stack.Screen name="ProductDisplay" component={ProductDisplay} /> */}
 
         
-          <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} />
+          <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} /> 
           {/* <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} /> */}
+          {/* <Stack.Screen name="ItemScreen" component={Items} /> */}
           {/* <Stack.Screen name="AdminScreen" component={DashHome} /> */}
-
+          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
+         
 
         </Stack.Navigator>
       )}  

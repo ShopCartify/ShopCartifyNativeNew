@@ -113,8 +113,8 @@ const SupermarketScreen = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
       <Loader visible={loading} />
       <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
-        <Text style={{ color: COLORS.white, fontSize: 40, fontWeight: 'bold', marginTop: 40 }}>
-          Supermarket
+        <Text style={{ color: COLORS.white, fontSize: 30, fontWeight: 'bold', marginTop: 40 }}>
+          supermarket SignUp
         </Text>
         <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
           Enter Your Details for Supermarket Information

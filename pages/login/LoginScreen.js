@@ -65,11 +65,11 @@ const handleOnChange = (text,input)=>{
   setInputs(prevState => ({...prevState,[input]: text}))
 };
 const handleError =(errorMessage,input)=>{
-  setError(prevState => ({...prevState,[input]: errorMessage}))
-    
+  setError(prevState => ({...prevState,[input]: errorMessage}))   
 }
 
   return (
+    
     <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,height:900}}>
     <Loader visible ={loading}/>
       <ScrollView
