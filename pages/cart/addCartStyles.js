@@ -6,8 +6,6 @@ export default StyleSheet.create({
     houseall: {
       backgroundColor: '#4b4b88',
 
-    //   height:'200%'
-
       height:900,
     },
     allItems:{

@@ -110,9 +110,9 @@ const ProductDisplay = ({ navigation }) => {
   return (
     
     <ScrollView >   
-       {/* <View > */}
+     
       <View >
-	  {/* <ToastContainer /> */}
+
         <Text>Product Detail</Text>
 
         <View >

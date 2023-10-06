@@ -45,7 +45,6 @@ const AddProduct = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
 <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}> 
-   
     <Text style={{ color: COLORS.white, fontSize: 40, fontWeight: 'bold', marginTop: 40 }}>
 Add Product
 </Text>

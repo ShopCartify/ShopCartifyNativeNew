@@ -8,8 +8,8 @@ const Button = ({title,onPress = () => {}}) => {
     onPress={onPress}
      style ={{
         height:55,
-        width:'50%',
-        top:55,
+        width:'17%',
+        top:15,
         borderRadius:10,
         // right:100,
         backgroundColor:COLORS.yellow ,

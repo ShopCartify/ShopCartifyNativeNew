@@ -7,8 +7,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Input from '../const/Input';
 import Button from '../const/Button'
 import Loader from '../const/Loader';
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 
 
@@ -66,7 +67,7 @@ const [loading,setLoading]= React.useState(false);
 }
 
   const register = async ()=>{
-    alert(inputs.email)
+    alert("processing ... ",inputs.userName,"'s", "registration.")
     
 		try {
 			const response = await axios.post(
@@ -74,10 +75,10 @@ const [loading,setLoading]= React.useState(false);
           Input
 			
 			)
-      toast.success('response is: ' ,  response);
-      toast.success('sign up was successful');
+      alart('response is: ' ,  response);
+      alert('sign up was successful');
 		} catch (error) {
-      toast.error(error);
+      alert(error);
 		}
     // setLoading(true);
 
@@ -103,7 +104,7 @@ const handleError =(errorMessage,input)=>{
   return (
     <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,height:900}}>
     <Loader visible ={loading}/>
-    <ToastContainer />
+    {/* <ToastContainer /> */}
       <ScrollView
          contentContainerStyle={{
             // paddingTop:'200%',

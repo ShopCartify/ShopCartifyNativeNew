@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { TextInput } from 'react-native-gesture-handler';
+
+import AnotherButton from '../const/AnotherButton'
+
 
 const product = "product";
 
@@ -51,12 +53,11 @@ export default function CodeScanner({navigation}) {
       )}
 
       {scanned && (
-            <Button
-            color="#ffc107"
-              title={'Scan Again'}
-              onPress={() => setScanned(false)}
-            />
+          <View style={{height:100,width:400,left:340}}>
+          <AnotherButton title="click me"  onPress={()=> navigation.navigate('Items')}/>
+          </View>           
           )}
+         
         
     </View>
   );

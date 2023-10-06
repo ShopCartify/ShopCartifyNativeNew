@@ -97,6 +97,22 @@ const SupermarketScreen = ({ navigation }) => {
   };
 
 
+  const pickDocument = async () => {
+    try {
+      const result = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
+      });
+      setSelectedFile(result);
+    } catch (err) {
+      if (!DocumentPicker.isCancel(err)) {
+        throw err;
+      }
+    }
+  };
+
+  
+
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
       <Loader visible={loading} />
@@ -168,6 +184,6 @@ const SupermarketScreen = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+        }
 
 export default SupermarketScreen;

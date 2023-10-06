@@ -51,20 +51,26 @@ const App = () => {
         <Loader visible={true} />
       ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> */}
-          {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
-          {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
-          {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
-          {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
-          {/* <Stack.Screen name="signs" component={SignUps} /> */}
-          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} /> */}
-          {/* <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} /> */}
-          {/* <Stack.Screen name="ItemScreen" component={Items} /> */}
-          {/* <Stack.Screen name="AdminScreen" component={DashHome} /> */}
-          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
+
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} /> 
+          <Stack.Screen name="PersonalScreen" component={PersonalScreen} />
           <Stack.Screen name="AddproductScreen" component={AddProduct} />
-          <Stack.Screen name="scanScreen" component={CodeScanner}/>
+
+
+          <Stack.Screen name="scan" component={CodeScanner} />
+          <Stack.Screen name="Items" component={Items} />
+
+          <Stack.Screen name="SupermarketAdmin" component={SupermarketAdmin} />
+          <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} />
+          
+          <Stack.Screen name="AdminScreen" component={DashHome} /> 
+          <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} />
           <Stack.Screen name ="productDisplay" component={ProductDisplay}/>
+      
+
         </Stack.Navigator>
       )}  
     </NavigationContainer>
