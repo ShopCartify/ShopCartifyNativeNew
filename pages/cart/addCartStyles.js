@@ -5,7 +5,11 @@ export default StyleSheet.create({
 
     houseall: {
       backgroundColor: '#4b4b88',
+<<<<<<< HEAD
+      height:'200%'
+=======
       height:900,
+>>>>>>> 8c3043679e428582c768b70e05c57b0f5305d5ac
     },
     allItems:{
       justifyContent: 'space-around',

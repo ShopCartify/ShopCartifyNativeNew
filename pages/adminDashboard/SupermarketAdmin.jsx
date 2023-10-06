@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
 // import Line from './Line';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, Link } from '@react-navigation/native';
 // import adminStyles from './adminStyles';
 
 const SupermarketAdmin = () => {
@@ -13,7 +13,7 @@ const SupermarketAdmin = () => {
   const navigation = useNavigation;
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.allwrap}>
       <ScrollView>
         <View style={styles.wrapper}>
 
@@ -23,75 +23,77 @@ const SupermarketAdmin = () => {
 
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Products</Text>
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Search product</Text>
+            <View>
+                <Link to="/" style={styles.inputs}>Search Products</Link>
+            </View>
+
+            <View>
+                <Link to="/" style={styles.inputs}>View All Products</Link>
+            </View>
+
+            <View>
+                <Link to="/AddproductScreen" style={styles.inputs}>Add Products</Link>
+            </View>
+
+            <View>
+                <Link to="/" style={styles.inputs}>Remove Products</Link>
             </View>
 
             <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>View all products</Text>
-            </View>
-
-            <View onPress={()=>navigation.navigate('AddproductScreen')}>
-                <Text style={styles.inputs}>Add products</Text>
-            </View>
-
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Remove products</Text>
-            </View>
-
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Update products</Text>
+                <Link to="/" style={styles.inputs}>Update Products</Link>
             </View>
 
           </View>
 
           <View style={styles.sectionsTwo}>
             <Text style={styles.pro}>Payments</Text>
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Confirm/Approve payment</Text>
+            <View>
+              <Link to="/" style={styles.inputs}>Confirm/Approve payment</Link>
             </View>
           </View>
 
           <View style={styles.sections}>
             <Text style={styles.pro}>History</Text>
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Purchase history</Text>
+            <View>
+              <Link to="/" style={styles.inputs}>Purchase history</Link>
             </View>  
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Transaction history</Text>
+            <View>
+              <Link to="/" style={styles.inputs}>Transaction history</Link>
             </View>          
           </View>     
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Admin</Text>
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Invite admin</Text>
+            <View>
+              <Link to="/" style={styles.inputs}>Invite admin</Link>
             </View>
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>All supermarket admins</Text>
+            <View>
+              <Link to="/" style={styles.inputs}>All supermarket admins</Link>
             </View>
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>All checkout admins</Text>
+            <View>
+              <Link to="/" style={styles.inputs}>All checkout admins</Link>
             </View>
           </View>       
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Reports</Text>
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>View notifications</Text>
+            <View>
+                <Link to="/" style={styles.inputs}>View notifications</Link>
             </View>
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Send Report</Text>
+            <View>
+              <Link to="/" style={styles.inputs}>Send report</Link>
             </View>          
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={styles.inputs}>Respond to reports</Text>
+            <View>
+                <Link to="/" style={styles.inputs}>Respond to reports</Link>
             </View>
+            
           </View>
+
          </View>
       </ScrollView>
     </SafeAreaView>
@@ -101,30 +103,35 @@ const SupermarketAdmin = () => {
 const styles = StyleSheet.create({
   wrapper: {
     // padding: 30,
+    // width: 900,
     backgroundColor: '#4b4b88',
     // marginTop: 70,
   },
 
+  allwrap:{
+    width:900,
+    backgroundColor:'#4b4b88',
+  },
+
   title:{
-    
     marginTop: 45,
     marginBottom: 15,
   },
 
   titext:{
-    fontSize: 19,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
     marginTop: 20,
     marginBottom: 20,
-    marginLeft: 20,
+    marginLeft: 60n,
   },
 
   inputs: {
     color: 'white',
     fontSize: 15,
     // fontWeight: '',
-    marginVertical: 8,
+    marginVertical: 9,
     paddingLeft: 20,
     // backgroundColor: '#7978B5',
   },
@@ -137,6 +144,7 @@ const styles = StyleSheet.create({
   },
 
   sectionsOne:{
+    marginBottom:20,
         backgroundColor: '#43437a',
   },
 
@@ -147,7 +155,7 @@ const styles = StyleSheet.create({
 },
 
   sections:{
-    marginTop: 25,
+    marginTop: 30,
     backgroundColor: '#43437a',
     // backgroundColor:'white',
   },

@@ -46,7 +46,7 @@ const AddProduct = () => {
 <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}> 
     <ToastContainer />
     <Text style={{ color: COLORS.white, fontSize: 40, fontWeight: 'bold', marginTop: 40 }}>
-Register
+Add Product
 </Text>
  <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
 Enter Your Details for Personal Information
@@ -98,6 +98,7 @@ Enter Your Details for Personal Information
       <AddBut title="Upload Image"  />
       {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>
+
       <TouchableOpacity style={{height:100,top:-80}}>
       <AddBut title="Add Product" onPress={handleSubmit} />
       </TouchableOpacity>
