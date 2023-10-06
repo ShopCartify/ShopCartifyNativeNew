@@ -62,7 +62,7 @@ const App = () => {
           {/* <Stack.Screen name="ItemScreen" component={Items} /> */}
           {/* <Stack.Screen name="AdminScreen" component={DashHome} /> */}
           {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
-          {/* <Stack.Screen name="AddproductScreen" component={AddProduct} /> */}
+          <Stack.Screen name="AddproductScreen" component={AddProduct} />
           <Stack.Screen name="scanScreen" component={CodeScanner}/>
           <Stack.Screen name ="productDisplay" component={ProductDisplay}/>
         </Stack.Navigator>
