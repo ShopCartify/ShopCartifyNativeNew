@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import COLORS from '../const/Colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import WelcomeButton from '../const/WelcomeButton';
+import AnotherButton from '../const/AnotherButton'
+
 
 
   const HeroSection = ({navigation})=> {
@@ -24,7 +26,16 @@ import WelcomeButton from '../const/WelcomeButton';
             source={require('../../assets/theme/applogo.png')}
             style={styles.logo}
           />
-          <TouchableOpacity style={styles.openMenu} onPress={toggleMenu}>
+          <TouchableOpacity style={{height:100,width:400,left:340}}>
+          <AnotherButton title="Signup"  onPress={()=> navigation.navigate('SignUpScreen')}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={{height:100,width:400,left:20}}>
+          <AnotherButton title="Login"  onPress={()=> navigation.navigate('LoginScreen')}/>
+          </TouchableOpacity>
+         
+
+
+          {/* <TouchableOpacity style={styles.openMenu} onPress={toggleMenu}>
             <Text style={styles.menuText}>☰</Text>
           </TouchableOpacity>
           {isMenuOpen && (
@@ -49,10 +60,10 @@ import WelcomeButton from '../const/WelcomeButton';
               </TouchableOpacity>
               <TouchableOpacity style={styles.menuItem}>
                 <Text style={styles.menuText}>Create account</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
-          )}
-        </View>
+          {/* )} */}
+      
 
         <View style={styles.imageContainer}>
           <LottieView
@@ -68,7 +79,7 @@ import WelcomeButton from '../const/WelcomeButton';
         </View>
 
         
-        <WelcomeButton title="Scan Here"  onPress={()=> navigation.navigate('ProductDisplay')}/>
+        <WelcomeButton title="Scan Here"  onPress={()=> navigation.navigate('scan')}/>
         {/* <Text onPress={()=> navigation.navigate('ProductDisplay')}/> */}
 
         <View style={styles.qrCodeContainer}>
@@ -100,6 +111,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 190,
     height: 100,
+    left:300,
+    top:-10
   },
   openMenu: {
     padding: 10,
@@ -136,12 +149,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: -10,
+    marginTop: 10,
     color: COLORS.white,
   },
   description: {
     fontSize: 16,
-    marginTop: 5,
+    marginTop: 15,
     color: COLORS.yellow,
   },
   qrCodeContainer: {
@@ -149,7 +162,7 @@ const styles = StyleSheet.create({
     marginTop: 45,
     backgroundColor:COLORS.light,
     width:200,
-    //     top:-25,
+        top:55,
         height:130,
         borderRadius:10
     

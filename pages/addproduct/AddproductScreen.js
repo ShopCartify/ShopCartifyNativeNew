@@ -7,7 +7,7 @@ import Input from '../const/Input';
 import AddBut from '../const/AddBut'
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
-import getBaseUrl, { BASE_URL } from '../../secrets/.SecretConstants';
+// import getBaseUrl, { BASE_URL } from '../../secrets/.SecretConstants';
 
 
 const AddProduct = () => {

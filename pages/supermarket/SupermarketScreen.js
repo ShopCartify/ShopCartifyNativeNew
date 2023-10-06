@@ -109,7 +109,7 @@ const SupermarketScreen = ({ navigation }) => {
     }
   };
 
-  }
+  
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
@@ -182,6 +182,6 @@ const SupermarketScreen = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+        }
 
 export default SupermarketScreen;
