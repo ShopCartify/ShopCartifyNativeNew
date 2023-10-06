@@ -7,8 +7,7 @@ import Input from '../const/Input';
 import AddBut from '../const/AddBut'
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
-import { ToastContainer, toast } from "react-toastify";
-import getBaseUrl, { BASE_URL } from '../../secrets/.SecretConstants';
+
 
 
 const AddProduct = () => {
@@ -23,7 +22,7 @@ const AddProduct = () => {
 
     
   const handleOnChange = (text,input)=>{
-    setInputs(prevState => ({...prevState,[input]: text}))
+    setProduct(prevState => ({...prevState,[input]: text}))
   };
 
   const handleSubmit = async () => {
@@ -33,18 +32,20 @@ const AddProduct = () => {
           "https://8f2d-62-173-45-70.ngrok-free.app/api/v1/productController/addNewProduct" ,
           product
         )
-        toast.success("saved successfully")
-        
+        alert("saved successfully")
+        // toast.success("saved successfully")
+
     } catch (error) {
       setError(error.message || 'An error occurred while submitting the form.');
-      toast.error('Error submitting form:', error);
+      // toast.error('Error submitting form:', error);
+      alert('Error submitting form:', error)
     }
   };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
 <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}> 
-    <ToastContainer />
+   
     <Text style={{ color: COLORS.white, fontSize: 40, fontWeight: 'bold', marginTop: 40 }}>
 Add Product
 </Text>
@@ -57,7 +58,7 @@ Enter Your Details for Personal Information
            
             label="Product Name"
             error={error.productName}
-            onFocus={() => handleError(null, 'productName')}
+            // onFocus={() => handleError(null, 'productName')}
             onChangeText={(text) => handleOnChange(text, 'productName')}
           />
           <Input
@@ -65,7 +66,7 @@ Enter Your Details for Personal Information
            
             label="Product Price"
             error={error.productPrice}
-            onFocus={() => handleError(null, 'productPrice')}
+            // onFocus={() => handleError(null, 'productPrice')}
             onChangeText={(text) => handleOnChange(text, 'productPrice')}
           />
             <Input
@@ -73,7 +74,7 @@ Enter Your Details for Personal Information
            
             label="Product Description"
             error={error.productDescription}
-            onFocus={() => handleError(null, 'productDescription')}
+            // onFocus={() => handleError(null, 'productDescription')}
             onChangeText={(text) => handleOnChange(text, 'productDescription')}
           />
 
