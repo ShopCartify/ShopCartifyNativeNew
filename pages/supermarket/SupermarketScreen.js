@@ -76,15 +76,15 @@ const SupermarketScreen = ({ navigation }) => {
 		}
     setLoading(true);
 
-    setTimeout(()=>{
-      setLoading(false);
-      try{
-        AsyncStorage.setItem("supermarket",JSON.stringify(response.data))
-        navigation.navigate('SupermarketScreen')
-      }catch (eror){
-        Alert.alert('Error','Something went wrong')
-      }
-    })
+    // setTimeout(()=>{
+    //   setLoading(false);
+    //   try{
+    //     AsyncStorage.setItem("supermarket",JSON.stringify(response.data))
+    //     navigation.navigate('SupermarketScreen')
+    //   }catch (eror){
+    //     Alert.alert('Error','Something went wrong')
+    //   }
+    // })
 
   }
 
@@ -95,6 +95,7 @@ const SupermarketScreen = ({ navigation }) => {
   const handleError = (errorMessage, input) => {
     setError((prevState) => ({ ...prevState, [input]: errorMessage }));
   };
+
 
   const pickDocument = async () => {
     try {
@@ -110,6 +111,7 @@ const SupermarketScreen = ({ navigation }) => {
   };
 
   
+
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>

@@ -7,6 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Input from '../const/Input';
 import Button from '../const/Button'
 import Loader from '../const/Loader';
+// import { ToastContainer, toast } from "react-toastify";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -73,9 +74,10 @@ const [loading,setLoading]= React.useState(false);
           Input
 			
 			)
-      alert('response is: ' ,  response);
+      toast.success('response is: ' ,  response);
+      toast.success('sign up was successful');
 		} catch (error) {
-      console.log(error);
+      toast.error(error);
 		}
     // setLoading(true);
 
@@ -101,6 +103,7 @@ const handleError =(errorMessage,input)=>{
   return (
     <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,height:900}}>
     <Loader visible ={loading}/>
+    {/* <ToastContainer /> */}
       <ScrollView
          contentContainerStyle={{
             // paddingTop:'200%',

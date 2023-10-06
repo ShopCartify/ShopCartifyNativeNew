@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
-// import Line from './Line';
-import { useNavigation } from '@react-navigation/native';
+import { Link, useNavigation } from '@react-navigation/native';
 
 const CheckoutAdmin = () => {
   
@@ -24,27 +23,27 @@ const CheckoutAdmin = () => {
             <View style={checky.sect}>  
                 <Text style={checky.pro}>Products</Text> 
 
-                <View onPress={()=>navigation.navigate('')}>
-                    <Text style={checky.inputs}>Search products</Text>
+                <View>
+                    <Link to="/" style={checky.inputs}>Search products</Link>
                 </View>
 
-                <View onPress={()=>navigation.navigate('')}>
-                    <Text style={checky.inputs}>View products</Text>
+                <View>
+                    <Link to="/" style={checky.inputs}>View products</Link>
                 </View>
             </View>          
 
           <View style={checky.sect}>
             <Text style={checky.pro}>Reports</Text>
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={checky.inputs}>View notifications</Text>
+            <View>
+                <Link to="/" style={checky.inputs}>View notifications</Link>
             </View>
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={checky.inputs}>Send Report</Text>
+            <View>
+                <Link to="/" style={checky.inputs}>Send Report</Link>
             </View>          
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Text style={checky.inputs}>Respond to reports</Text>
+            <View>
+                <Link to="/" style={checky.inputs}>Respond to reports</Link>
             </View>
           </View>
          </View>

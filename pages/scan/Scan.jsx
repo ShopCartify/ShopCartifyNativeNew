@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TextInput } from 'react-native-gesture-handler';
+import AnotherButton from '../const/AnotherButton'
+import { TouchableOpacity } from 'react-native-web';
 
 const product = "product";
 
@@ -51,12 +53,15 @@ export default function CodeScanner({navigation}) {
       )}
 
       {scanned && (
-            <Button
-            color="#517405"
+            <AnotherButton
+            color="#ffc107"
               title={'Scan Again'}
               onPress={() => setScanned(false)}
             />
           )}
+          <TouchableOpacity style={{height:100,width:400,left:340}}>
+          <AnotherButton title="click me"  onPress={()=> navigation.navigate('Items')}/>
+          </TouchableOpacity>
         
     </View>
   );
@@ -67,18 +72,18 @@ const styles = StyleSheet.create({
     flex: 200,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    backgroundColor: '#ff9b50',
+    backgroundColor: '#4b4b88',
   },
   scannerContainer: {
     flexDirection: 'row',
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'baseLine',
     alignItems: 'baseline',
-    backgroundColor: '#ff9b50',
+    backgroundColor: '#4b4b88',
   },
   dataContainer: {
     padding: 40,
-    backgroundColor: '#ff9b50',
+    backgroundColor: '#4b4b88',
   },
   text: {
     color: 'white',
