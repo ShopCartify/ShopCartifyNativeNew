@@ -44,7 +44,7 @@ const SupermarketAdmin = () => {
                 <Link to="/Items" style={styles.inputs}>View Cart</Link>
             </View>
             <View>
-                <Link to="/" style={styles.inputs}>View Wishlist</Link>
+                <Link to="/WishList" style={styles.inputs}>View Wishlist</Link>
             </View>
             <View>
                 <Link to="/" style={styles.inputs}>Family</Link>

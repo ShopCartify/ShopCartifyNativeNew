@@ -2,6 +2,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { View, Button, Text,  TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
+import { ToastContainer, toast } from "react-toastify";
+import axios from 'axios';
 // import axios from 'axios';
 
 let cardLogo
@@ -54,13 +56,19 @@ const ProductDisplay = ({ navigation }) => {
 			);
 			// alert(response.data.data);
       // setProductDetail(response.data.data)
+	  console.log(response.data);
+	  setProductDetail(response.data.data)
+			// toast.success(response);
 			alert(response);
+
 			// console.log(response.data.data);
       
 		} catch (error) {
       randomise(data)
       // alert(productDetail)
       console.log(error);
+	  alert(error)
+	  toast.error(error)
 			// setError(error.response.data.data);
 			// console.log(error.response.data.data);
 		}
@@ -91,7 +99,7 @@ const ProductDisplay = ({ navigation }) => {
     // alert(AsyncStorage.getItem(products))
 		// console.log(JSON.parse(AsyncStorage.getItem(products)));
 
-		navigation.navigate(" ");
+		navigation.navigate("scanScreen");
 	};
 
 	useEffect(() => {
@@ -102,8 +110,9 @@ const ProductDisplay = ({ navigation }) => {
   return (
     
     <ScrollView >   
-       {/* <View > */}
+     
       <View >
+
         <Text>Product Detail</Text>
 
         <View >
