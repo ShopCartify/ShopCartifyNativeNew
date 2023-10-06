@@ -76,15 +76,15 @@ const SupermarketScreen = ({ navigation }) => {
 		}
     setLoading(true);
 
-    setTimeout(()=>{
-      setLoading(false);
-      try{
-        AsyncStorage.setItem("supermarket",JSON.stringify(response.data))
-        navigation.navigate('SupermarketScreen')
-      }catch (eror){
-        Alert.alert('Error','Something went wrong')
-      }
-    })
+    // setTimeout(()=>{
+    //   setLoading(false);
+    //   try{
+    //     AsyncStorage.setItem("supermarket",JSON.stringify(response.data))
+    //     navigation.navigate('SupermarketScreen')
+    //   }catch (eror){
+    //     Alert.alert('Error','Something went wrong')
+    //   }
+    // })
 
   }
 
@@ -96,20 +96,6 @@ const SupermarketScreen = ({ navigation }) => {
     setError((prevState) => ({ ...prevState, [input]: errorMessage }));
   };
 
-  const pickDocument = async () => {
-    try {
-      const result = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
-      });
-      setSelectedFile(result);
-    } catch (err) {
-      if (!DocumentPicker.isCancel(err)) {
-        throw err;
-      }
-    }
-  };
-
-  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
