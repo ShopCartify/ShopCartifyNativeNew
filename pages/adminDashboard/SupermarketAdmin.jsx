@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
-import { useNavigation, Link } from '@react-navigation/native';
+import { Link } from '@react-navigation/native';
 
 const SupermarketAdmin = () => {
   const admin ={
@@ -8,7 +8,7 @@ const SupermarketAdmin = () => {
     email: 'hembacephas@gmail.com',
   }
 
-  const navigation = useNavigation;
+  // const navigation = useNavigation;
 
   return (
     <SafeAreaView style={styles.allwrap}>
@@ -21,11 +21,11 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Products</Text>
             <View>
-                <Link>Search Products</Link>
+                <Text>Search Products</Text>
             </View>
 
             <View>
-                <Link>View All Products</Link>
+                <Text>View All Products</Text>
             </View>
 
             <View>
@@ -33,11 +33,11 @@ const SupermarketAdmin = () => {
             </View>
 
             <View>
-                <Link>Remove Products</Link>
+                <Text>Remove Products</Text>
             </View>
 
             <View>
-                <Link>Update Products</Link>
+                <Text>Update Products</Text>
             </View>
 
           </View>
@@ -45,48 +45,48 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsTwo}>
             <Text style={styles.pro}>Payments</Text>
             <View>
-              <Link>Confirm/Approve payment</Link>
+              <Text>Confirm/Approve payment</Text>
             </View>
           </View>
 
           <View style={styles.sections}>
             <Text style={styles.pro}>History</Text>
             <View>
-              <Link>Purchase history</Link>
+              <Text>Purchase history</Text>
             </View>  
 
             <View>
-              <Link>Transaction history</Link>
+              <Text>Transaction history</Text>
             </View>          
           </View>     
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Admin</Text>
             <View>
-              <Link>Invite admin</Link>
+              <Text>Invite admin</Text>
             </View>
 
             <View>
-              <Link>All supermarket admins</Link>
+              <Text>All supermarket admins</Text>
             </View>
 
             <View>
-              <Link>All checkout admins</Link>
+              <Text>All checkout admins</Text>
             </View>
           </View>       
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Reports</Text>
             <View>
-                <Link>View notifications</Link>
+                <Text>View notifications</Text>
             </View>
 
             <View>
-              <Link>Send report</Link>
+              <Text>Send report</Text>
             </View>          
 
             <View>
-                <Link>Respond to reports</Link>
+                <Text>Respond to reports</Text>
             </View>
             
           </View>

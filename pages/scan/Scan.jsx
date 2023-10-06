@@ -53,8 +53,10 @@ export default function CodeScanner({navigation}) {
 
       {scanned && (
           
-        <View style={{height:100,width:400,left:100,top:-55}}>
-          <AnotherButton title="view cart"  onPress={()=>  navigation.navigate('Items')}/>
+        <View
+        //  style={{height:100,width:400,left:100,top:-55}}
+         >
+          {/* <AnotherButton title="view cart"  onPress={()=>  navigation.navigate('Items')}/> */}
           </View> 
 
           )}

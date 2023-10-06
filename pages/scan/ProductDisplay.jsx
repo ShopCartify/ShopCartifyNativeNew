@@ -114,7 +114,7 @@ const ProductDisplay = ({}) => {
 	};
 	const handleCart=(event)=>{
 		event.preventDefault();
-		navigation.navigate("scanScreen");
+		navigation.navigate("scan");
 	}
 
 	useEffect(() => {

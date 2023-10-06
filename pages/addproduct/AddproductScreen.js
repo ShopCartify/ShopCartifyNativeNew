@@ -17,7 +17,7 @@ const AddProduct = () => {
     productPrice: '0.00',
     productDescription: '',
     productImageUrl: '', 
-    supermarketCode: 'Ibiza',
+    supermarketCode: 'bO4n1',
   });
 
     

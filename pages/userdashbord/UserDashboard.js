@@ -47,7 +47,7 @@ const UserDashboard = () => {
                 <Link to="/WishList" style={styles.inputs}>View Wishlist</Link>
             </View>
             <View>
-                <Link to="/" style={styles.inputs}>Family</Link>
+                {/* <Link to="/" style={styles.inputs}>Family</Link> */}
             </View>
             <View className="Image">
                 <LottieView 
