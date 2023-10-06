@@ -284,3 +284,29 @@ const wishlistStyles = StyleSheet.create({
 });
 
 export default WishList;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

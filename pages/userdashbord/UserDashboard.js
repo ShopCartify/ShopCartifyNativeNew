@@ -5,7 +5,7 @@ import { useNavigation, Link } from '@react-navigation/native';
 // import adminStyles from './adminStyles';
 import LottieView from 'lottie-react-native';
 
-const SupermarketAdmin = () => {
+const UserDashboard = () => {
   const admin ={
     name: 'Hemba Cephas',
     email: 'hembacephas@gmail.com',
@@ -117,4 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SupermarketAdmin;
+export default UserDashboard;

@@ -46,15 +46,17 @@ export default function CodeScanner({navigation}) {
       )}
       {scannedData && (
         <View style={styles.dataContainer}>
-          <Text style={styles.text}>Item:</Text>
-          <Text style={styles.text}>{scannedData}</Text>
+          {/* <Text style={styles.text}>Item:</Text> */}
+          {/* <Text style={styles.text}>{scannedData}</Text> */}
         </View>
       )}
 
       {scanned && (
+          
         <View style={{height:100,width:400,left:100,top:-55}}>
           <AnotherButton title="view cart"  onPress={()=>  navigation.navigate('Items')}/>
           </View> 
+
           )}
           
           <View style={{height:100,width:400,left:340}}>

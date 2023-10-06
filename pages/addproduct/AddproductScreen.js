@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {View, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 // import Loader from '../const/Loader';
-import ImagePicker from 'react-native-image-picker';
+// import ImagePicker from 'react-native-image-picker';
 import COLORS from '../const/Colors'
 import Input from '../const/Input';
 import AddBut from '../const/AddBut'
@@ -16,7 +16,7 @@ const AddProduct = () => {
     productName: '',
     productPrice: '0.00',
     productDescription: '',
-    productImageUrl: '', // Updated to an empty string
+    productImageUrl: '', 
     supermarketCode: 'Ibiza',
   });
 
@@ -87,24 +87,24 @@ Enter Your Details for Personal Information
                 />
             </View>
 
-</View>
+ </View>
        <TouchableOpacity style={{height:90,top:-50}}>
       <AddBut title="Select Image" />
       {product.productImageUrl ? (
         <Image source={{ uri: product.productImageUrl }} style={styles.image} />
-      ) : null}
-      </TouchableOpacity>
-      <TouchableOpacity style={{height:100,top:-60}}>
-      <AddBut title="Upload Image"  />
+       ) : null}
+       </TouchableOpacity>
+       <TouchableOpacity style={{height:100,top:-60}}>
+       <AddBut title="Upload Image"  />
       {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>
 
       <TouchableOpacity style={{height:100,top:-80}}>
-      <AddBut title="Add Product" onPress={handleSubmit} />
-      </TouchableOpacity>
+       <AddBut title="Add Product" onPress={handleSubmit} />
+       </TouchableOpacity>
+       </ScrollView>
+      </SafeAreaView>
+   );
       
-</ScrollView>
-</SafeAreaView>
-  );
-};
-export default AddProduct;
+ };
+ export default AddProduct;

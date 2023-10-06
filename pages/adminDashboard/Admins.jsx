@@ -1,8 +1,20 @@
+// import { View, Text } from "react-native"
+
+// export default function Admins(){
+//     return(
+//         <View>
+//             <Text>helo world</Text>
+//         </View>
+//     )
+// }
+
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
+// import Line from './Line';
 import { useNavigation, Link } from '@react-navigation/native';
+// import adminStyles from './adminStyles';
 
-const SupermarketAdmin = () => {
+const Admins = () => {
   const admin ={
     name: 'Hemba Cephas',
     email: 'hembacephas@gmail.com',
@@ -159,4 +171,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default SupermarketAdmin;
+export default Admins;

@@ -12,7 +12,7 @@ const SignUps = () => {
 
   const handleSignUp = (event) => {
     event.preventDefault();
-    {role === "SupermarketAdmin" && navigation.navigate("SupermarketScreen")}
+    {role === "SupermarketAdmin" && navigation.navigate("SupermarketAdminScreen")}
     {role === "CheckoutAdmin" && navigation.navigate("CheckoutScreen")}
 
   };

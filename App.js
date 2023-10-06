@@ -13,13 +13,14 @@ import DashHome from './pages/adminDashboard/DashHome';
 import CheckoutAdmin from './pages/adminDashboard/CheckoutAdmin';
 import SignUps from './pages/adminDashboard/adminSign';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin';
 import Items from './pages/cart/Items';
 import AddProduct from './pages/addproduct/AddproductScreen';
 import ProductDisplay from './pages/scan/ProductDisplay';
 import CodeScanner from './pages/scan/Scan';
 import UserDashboard from './pages/userdashbord/UserDashboard'
 import WishList from './pages/wishlist/WishList';
+import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin'
+import Admins from './pages/adminDashboard/Admins';
 
 
 const Stack = createStackNavigator();
@@ -69,6 +70,9 @@ const App = () => {
           <Stack.Screen name="AdminScreen" component={DashHome} /> 
           <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} />
           <Stack.Screen name ="productDisplay" component={ProductDisplay}/>
+          {/* <Stack.Screen name ="Admin" component={Admins}/> */}
+
+
 
       
 
