@@ -61,16 +61,18 @@ const [loading,setLoading]= React.useState(false);
   if(valid){
     register();
   }
+}
 
   const register = async ()=>{
+    alert(inputs.)
     
 		try {
 			const response = await axios.get(
-				NG_ROK_URL+"/api/v1/auth/register" ,
+				BASE_URL+"/api/v1/auth/register" ,
 					inputs
 			
 			)
-      console.log(response);
+      alert('response is: ' ,  response);
 		} catch (error) {
       console.log(error);
 		}
@@ -81,12 +83,11 @@ const [loading,setLoading]= React.useState(false);
       try{
         AsyncStorage.setItem("user",JSON.stringify(response.data))
         navigation.navigate('LoginScreen')
-      }catch (eror){
-        Alert.alert('Error','Something went wrong')
+      }catch (error){
+        alert('Error','Something went wrong', error)
       }
     })
 
-  }
 }
 const handleOnChange = (text,input)=>{
   setInputs(prevState => ({...prevState,[input]: text}))

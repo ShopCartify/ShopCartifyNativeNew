@@ -16,12 +16,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin';
 import Items from './pages/cart/Items';
 import AddProduct from './pages/addproduct/AddproductScreen';
-<<<<<<< HEAD
+
 import CodeScanner from './pages/scan/Scan';
-=======
+
 import WishList from './pages/wishlist/WishList';
 import ProductDisplay from './pages/scan/ProductDisplay'
->>>>>>> 9ce933ebb931fe371c173b86415fe29628eee5b7
+
 
 
 const Stack = createStackNavigator();
