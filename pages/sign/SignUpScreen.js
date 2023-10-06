@@ -15,11 +15,12 @@ const SignUpScreen = ({navigation})=> {
   // const validate = () => {};
   const [inputs,setInputs]= React.useState({
     email: "",
-    fullName: "",
+    firstName: "",
+    lastName: "",
     password: "",
-    phoneNumber:"",
     userName: "",
   })
+
   
 const [error,setError]= React.useState({});
 const [loading,setLoading]= React.useState(false);
@@ -64,29 +65,29 @@ const [loading,setLoading]= React.useState(false);
 }
 
   const register = async ()=>{
-    alert(inputs.)
+    alert(inputs.email)
     
 		try {
-			const response = await axios.get(
-				BASE_URL+"/api/v1/auth/register" ,
-					inputs
+			const response = await axios.post(
+				BASE_URL+'/api/v1/auth/register' ,
+          Input
 			
 			)
       alert('response is: ' ,  response);
 		} catch (error) {
       console.log(error);
 		}
-    setLoading(true);
+    // setLoading(true);
 
-    setTimeout(()=>{
-      setLoading(false);
-      try{
-        AsyncStorage.setItem("user",JSON.stringify(response.data))
-        navigation.navigate('LoginScreen')
-      }catch (error){
-        alert('Error','Something went wrong', error)
-      }
-    })
+    // setTimeout(()=>{
+    //   setLoading(false);
+    //   try{
+    //     AsyncStorage.setItem("user",JSON.stringify(response.data))
+    //     navigation.navigate('LoginScreen')
+    //   }catch (error){
+    //     alert('Error','Something went wrong', error)
+    //   }
+    // })
 
 }
 const handleOnChange = (text,input)=>{
@@ -122,16 +123,25 @@ const handleError =(errorMessage,input)=>{
              onChangeText={(text) =>handleOnChange(text, 'email')}
             />
                <Input 
-              placeholder="Enter your your fullname"
+              placeholder="Enter your your FirstName"
               iconName="account-outline"
-              label="fullname"
-              error={error.fullName}
+              label="First Name"
+              error={error.firstName}
               onfocus={()=>
-              handleError(null,'fullname')}
-              onChangeText={(text) => handleOnChange(text, 'fullname')}
+              handleError(null,'firstName')}
+              onChangeText={(text) => handleOnChange(text, 'firstName')}
               // error="input.email"
             />
-
+          <Input 
+              // KeyboardType="numeric"
+              placeholder="Enter your lastName"
+              iconName="phone-outline"
+              label="Last Name"
+              error={error.lastName}
+              onfocus={()=>
+              handleError(null,'lastName')}
+              onChangeText={(text) => handleOnChange(text, 'lastName')}
+            />
             <Input 
               placeholder="Enter your password"
               iconName="lock-outline"
@@ -142,16 +152,7 @@ const handleError =(errorMessage,input)=>{
               // error="input.email"
               onChangeText={(text) => handleOnChange(text, 'password')}
             />
-            <Input 
-              KeyboardType="numeric"
-              placeholder="Enter your phone number"
-              iconName="phone-outline"
-              label="Phone number"
-              error={error.phoneNumber}
-              onfocus={()=>
-              handleError(null,'phoneNumber')}
-              onChangeText={(text) => handleOnChange(text, 'phone')}
-            />
+            
              <Input 
               placeholder="Enter your username"
               iconName="account-outline"

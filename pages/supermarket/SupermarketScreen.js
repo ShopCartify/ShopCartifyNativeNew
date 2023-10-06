@@ -13,8 +13,9 @@ import Loader from '../const/Loader';
 import COLORS from '../const/Colors';
 // import DocumentPicker from '@react-native-document-picker';
 import ImagePicker from 'react-native-image-picker'; 
+import axios from 'axios';
 
-let userId = ""
+let userId = 1
 let supermarketCode =  "" 
 
 const SupermarketScreen = ({ navigation }) => {
@@ -24,7 +25,6 @@ const SupermarketScreen = ({ navigation }) => {
     "cacUrl": "",
     "registeredUserId": userId,
     "supermarketLocation": "",
-    "supermarketCode": supermarketCode
   });
 
   const [error, setError] = useState({});
@@ -36,46 +36,41 @@ const SupermarketScreen = ({ navigation }) => {
     let valid = true;
     setError({}); // Clear previous errors
 
-    if (!inputs.email.match(/\S+@\S+\.\S+/)) {
-      handleError('Please input a valid email', 'email');
-      valid = false;
-    }
+    // if (!inputs.email.match(/\S+@\S+\.\S+/)) {
+    //   handleError('Please input a valid email', 'email');
+    //   valid = false;
+    // }
 
-    if (!inputs.companyName) {
-      handleError('Please input your company name', 'companyName');
-      valid = false;
-    }
-    if (!inputs.password || inputs.password.length < 5) {
-      handleError('Password must be at least 5 characters', 'password');
-      valid = false;
-    }
+    // if (!inputs.companyName) {
+    //   handleError('Please input your company name', 'companyName');
+    //   valid = false;
+    // }
+    // if (!inputs.password || inputs.password.length < 5) {
+    //   handleError('Password must be at least 5 characters', 'password');
+    //   valid = false;
+    // }
 
-    if (!inputs.companyLocation) {
-      handleError('Please input your company location', 'companyLocation');
-      valid = false;
-    }
+    // if (!inputs.companyLocation) {
+    //   handleError('Please input your company location', 'companyLocation');
+    //   valid = false;
+    // }
 
     if (valid) {
       register();
     }
   };
   const register = async ()=>{
-    alert(inputs)
+    alert(inputs.supermarketEmail)
 		try {
-			const response = await axios.get(
-				NG_ROK_URL+"/api/v1/auth/register" ,
-					inputs
+			const response = await axios.post(
+				"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/supermarketAdminController/registerSupermarketAdmin" ,
+          inputs
 			
 			)
-      console.log(response);
-      // {
-      //   "supermarketName": "",
-      //   "supermarketEmail": "",
-      //   "supermarketCode": "",
-      //   "message": "",
-      //   "emailOfRegisteredUser": "",
-      //   "emailUrl": ""
-      // }
+      console.log(response.data);
+      alert(response.data.data)
+      alert("successful registration")
+      AsyncStorage.setItem("supermarket",JSON.stringify(response.data.data))
 		} catch (error) {
       console.log(error);
 		}
@@ -114,15 +109,6 @@ const SupermarketScreen = ({ navigation }) => {
     }
   };
 
-  const pickImage = () => {
-    const options = {
-      title: 'Select Image',
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-
   }
 
   return (
@@ -136,49 +122,50 @@ const SupermarketScreen = ({ navigation }) => {
           Enter Your Details for Supermarket Information
         </Text>
         <View style={{ marginVertical: 10 }}>
-          {/* Input components */}
-          <Input
-            placeholder="Enter your email address"
-            iconName="email-outline"
-            label="Email"
-            error={error.email}
-            onFocus={() => handleError(null, 'email')}
-            onChangeText={(text) => handleOnChange(text, 'email')}
-          />
+         
           <Input
             placeholder="Enter your company name"
             iconName="account-outline"
             label="Company Name"
-            error={error.companyName}
-            onFocus={() => handleError(null, 'companyName')}
+            error={error.supermarketName}
+            onFocus={() => handleError(null, 'supermarketName')}
             onChangeText={(text) => handleOnChange(text, 'supermarketName')}
           />
           <Input
-            placeholder="Enter your password"
-            iconName="lock-outline"
-            label="Password"
-            secureTextEntry={true}
-            error={error.password}
-            onFocus={() => handleError(null, 'password')}
-            onChangeText={(text) => handleOnChange(text, 'password')}
+            placeholder="Enter your email address"
+            iconName="email-outline"
+            label="Company Email"
+            error={error.supermarketEmail}
+            onFocus={() => handleError(null, 'supermarketEmail')}
+            onChangeText={(text) => handleOnChange(text, 'supermarketEmail')}
           />
+      
           <Input
             placeholder="Company Location"
-            iconName="location-outline"
+            // iconName="location-outline"
             label="Company Location"
             error={error.companyLocation}
             onFocus={() => handleError(null, 'companyLocation')}
             onChangeText={(text) => handleOnChange(text, 'companyLocation')}
           />
+           <Input
+            placeholder="Enter your CAC Rc no."
+            iconName="lock-outline"
+            label="CAC"
+            // secureTextEntry={true}
+            error={error.CAC}
+            onFocus={() => handleError(null, 'CAC')}
+            onChangeText={(text) => handleOnChange(text, 'CAC')}
+          />
         </View>
 
         <View style={{ top:-29 }}>
           
-          <Button title="Pick a File" onPress={pickDocument} />
+          <Button title="Pick a File" />
           <Text>{selectedImage ? 'Yes' : ''}</Text>
-          <Button title="Pick an Image" onPress={pickImage} />
+          <Button title="Pick an Image" />
         </View>
-        <Button title="Sign Up" onPress={validate} />
+        <Button title="Sign Up" onPress={register} />
         <Text
           onPress={() => navigation.navigate('LoginScreen')}
           style={{

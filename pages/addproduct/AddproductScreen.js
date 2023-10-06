@@ -6,6 +6,8 @@ import COLORS from '../const/Colors'
 import Input from '../const/Input';
 import AddBut from '../const/AddBut'
 import LottieView from 'lottie-react-native';
+import axios from 'axios';
+import getBaseUrl, { BASE_URL } from '../../secrets/.SecretConstants';
 
 
 const AddProduct = () => {
@@ -20,17 +22,30 @@ const AddProduct = () => {
 
     
 
- 
+  const handleOnChange = (text,input)=>{
+    setInputs(prevState => ({...prevState,[input]: text}))
+  };
 
   const handleSubmit = async () => {
+    alert("https://8f2d-62-173-45-70.ngrok-free.app")
     try {
-        const response = await axios.get(
-          NG_ROK_URL+"api/v1/productController/addNewProduct" ,
-            product
+        const response = await axios.post(
+          "https://8f2d-62-173-45-70.ngrok-free.app/api/v1/productController/addNewProduct" ,
+          {
+            "productName": "boxe",
+            "productDescription": "for school",
+            "productPrice": 3490.00,
+            "productImageUrl": "frontend/",
+            "productQrCodeUrl": "frontend",
+            "supermarketName": "MAC",
+            "supermarketCode": "jd3e3",
+            "supermarketAdminEmail": "makefd@gamil.com"
+          }
         )
+        alert("saved successfully")
     } catch (error) {
       setError(error.message || 'An error occurred while submitting the form.');
-      console.error('Error submitting form:', error);
+      alert('Error submitting form:', error);
     }
   };
 
@@ -45,9 +60,9 @@ Enter Your Details for Personal Information
     </Text> 
  <View style={{ marginVertical: 10 }}>
 
-      <Input
+      {/* <Input
         label="Product Name"
-        secureTextEntry={true}
+        // secureTextEntry={true}
         onChangeText={(text) => handleOnChange(text, 'productName')}
         placeholder="Product Name"
       />
@@ -62,7 +77,7 @@ Enter Your Details for Personal Information
         onChangeText={(text) => handleOnChange(text, 'product Description')}
         placeholder="Product Description"
        
-      />
+      /> */}
           <View className="Image">
                 <LottieView 
                 source={require('../../assets/theme/animationbb.json')}
@@ -75,14 +90,14 @@ Enter Your Details for Personal Information
 
 </View>
        <TouchableOpacity style={{height:90,top:-50}}>
-      <AddBut title="Select Image" onPress={handleImageChange} />
+      <AddBut title="Select Image" />
       {product.productImageUrl ? (
         <Image source={{ uri: product.productImageUrl }} style={styles.image} />
       ) : null}
       </TouchableOpacity>
       <TouchableOpacity style={{height:100,top:-60}}>
-      <AddBut title="Upload Image" onPress={handleUpload} />
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <AddBut title="Upload Image"  />
+      {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>
       <TouchableOpacity style={{height:100,top:-80}}>
       <AddBut title="Add Product" onPress={handleSubmit} />

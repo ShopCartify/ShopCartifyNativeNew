@@ -59,7 +59,7 @@ const App = () => {
 
           {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
           {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
-          <Stack.Screen name="SignUpScreen" component={SignUpScreen} /> 
+          {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
           {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
 
           {/* <Stack.Screen name="scan" component={CodeScanner} /> */}
@@ -75,13 +75,14 @@ const App = () => {
           {/* <Stack.Screen name="ProductDisplay" component={ProductDisplay} /> */}
 
         
-          <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} /> 
+          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} />  */}
           {/* <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} /> */}
 
           {/* <Stack.Screen name="ItemScreen" component={Items} /> */}
 
           {/* <Stack.Screen name="AdminScreen" component={DashHome} /> */}
-          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
+          <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="AddproductScreen" component={AddProduct} />
 
         </Stack.Navigator>
