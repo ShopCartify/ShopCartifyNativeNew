@@ -1,90 +1,3 @@
-// import React from "react";
-// import { View } from "react-native-web";
-// const Input = () => {
-//     return({
-//         label,
-//         iconName,
-//         error,
-//         password,
-//         onfocus = () => {},
-//         ...props
-        
-//     }) => {
-//         return <View style={{marginBottom: 20}}>
-//         <Text></Text>
-//         </View>;
-//     }
-        
-   
-// }
-// export default Input
-
-
-// import { View ,Text, TouchableOpacity} from 'react-native'
-// import React from 'react'
-// import { SafeAreaView } from 'react-native'
-// import COLORS from '../const/Colors'
-// import { ScrollView } from 'react-native-gesture-handler'
-// import LottieView from 'lottie-react-native';
-// // import Button from './const/Button'
-// import Butt from '../const/Butt'
-
-
-
-
-
-
-
-// const WelcomeScreen = ({navigation}) => {
-//     // const navigation = useNavigation( WelcomeScreen);
-//     return(
-//         <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,paddingTop: '200%',height:900}}>
-//         <ScrollView
-//          contentContainerStyle={{
-//             paddingHorizontal:20,
-//             }}>
-              
-//         <View>
-//             <Text className="fff" 
-//             style={{color: COLORS.white,fontSize:37,alignItems:'center',top:130,left:50}}>
-//                 Let's Get Started!
-//             </Text>
-//             <View className="Image">
-//                 <LottieView 
-//                 source={require('../../assets/theme/animation.json')}
-//                 autoPlay
-//                 loop
-//                 style={{width: 350, height: 350,top:120,left:10,
-//                 }}
-//                 />
-//             </View>
-
-//             <Butt title="Sign Up" onPress={()=> navigation.navigate('SignUpScreen')}/>
-            
-//           </View>
-//             <Text style={{top:336,color:COLORS.white,left:75}}>Already have an account?</Text>
-//             <TouchableOpacity onPress={()=> navigation.navigate('LoginScreen')}>
-//                 <Text style={{top:317,left:250,fontSize:15,color:COLORS.yellow}}>Login</Text>
-//             </TouchableOpacity>
-
-
-   
-//  </ScrollView>
-//  </SafeAreaView>
-//     )
-// }
-
-// export default WelcomeScreen;  
-
-
-
-
-// };
-
-
-
-// export default HeroSection;
-
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -96,7 +9,7 @@ const WishList = () => {
   const [items, setItems] = useState([
     {
       id: 1,
-      name: 'Martini Sparkling',
+      name: 'Martini Sparkling ',
       description: '750ml',
       price: 7200.99,
     },
@@ -225,23 +138,23 @@ const wishlistStyles = StyleSheet.create({
     alignItems: 'center',
   },
   wineImage: {
-    width: 150,
+    width: 120,
     height: 150,
     marginRight: 10,
-    top:20,
-    right:5,
+    top:-8,
+    right:5
   },
   productName: {
     fontSize: 20,
     fontWeight: 'bold',
     left:160,
-    top:-80
+    top:-100
   },
   productDesc: {
     fontSize: 14,
     left:100,
     left:180,
-    top:-60,
+    top:-80,
     fontSize:20
   },
   price: {
@@ -254,15 +167,14 @@ const wishlistStyles = StyleSheet.create({
   removeHolder: {
     flexDirection: 'row',
     alignItems: 'center',
-    top:115,
+    top:55,
     right:250
+  
   },
   remove: {
     color: 'red',
     marginLeft: 5,
     fontSize: 16,
-    top:5,
-    // right:110
   },
   buttonText: {
     backgroundColor: '#ffc107',
@@ -284,3 +196,10 @@ const wishlistStyles = StyleSheet.create({
 });
 
 export default WishList;
+
+
+
+
+
+
+

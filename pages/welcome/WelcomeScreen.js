@@ -7,8 +7,9 @@ import COLORS from '../const/Colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import WelcomeButton from '../const/WelcomeButton';
 
-const HeroSection = () => {
-  const navigation = useNavigation();
+
+  const HeroSection = ({navigation})=> {
+  // const navigation = useNavigation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -65,7 +66,10 @@ const HeroSection = () => {
             Driving payments innovation with our smart solution
           </Text>
         </View>
-        <WelcomeButton title="Scan Here" />
+
+        
+        <WelcomeButton title="Scan Here"  onPress={()=> navigation.navigate('ProductDisplay')}/>
+        {/* <Text onPress={()=> navigation.navigate('ProductDisplay')}/> */}
 
         <View style={styles.qrCodeContainer}>
           <LottieView
@@ -142,7 +146,7 @@ const styles = StyleSheet.create({
   },
   qrCodeContainer: {
     // alignItems: 'center',
-    marginTop: 35,
+    marginTop: 45,
     backgroundColor:COLORS.light,
     width:200,
     //     top:-25,
