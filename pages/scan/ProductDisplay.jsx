@@ -1,7 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, Button, Text,  TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Button, Text,  TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
+import axios from 'axios';
+import CodeScanner from './Scan';
+import { useNavigation } from '@react-navigation/core';
+import { Link } from '@react-navigation/native';
 // import axios from 'axios';
 
 let cardLogo
@@ -31,12 +35,13 @@ const items = [
 const product = "product";
 const products = "products"
 
-const ProductDisplay = ({ navigation }) => {
+const ProductDisplay = ({}) => {
 
   const [storedValue , setStoredValue] = useState()
   const [productDetail , setProductDetail] = useState()
  
   const[error , setError] = useState()
+  const navigation = useNavigation();
 
  
 
@@ -54,7 +59,7 @@ const ProductDisplay = ({ navigation }) => {
 			);
 			// alert(response.data.data);
       // setProductDetail(response.data.data)
-			alert(response);
+			alert("response");
 			// console.log(response.data.data);
       
 		} catch (error) {
@@ -91,8 +96,12 @@ const ProductDisplay = ({ navigation }) => {
     // alert(AsyncStorage.getItem(products))
 		// console.log(JSON.parse(AsyncStorage.getItem(products)));
 
-		navigation.navigate(" ");
+		// navigation.navigate('');
 	};
+	const handleCart=(event)=>{
+		event.preventDefault();
+		navigation.navigate("scanScreen");
+	}
 
 	useEffect(() => {
 		fetchData();
@@ -100,26 +109,43 @@ const ProductDisplay = ({ navigation }) => {
 
 
   return (
-    
-    <ScrollView >   
+    <SafeAreaView style={pros.holder}>
+    <ScrollView>   
        {/* <View > */}
       <View >
-        <Text>Product Detail</Text>
+        <Text style={pros.titleText}>Product Details</Text>
 
         <View >
           <View >
-            <Text >product name : {items[0].productName}</Text>
-            <Text >product Description : {items[0].productDescription}</Text>
-            <Text>product price : {items[0].productPrice}</Text>
+            <Text >Name : {items[0].productName}</Text>
+            <Text >Description : {items[0].productDescription}</Text>
+            <Text>Price : {items[0].productPrice}</Text>
           </View>
         </View>
 
-        <Button title="AddToCart" onPress={() => addToCart()} />
-      </View>
+        {/* <Button title='Add To Cart' onPress={navigation.navigate("scanScreen")}></Button> */}
+		{/* <Link to="/scanScreen">Add To Cart</Link> */}
+		<Button title='Add To Cart' onPress={handleCart} />
+		
 
-    
+      </View>
     </ScrollView>
+	</SafeAreaView>
   );
 };
+
+const pros = StyleSheet.create({
+	holder:{
+		flex:1 ,  
+		backgroundColor:'#fff', 
+		paddingTop: 50,
+	},
+
+	titleText:{
+		fontSize:18,
+		marginBottom:10,
+	},
+
+});
 
 export default ProductDisplay;

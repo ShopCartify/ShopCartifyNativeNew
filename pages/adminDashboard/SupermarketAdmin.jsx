@@ -24,11 +24,11 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Products</Text>
             <View>
-                <Link to="/" style={styles.inputs}>Search Products</Link>
+                <Link>Search Products</Link>
             </View>
 
             <View>
-                <Link to="/" style={styles.inputs}>View All Products</Link>
+                <Link>View All Products</Link>
             </View>
 
             <View>
@@ -36,11 +36,11 @@ const SupermarketAdmin = () => {
             </View>
 
             <View>
-                <Link to="/" style={styles.inputs}>Remove Products</Link>
+                <Link>Remove Products</Link>
             </View>
 
-            <View onPress={()=>navigation.navigate('')}>
-                <Link to="/" style={styles.inputs}>Update Products</Link>
+            <View>
+                <Link>Update Products</Link>
             </View>
 
           </View>
@@ -48,48 +48,48 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsTwo}>
             <Text style={styles.pro}>Payments</Text>
             <View>
-              <Link to="/" style={styles.inputs}>Confirm/Approve payment</Link>
+              <Link>Confirm/Approve payment</Link>
             </View>
           </View>
 
           <View style={styles.sections}>
             <Text style={styles.pro}>History</Text>
             <View>
-              <Link to="/" style={styles.inputs}>Purchase history</Link>
+              <Link>Purchase history</Link>
             </View>  
 
             <View>
-              <Link to="/" style={styles.inputs}>Transaction history</Link>
+              <Link>Transaction history</Link>
             </View>          
           </View>     
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Admin</Text>
             <View>
-              <Link to="/" style={styles.inputs}>Invite admin</Link>
+              <Link>Invite admin</Link>
             </View>
 
             <View>
-              <Link to="/" style={styles.inputs}>All supermarket admins</Link>
+              <Link>All supermarket admins</Link>
             </View>
 
             <View>
-              <Link to="/" style={styles.inputs}>All checkout admins</Link>
+              <Link>All checkout admins</Link>
             </View>
           </View>       
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Reports</Text>
             <View>
-                <Link to="/" style={styles.inputs}>View notifications</Link>
+                <Link>View notifications</Link>
             </View>
 
             <View>
-              <Link to="/" style={styles.inputs}>Send report</Link>
+              <Link>Send report</Link>
             </View>          
 
             <View>
-                <Link to="/" style={styles.inputs}>Respond to reports</Link>
+                <Link>Respond to reports</Link>
             </View>
             
           </View>
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 20,
     marginBottom: 20,
-    marginLeft: 60n,
+    marginLeft: 60,
   },
 
   inputs: {

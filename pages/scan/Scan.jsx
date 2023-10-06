@@ -45,15 +45,15 @@ export default function CodeScanner({navigation}) {
       )}
       {scannedData && (
         <View style={styles.dataContainer}>
-          <Text style={styles.text}>Item:</Text>
-          <Text style={styles.text}>{scannedData}</Text>
+          {/* <Text style={styles.text}>Item:</Text> */}
+          {/* <Text style={styles.text}>{scannedData}</Text> */}
         </View>
       )}
 
       {scanned && (
             <Button
             color="#ffc107"
-              title={'Scan Again'}
+              title={'Refresh'}
               onPress={() => setScanned(false)}
             />
           )}

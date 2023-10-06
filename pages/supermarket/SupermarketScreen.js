@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  Alert,
-} from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Input from '../const/Input';
 import Button from '../const/Button';
@@ -14,11 +8,12 @@ import COLORS from '../const/Colors';
 // import DocumentPicker from '@react-native-document-picker';
 import ImagePicker from 'react-native-image-picker'; 
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/core';
 
 let userId = 1
 let supermarketCode =  "" 
 
-const SupermarketScreen = ({ navigation }) => {
+const SupermarketScreen = ({ }) => {
   const [inputs, setInputs] = useState({
     "supermarketName": "",
     "supermarketEmail": "",
@@ -32,6 +27,7 @@ const SupermarketScreen = ({ navigation }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null); // State for selected image
 
+  const navigation = useNavigation();
   const validate = () => {
     let valid = true;
     setError({}); // Clear previous errors
@@ -60,17 +56,18 @@ const SupermarketScreen = ({ navigation }) => {
     }
   };
   const register = async ()=>{
-    alert(inputs.supermarketEmail)
+    // alert(inputs.supermarketEmail)
 		try {
 			const response = await axios.post(
 				"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/supermarketAdminController/registerSupermarketAdmin" ,
           inputs
 			
 			)
-      console.log(response.data);
+      // console.log(response.data);
       alert(response.data.data)
       alert("successful registration")
-      AsyncStorage.setItem("supermarket",JSON.stringify(response.data.data))
+      AsyncStorage.setItem("supermarket",JSON.stringify(response.data.data))  
+      // navigation.navigate("SupermarketAdminScreen");
 		} catch (error) {
       console.log(error);
 		}
@@ -82,9 +79,10 @@ const SupermarketScreen = ({ navigation }) => {
         AsyncStorage.setItem("supermarket",JSON.stringify(response.data))
         navigation.navigate('SupermarketScreen')
       }catch (eror){
-        Alert.alert('Error','Something went wrong')
+        // Alert.alert('Error','Something went wrong')
       }
     })
+    navigation.navigate("SupermarketAdminScreen");
 
   }
 
@@ -108,8 +106,6 @@ const SupermarketScreen = ({ navigation }) => {
       }
     }
   };
-
-  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
@@ -160,7 +156,6 @@ const SupermarketScreen = ({ navigation }) => {
         </View>
 
         <View style={{ top:-29 }}>
-          
           <Button title="Pick a File" />
           <Text>{selectedImage ? 'Yes' : ''}</Text>
           <Button title="Pick an Image" />
@@ -182,6 +177,6 @@ const SupermarketScreen = ({ navigation }) => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+  };
 
 export default SupermarketScreen;
