@@ -63,7 +63,7 @@ const AddProduct = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
 <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}> 
     <Text style={{ color: COLORS.white, fontSize: 40, fontWeight: 'bold', marginTop: 40 }}>
-Register
+Add Product
 </Text>
  <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
 Enter Your Details for Personal Information
@@ -109,6 +109,7 @@ Enter Your Details for Personal Information
       <AddBut title="Upload Image" onPress={handleUpload} />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       </TouchableOpacity>
+
       <TouchableOpacity style={{height:100,top:-80}}>
       <AddBut title="Add Product" onPress={handleSubmit} />
       </TouchableOpacity>

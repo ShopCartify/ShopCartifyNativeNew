@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native"
 export default StyleSheet.create({
 
     houseall: {
-      backgroundColor: '#ff9b50',
+      backgroundColor: '#4b4b88',
       height:'200%'
     },
     allItems:{

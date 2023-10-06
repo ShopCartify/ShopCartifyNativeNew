@@ -52,7 +52,7 @@ export default function CodeScanner({navigation}) {
 
       {scanned && (
             <Button
-            color="#517405"
+            color="#ffc107"
               title={'Scan Again'}
               onPress={() => setScanned(false)}
             />
@@ -67,18 +67,18 @@ const styles = StyleSheet.create({
     flex: 200,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    backgroundColor: '#ff9b50',
+    backgroundColor: '#4b4b88',
   },
   scannerContainer: {
     flexDirection: 'row',
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'baseLine',
     alignItems: 'baseline',
-    backgroundColor: '#ff9b50',
+    backgroundColor: '#4b4b88',
   },
   dataContainer: {
     padding: 40,
-    backgroundColor: '#ff9b50',
+    backgroundColor: '#4b4b88',
   },
   text: {
     color: 'white',
