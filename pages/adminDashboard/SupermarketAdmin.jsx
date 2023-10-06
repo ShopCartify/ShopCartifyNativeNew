@@ -21,11 +21,11 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Products</Text>
             <View>
-                <Link>Search Products</Link>
+                <Text style={styles.inputs}>Search Products</Text>
             </View>
 
             <View>
-                <Link>View All Products</Link>
+                <Text style={styles.inputs}>View All Products</Text>
             </View>
 
             <View>
@@ -33,11 +33,11 @@ const SupermarketAdmin = () => {
             </View>
 
             <View>
-                <Link>Remove Products</Link>
+                <Text style={styles.inputs}>Remove Products</Text>
             </View>
 
             <View>
-                <Link>Update Products</Link>
+                <Text style={styles.inputs}>Update Products</Text>
             </View>
 
           </View>
@@ -45,48 +45,48 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsTwo}>
             <Text style={styles.pro}>Payments</Text>
             <View>
-              <Link>Confirm/Approve payment</Link>
+              <Text style={styles.inputs}>Confirm/Approve payment</Text>
             </View>
           </View>
 
           <View style={styles.sections}>
             <Text style={styles.pro}>History</Text>
             <View>
-              <Link>Purchase history</Link>
+              <Text style={styles.inputs}>Purchase history</Text>
             </View>  
 
             <View>
-              <Link>Transaction history</Link>
+              <Text style={styles.inputs}>Transaction history</Text>
             </View>          
           </View>     
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Admin</Text>
             <View>
-              <Link>Invite admin</Link>
+              <Text style={styles.inputs}>Invite admin</Text>
             </View>
 
             <View>
-              <Link>All supermarket admins</Link>
+              <Text style={styles.inputs}>All supermarket admins</Text>
             </View>
 
             <View>
-              <Link>All checkout admins</Link>
+              <Text style={styles.inputs}>All checkout admins</Text>
             </View>
           </View>       
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Reports</Text>
             <View>
-                <Link>View notifications</Link>
+                <Text style={styles.inputs}>View notifications</Text>
             </View>
 
             <View>
-              <Link>Send report</Link>
+              <Text style={styles.inputs}>Send report</Text>
             </View>          
 
             <View>
-                <Link>Respond to reports</Link>
+                <Text style={styles.inputs}>Respond to reports</Text>
             </View>
             
           </View>
