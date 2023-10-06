@@ -67,7 +67,7 @@ import AnotherButton from '../const/AnotherButton'
 
         <View style={styles.imageContainer}>
           <LottieView
-            source={require('../../assets/theme/animation.json')}
+            source={require('../../assets/theme/yyy.json')}
             autoPlay
             loop
             style={styles.animation}
@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 15,
     color: COLORS.yellow,
+    alignItems:'center'
   },
   qrCodeContainer: {
     // alignItems: 'center',
