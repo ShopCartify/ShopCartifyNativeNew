@@ -116,8 +116,9 @@ const handleError =(errorMessage,input)=>{
               onChangeText={(text) => handleOnChange(text, 'password')}
             />
           
-            <Button title="Login" onPress={validate}/>
-            <Text onPress={()=> navigation.navigate('SignUpScreen')}
+            <Button title="Login"onPress={()=> navigation.navigate('UserDashboard')} />
+            <Text onPress={()=> navigation.navigate('SignUpScreen ')}
+            // onPress={validate}
               style={{
                 color:COLORS.grey,
                 textAlign:'center',
