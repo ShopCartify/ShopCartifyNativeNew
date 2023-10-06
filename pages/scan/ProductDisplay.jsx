@@ -2,10 +2,15 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { View, Button, Text,  TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
+<<<<<<< HEAD
 import axios from 'axios';
 import CodeScanner from './Scan';
 import { useNavigation } from '@react-navigation/core';
 import { Link } from '@react-navigation/native';
+=======
+import { ToastContainer, toast } from "react-toastify";
+import axios from 'axios';
+>>>>>>> d651dad325ac5f0529fff70b3d03e79cb22d280b
 // import axios from 'axios';
 
 let cardLogo
@@ -59,13 +64,23 @@ const ProductDisplay = ({}) => {
 			);
 			// alert(response.data.data);
       // setProductDetail(response.data.data)
+<<<<<<< HEAD
 			alert("response");
+=======
+	  console.log(response.data);
+	  setProductDetail(response.data.data)
+			// toast.success(response);
+			alert(response);
+
+>>>>>>> d651dad325ac5f0529fff70b3d03e79cb22d280b
 			// console.log(response.data.data);
       
 		} catch (error) {
       randomise(data)
       // alert(productDetail)
       console.log(error);
+	  alert(error)
+	  toast.error(error)
 			// setError(error.response.data.data);
 			// console.log(error.response.data.data);
 		}
@@ -96,7 +111,11 @@ const ProductDisplay = ({}) => {
     // alert(AsyncStorage.getItem(products))
 		// console.log(JSON.parse(AsyncStorage.getItem(products)));
 
+<<<<<<< HEAD
 		// navigation.navigate('');
+=======
+		navigation.navigate("scanScreen");
+>>>>>>> d651dad325ac5f0529fff70b3d03e79cb22d280b
 	};
 	const handleCart=(event)=>{
 		event.preventDefault();
@@ -109,11 +128,20 @@ const ProductDisplay = ({}) => {
 
 
   return (
+<<<<<<< HEAD
     <SafeAreaView style={pros.holder}>
     <ScrollView>   
        {/* <View > */}
       <View >
         <Text style={pros.titleText}>Product Details</Text>
+=======
+    
+    <ScrollView >   
+     
+      <View >
+
+        <Text>Product Detail</Text>
+>>>>>>> d651dad325ac5f0529fff70b3d03e79cb22d280b
 
         <View >
           <View >

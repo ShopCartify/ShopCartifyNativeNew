@@ -79,10 +79,9 @@ const SupermarketScreen = ({ }) => {
         AsyncStorage.setItem("supermarket",JSON.stringify(response.data))
         navigation.navigate('SupermarketScreen')
       }catch (eror){
-        // Alert.alert('Error','Something went wrong')
+        Alert.alert('Error','Something went wrong')
       }
     })
-    navigation.navigate("SupermarketAdminScreen");
 
   }
 
@@ -93,6 +92,7 @@ const SupermarketScreen = ({ }) => {
   const handleError = (errorMessage, input) => {
     setError((prevState) => ({ ...prevState, [input]: errorMessage }));
   };
+
 
   const pickDocument = async () => {
     try {
@@ -106,6 +106,8 @@ const SupermarketScreen = ({ }) => {
       }
     }
   };
+
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
@@ -177,6 +179,6 @@ const SupermarketScreen = ({ }) => {
       </ScrollView>
     </SafeAreaView>
   );
-  };
+};
 
 export default SupermarketScreen;

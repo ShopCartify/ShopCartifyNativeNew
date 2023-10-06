@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
 // import Line from './Line';
 import { useNavigation, Link } from '@react-navigation/native';
@@ -20,7 +20,6 @@ const SupermarketAdmin = () => {
           <View style = {styles.title}>
             <Text style={styles.titext}>Supermarket Admin</Text>
           </View>      
-
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Products</Text>
             <View>
