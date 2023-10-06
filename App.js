@@ -51,7 +51,7 @@ const App = () => {
         <Loader visible={true} />
       ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> */}
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
 
           {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
           {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
@@ -61,10 +61,10 @@ const App = () => {
           {/* <Stack.Screen name="AddproductScreen" component={AddproductScreen} /> */}
           {/* <Stack.Screen name="AddproductScreen" component={AddProduct} /> */}
           {/* <Stack.Screen name="WishList" component={WishList} /> */}
-          {/* <Stack.Screen name="ProductDisplay" component={ProductDisplay} /> */}
+          <Stack.Screen name="ProductDisplay" component={ProductDisplay} />
 
         
-          <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} /> 
+          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketAdmin} />  */}
           {/* <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} /> */}
           {/* <Stack.Screen name="ItemScreen" component={Items} /> */}
           {/* <Stack.Screen name="AdminScreen" component={DashHome} /> */}
