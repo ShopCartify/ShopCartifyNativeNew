@@ -62,7 +62,7 @@ export default function CodeScanner({navigation}) {
           )}
           
           <View style={{height:100,width:400,left:340}}>
-          <AnotherButton title="click me"  onPress={()=> navigation.navigate('Items')}/>
+          <AnotherButton title="View Cart"  onPress={()=> navigation.navigate('Items')}/>
           </View>           
     </View>
     

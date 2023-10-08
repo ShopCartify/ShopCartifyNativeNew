@@ -29,7 +29,7 @@ const AddProduct = () => {
     
     try {
         const response = await axios.post(
-          "https://8f2d-62-173-45-70.ngrok-free.app/api/v1/productController/addNewProduct" ,
+          "https://e9f8-62-173-45-70.ngrok-free.app/api/v1/productController/addNewProduct" ,
           product
         )
         alert("saved successfully")

@@ -21,23 +21,39 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Products</Text>
             <View>
-                <Text>Search Products</Text>
+
+                <Text style={styles.inputs}>Search Products</Text>
             </View>
 
             <View>
-                <Text>View All Products</Text>
+                <Text style={styles.inputs}>View All Products</Text>
+
+                <Text style={styles.inputs}>Search Products</Text>
             </View>
 
             <View>
-                <Link to="/AddproductScreen" style={styles.inputs}>Add Products</Link>
+                <Text style={styles.inputs}>View All Products</Text>
+
             </View>
 
             <View>
-                <Text>Remove Products</Text>
+                <Link to="/AddproductScreen" style={styles.inputa}>Add Products</Link>
             </View>
 
             <View>
-                <Text>Update Products</Text>
+
+                <Text style={styles.inputs}>Remove Products</Text>
+            </View>
+
+            <View>
+                <Text style={styles.inputs}>Update Products</Text>
+
+                <Text style={styles.inputs}>Remove Products</Text>
+            </View>
+
+            <View>
+                <Text style={styles.inputs}>Update Products</Text>
+
             </View>
 
           </View>
@@ -45,48 +61,84 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsTwo}>
             <Text style={styles.pro}>Payments</Text>
             <View>
-              <Text>Confirm/Approve payment</Text>
+
+              <Text style={styles.inputs}>Confirm/Approve payment</Text>
+
+              <Text style={styles.inputs}>Confirm/Approve payment</Text>
+
             </View>
           </View>
 
           <View style={styles.sections}>
             <Text style={styles.pro}>History</Text>
             <View>
-              <Text>Purchase history</Text>
+
+              <Text style={styles.inputs}>Purchase history</Text>
             </View>  
 
             <View>
-              <Text>Transaction history</Text>
+              <Text style={styles.inputs}>Transaction history</Text>
+
+              <Text style={styles.inputs}>Purchase history</Text>
+            </View>  
+
+            <View>
+              <Text style={styles.inputs}>Transaction history</Text>
+
             </View>          
           </View>     
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Admin</Text>
             <View>
-              <Text>Invite admin</Text>
+
+              <Text style={styles.inputs}>Invite admin</Text>
             </View>
 
             <View>
-              <Text>All supermarket admins</Text>
+              <Text style={styles.inputs}>All supermarket admins</Text>
             </View>
 
             <View>
-              <Text>All checkout admins</Text>
+              <Text style={styles.inputs}>All checkout admins</Text>
+
+              <Text style={styles.inputs}>Invite admin</Text>
+            </View>
+
+            <View>
+              <Text style={styles.inputs}>All supermarket admins</Text>
+            </View>
+
+            <View>
+              <Text style={styles.inputs}>All checkout admins</Text>
+
             </View>
           </View>       
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Reports</Text>
             <View>
-                <Text>View notifications</Text>
+
+                <Text style={styles.inputs}>View notifications</Text>
             </View>
 
             <View>
-              <Text>Send report</Text>
+              <Text style={styles.inputs}>Send report</Text>
             </View>          
 
             <View>
-                <Text>Respond to reports</Text>
+                <Text style={styles.inputs}>Respond to reports</Text>
+
+                <Text style={styles.inputs}>View notifications</Text>
+            </View>
+
+            <View>
+              <Text style={styles.inputs}>Send report</Text>
+            </View>          
+
+            <View>
+                <Text style={styles.inputs}>Respond to reports</Text>
+
             </View>
             
           </View>
@@ -125,12 +177,22 @@ const styles = StyleSheet.create({
   },
 
   inputs: {
+    color: 'black',
+    fontSize: 15,
+    // fontWeight: '',
+    marginVertical: 9,
+    paddingLeft: 20,
+    // backgroundColor: '#7978B5',
+  },
+
+  inputa: {
     color: 'white',
     fontSize: 15,
     // fontWeight: '',
     marginVertical: 9,
     paddingLeft: 20,
     // backgroundColor: '#7978B5',
+
   },
   pro:{
     color: 'grey',
