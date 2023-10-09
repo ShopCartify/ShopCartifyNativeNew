@@ -197,6 +197,10 @@ import COLORS from '../const/Colors';
 import ImagePicker from 'react-native-image-picker'; 
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
+import { Dimensions,StyleSheet } from 'react-native';
+
+
+const { width } = Dimensions.get('window');
 
 let userId = 1
 let supermarketCode =  "" 
@@ -368,4 +372,16 @@ const SupermarketScreen = ({ }) => {
   };
 
 export default SupermarketScreen;
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: width < 400 ? 16 : 24, // Adjust font size based on screen width
+    fontWeight: 'bold',
+  },
+});
 

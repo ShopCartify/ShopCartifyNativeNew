@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Switch, Alert } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Switch, Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage for data storage
 import Input from '../const/Input';
 import Button from '../const/Button';
 import Loader from '../const/Loader';
 import COLORS from '../const/Colors';
+import { Dimensions,StyleSheet } from 'react-native';
+
+
+const { width } = Dimensions.get('window');
 
 const PersonalScreen = ({ navigation }) => {
   const [inputs, setInputs] = useState({
@@ -148,5 +152,17 @@ const PersonalScreen = ({ navigation }) => {
 };
 
 export default PersonalScreen;
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: width < 400 ? 16 : 24, 
+    fontWeight: 'bold',
+  },
+});
 
 

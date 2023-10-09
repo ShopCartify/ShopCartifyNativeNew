@@ -85,6 +85,7 @@ import { View, Text, StyleSheet } from "react-native";
 import COLORS from "./Colors";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { SIZES } from "./Sizes";
 
 const Input = ({
   label,
@@ -135,14 +136,14 @@ const Input = ({
             style={{ left: 340, top: -15, zIndex: 2 }}
           >
             <Icon
-              style={{ fontSize: 20, color: COLORS.darkBlue }}
+              style={{ fontSize: 10/100*(SIZES.width), color: COLORS.darkBlue }}
               name={hidePassword ? 'eye-outline' : 'eye-off-outline'}
             />
           </TouchableOpacity>
         )}
       </View>
       {error && (
-        <Text style={{ color: COLORS.red, top: 5, fontSize: 14 }}>
+        <Text style={{ color: COLORS.red, top: 5}}>
           {error}
         </Text>
       )}
@@ -153,12 +154,13 @@ const Input = ({
 const styles = StyleSheet.create({
   label: {
     marginVertical: 5,
-    fontSize: 14,
+    fontSize: 3.5/100*(SIZES.width),
+    // fontSize: 14/100*(SIZES.width),
     color: COLORS.grey,
     top: 5,
   },
   inputContainer: {
-    height: 55,
+    height: 6/100*(SIZES.height),
     top:0,
     backgroundColor: COLORS.light,
     borderRadius: 10,

@@ -10,6 +10,10 @@ import Loader from '../const/Loader';
 // import { ToastContainer, toast } from "react-toastify";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { Dimensions,StyleSheet } from 'react-native';
+
+
+const { width } = Dimensions.get('window');
 
 
 
@@ -20,6 +24,7 @@ const SignUpScreen = ({navigation})=> {
     firstName: "",
     lastName: "",
     password: "",
+     showPassword: false,
     userName: "",
   })
 
@@ -60,6 +65,9 @@ const [loading,setLoading]= React.useState(false);
   //   handleError("please input user Name",'userName')
   //   valid = false
   // }
+
+
+ 
 
   if(valid){
     register();
@@ -139,7 +147,7 @@ const handleError =(errorMessage,input)=>{
           <Input 
               // KeyboardType="numeric"
               placeholder="Enter your lastName"
-              iconName="phone-outline"
+              iconName="account-outline"
               label="Last Name"
               error={error.lastName}
               onfocus={()=>
@@ -148,6 +156,7 @@ const handleError =(errorMessage,input)=>{
             />
             <Input 
               placeholder="Enter your password"
+              secureTextEntry={true}
               iconName="lock-outline"
               label="Password"
               error={error.password}
@@ -188,3 +197,16 @@ const handleError =(errorMessage,input)=>{
   )
 }
 export default SignUpScreen;
+
+
+const style = StyleSheet.create({
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  text: {
+    fontSize: width < 400 ? 16 : 24,
+    fontWeight: 'bold',
+  },
+});

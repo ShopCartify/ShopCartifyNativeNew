@@ -4,6 +4,10 @@ import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation, Link } from '@react-navigation/native';
 // import adminStyles from './adminStyles';
 import LottieView from 'lottie-react-native';
+import { Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+
 
 const UserDashboard = () => {
   const admin ={
@@ -46,10 +50,10 @@ const UserDashboard = () => {
             <View>
                 <Link to="/WishList" style={styles.inputs}>View Wishlist</Link>
             </View>
-            <View>
+            {/* <View>
                 <Link to="/" style={styles.inputs}>Family</Link>
-            </View>
-            <View className="Image">
+            </View> */}
+            <View className="Image"> 
                 <LottieView 
                 source={require('../../assets/theme/animation.json')}
                 autoPlay
@@ -57,7 +61,7 @@ const UserDashboard = () => {
                 style={{width: 550, height: 350,top:0,right:30,
                 }}
                 />
-            </View>
+            </View> 
 
           </View>
    
@@ -78,12 +82,20 @@ const styles = StyleSheet.create({
   allwrap:{
     width:900,
     backgroundColor:'#4b4b88',
+    flex: 1,
+   
   },
 
   title:{
     marginTop: 45,
     marginBottom: 15,
   },
+   
+    text: {
+      fontSize: width < 400 ? 16 : 24, // Adjust font size based on screen width
+      fontWeight: 'bold',
+    },
+  
 
   titext:{
     fontSize: 25,

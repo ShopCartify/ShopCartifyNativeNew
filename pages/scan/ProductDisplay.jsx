@@ -10,6 +10,11 @@ import { useNavigation } from '@react-navigation/core';
 // import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
 // import axios from 'axios';
+import { Dimensions } from 'react-native';
+
+
+const { width } = Dimensions.get('window');
+
 
 let cardLogo
 
@@ -167,7 +172,13 @@ const pros = StyleSheet.create({
 		fontSize:18,
 		marginBottom:10,
 	},
+	text: {
+		fontSize: width < 400 ? 16 : 24, 
+		fontWeight: 'bold',
+	  },
 
 });
 
 export default ProductDisplay;
+
+

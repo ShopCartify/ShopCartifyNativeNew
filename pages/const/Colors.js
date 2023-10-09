@@ -1,3 +1,4 @@
+
 const COLORS = {
     white:'#fff',
     black:'#000',
@@ -7,9 +8,10 @@ const COLORS = {
     darkBlue:'#7978B5',
     red:'red',
     green:'#4b4b88',
-    // green:'#878fbf',
+    lightPurple:'#C3a9ff',
     yellow:'#ffc107',
-    pink: '#808080'
+    pink: '#808080',
+    lightBlue:'#a927ff'
 
 };
 export default COLORS;
