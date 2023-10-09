@@ -34,16 +34,15 @@ const ProductDisplay = ({}) => {
 					data,
 			
 			);
-			console.log(response.data);	
-			if (response.status === 200) {
+			if (response.status !== 200){
+				throw new Error("Product not found")
+			}else if (response.status === 200) {
 				
 	
 	  			setProductDetail(response.data.data)
 	  			setNotLoading(true)
 
 			console.log(response.data.data);
-			}else{
-				throw new Error("Product not found")
 			}
 			
       
@@ -54,7 +53,7 @@ const ProductDisplay = ({}) => {
 			}else if(error.message === "Product not found") {
 				console.log(error.message);
 			}else{
-				console.log("am here");
+				console.log(error.message);
 			}
 
       	
@@ -64,6 +63,7 @@ const ProductDisplay = ({}) => {
 
 
     const addToCart =async () => {
+		
       let productsArray = await AsyncStorage.getItem(products);
 
 		if (productsArray === null) {
@@ -104,10 +104,10 @@ const ProductDisplay = ({}) => {
 		<View >
 			<View >
 				<View style={styles.container}>
-					{/* <Image
-						source={isNotLoading ?productDetail.productQrCodeUrl : <Text> Loading... </Text>} // Replace with your image source
+					<Image
+						source={isNotLoading ?productDetail.productQrCodeUrl : undefined} // Replace with your image source
 						style={styles.image}
-					/> */}
+					/>
    				 </View>
 			<Text >Name : {isNotLoading ?productDetail.productName : <Text> Loading... </Text>} </Text>
 			<Text >Description : {isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
