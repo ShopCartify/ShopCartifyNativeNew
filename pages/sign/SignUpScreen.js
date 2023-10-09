@@ -10,6 +10,8 @@ import Loader from '../const/Loader';
 // import { ToastContainer, toast } from "react-toastify";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import BASE_URL from '../../secrets/.SecretConstants';
+// import BASE_URL from '../../secrets/Secret';
 
 
 
@@ -67,15 +69,16 @@ const [loading,setLoading]= React.useState(false);
 }
 
   const register = async ()=>{
-    alert("processing ... ",inputs.userName,"'s", "registration.")
+    alert("processing ... "+inputs.firstName)
+
     
 		try {
 			const response = await axios.post(
 				BASE_URL+'/api/v1/auth/register' ,
-          Input
+          inputs
 			
 			)
-      alart('response is: ' ,  response);
+      console.log('response is: ' +  response.data.id);
       alert('sign up was successful');
 		} catch (error) {
       alert(error);
@@ -158,13 +161,13 @@ const handleError =(errorMessage,input)=>{
             />
             
              <Input 
-              placeholder="Enter your username"
+              placeholder="Enter your user name"
               iconName="account-outline"
               label="user name"
               error={error.userName}
               onfocus={()=>
               handleError(null,'userName')}
-              onChangeText={(text) => handleOnChange(text, 'username')}
+              onChangeText={(text) => handleOnChange(text, 'userName')}
             />
            
             <Button title="SignUp" onPress={validate}/>

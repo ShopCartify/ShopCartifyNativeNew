@@ -7,6 +7,7 @@ import Input from '../const/Input';
 import AddBut from '../const/AddBut'
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
+import BASE_URL from '../../secrets/.SecretConstants';
 
 
 
@@ -17,7 +18,7 @@ const AddProduct = () => {
     productPrice: '0.00',
     productDescription: '',
     productImageUrl: '', 
-    supermarketCode: 'bO4n1',
+    supermarketCode: 'nA0f5',
   });
 
     
@@ -29,7 +30,7 @@ const AddProduct = () => {
     
     try {
         const response = await axios.post(
-          "https://e9f8-62-173-45-70.ngrok-free.app/api/v1/productController/addNewProduct" ,
+          BASE_URL+"/api/v1/productController/addNewProduct" ,
           product
         )
         alert("saved successfully")

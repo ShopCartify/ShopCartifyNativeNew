@@ -8,10 +8,9 @@ import COLORS from '../const/Colors';
 
 const PersonalScreen = ({ navigation }) => {
   const [inputs, setInputs] = useState({
-    email: "",
+    userName: "",
     firstName: "",
     lastName: "",
-    password: "",
   });
 
   const [error, setError] = useState({});
@@ -24,11 +23,7 @@ const PersonalScreen = ({ navigation }) => {
     // Clear previous errors
     setError({});
 
-    if (!inputs.email.match(/\S+@\S+\.\S+/)) {
-      handleError('Please input a valid email', 'email');
-      valid = false;
-    }
-
+  
     if (!inputs.firstName) {
       handleError('Please input your first name', 'firstName');
       valid = false;
@@ -39,18 +34,8 @@ const PersonalScreen = ({ navigation }) => {
       valid = false;
     }
 
-    if (!inputs.password || inputs.password.length < 5) {
-      handleError('Password must be at least 5 characters', 'password');
-      valid = false;
-    }
-
-    if (!inputs.phoneNumber) {
-      handleError('Please input phone number', 'phoneNumber');
-      valid = false;
-    }
-
-    if (!inputs.userName) {
-      handleError('Please input username', 'userName');
+    if (!inputs.userName ) {
+      handleError('Please input your user name', 'userName');
       valid = false;
     }
 
@@ -86,20 +71,12 @@ const PersonalScreen = ({ navigation }) => {
       <Loader visible={loading} />
       <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
         <Text style={{ color: COLORS.white, fontSize: 40, fontWeight: 'bold', marginTop: 40 }}>
-          Register
+          Update User Information
         </Text>
         <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
           Enter Your Details for Personal Information
         </Text>
         <View style={{ marginVertical: 10 }}>
-          <Input
-            placeholder="Enter your email address"
-            iconName="email-outline"
-            label="Email"
-            error={error.email}
-            onFocus={() => handleError(null, 'email')}
-            onChangeText={(text) => handleOnChange(text, 'email')}
-          />
           <Input
             placeholder="Enter your first name"
             iconName="account-outline"
@@ -116,15 +93,15 @@ const PersonalScreen = ({ navigation }) => {
             onFocus={() => handleError(null, 'lastName')}
             onChangeText={(text) => handleOnChange(text, 'lastName')}
           />
-          <Input
-            placeholder="Enter your password"
-            iconName="lock-outline"
-            label="Password"
-            error={error.password}
-            onFocus={() => handleError(null, 'password')}
-            onChangeText={(text) => handleOnChange(text, 'password')}
+            <Input
+            placeholder="Enter your user name"
+            iconName="account-outline"
+            label="User Name"
+            error={error.userName}
+            onFocus={() => handleError(null, 'userName')}
+            onChangeText={(text) => handleOnChange(text, 'userName')}
           />
-          
+      
         </View>
         <Text style={{ color: COLORS.white, fontSize: 18, marginTop: 20 }}>Notifications</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>

@@ -9,6 +9,8 @@ import Loader from '../const/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import HomeScreen from './HomeScreen';
 import LottieView from 'lottie-react-native';
+import axios from 'axios';
+import BASE_URL from '../../secrets/.SecretConstants';
 
 
 
@@ -20,6 +22,7 @@ const LoginScreen = ({navigation})=> {
   })  
 const [error,setError]= React.useState({});
 const [loading,setLoading]= React.useState(false);
+
   const validate = () => {;
     let valid = true;
   Keyboard.dismiss();
@@ -35,32 +38,50 @@ const [loading,setLoading]= React.useState(false);
   if(valid){
     login();
   }
-  const login = ()=>{
-    setLoading(true);
-    setTimeout(async()=>{
-      setLoading(false);
-      let userData = await AsyncStorage.getItem("user");
-      if(userData){
-        userData = JSON.parse(userData);
-        if(inputs.email == userData.email && 
-          inputs.password == userData.password
-          ){
-          AsyncStorage.setItem(
-            "user"
-            ,JSON.stringify({...userData,loggedin:true}),
-            );
-            navigation.navigate('HomeScreen')
-        }else{
-          Alert.alert('Error','invalid details')
-        }
-      }else{
-        Alert.alert('Error','user does not exist')
-      }
-    }, 3000);
   }
+  const login = async ()=>{
+    alert("processing ... ")
+
+    
+		try {
+			const response = await axios.post(
+				BASE_URL+'/api/v1/auth/login' ,
+          inputs
+			
+			)
+      console.log('response is: ' +  response.data.id);
+      alert('sign up was successful');
+      navigation.navigate('user_dashboard')
+
+		} catch (error) {
+      alert(error);
+		}
+    // setLoading(true);
+    // setTimeout(async()=>{
+    //   setLoading(false);
+    //   let userData = await AsyncStorage.getItem("user");
+    //   if(userData){
+    //     userData = JSON.parse(userData);
+    //     if(inputs.email == userData.email && 
+    //       inputs.password == userData.password
+    //       ){
+    //       AsyncStorage.setItem(
+    //         "user"
+    //         ,JSON.stringify({...userData,loggedin:true}),
+    //         );
+    //         navigation.navigate('HomeScreen')
+    //     }else{
+    //       Alert.alert('Error','invalid details')
+    //     }
+    //   }else{
+    //     Alert.alert('Error','user does not exist')
+    //   }
+    // }, 3000);
+  }
+
    
 
-  }
+  
 const handleOnChange = (text,input)=>{
   setInputs(prevState => ({...prevState,[input]: text}))
 };
@@ -116,7 +137,7 @@ const handleError =(errorMessage,input)=>{
               onChangeText={(text) => handleOnChange(text, 'password')}
             />
           
-            <Button title="Login"onPress={()=> navigation.navigate('UserDashboard')} />
+            <Button title="Login"onPress={validate} />
             <Text onPress={()=> navigation.navigate('SignUpScreen ')}
             // onPress={validate}
               style={{

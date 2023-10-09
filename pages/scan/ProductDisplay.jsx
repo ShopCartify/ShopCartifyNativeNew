@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/core';
 // import { Link } from '@react-navigation/native';
 // import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
+import BASE_URL from '../../secrets/.SecretConstants';
 // import axios from 'axios';
 
 let cardLogo
@@ -49,22 +50,23 @@ const ProductDisplay = ({}) => {
  
 
   const fetchData =useCallback(async ()=>{
-    // AsyncStorage.setItem("product", "1")
+    
       let value = await AsyncStorage.getItem("product")
       let data = JSON.stringify(value)
-     console.log(data);
+
    
 		try {
 			const response = await axios.get(
-				"https://9f1e-62-173-45-70.ngrok-free.app/productController/findbyNameAndCode/" +
+				BASE_URL+"/api/v1/productController/findProductToken/" +
 					data,
 			
 			);
 			// alert(response.data.data);
       // setProductDetail(response.data.data)
-			alert("response");
 	  console.log(response.data);
-	  setProductDetail(response.data.data)
+	  console.log();(response.productName);
+	  console.log("rest");
+	  setProductDetail(response.data)
 			// toast.success(response);
 			alert(response);
 
@@ -75,7 +77,7 @@ const ProductDisplay = ({}) => {
       // alert(productDetail)
       console.log(error);
 	  alert(error)
-	  toast.error(error)
+	  	console.error(error)
 			// setError(error.response.data.data);
 			// console.log(error.response.data.data);
 		}
@@ -139,7 +141,7 @@ const ProductDisplay = ({}) => {
 
         <View >
           <View >
-            <Text >Name : {items[0].productName}</Text>
+            {/* <Text >Name : {productDetail.id}</Text> */}
             <Text >Description : {items[0].productDescription}</Text>
             <Text>Price : {items[0].productPrice}</Text>
           </View>
