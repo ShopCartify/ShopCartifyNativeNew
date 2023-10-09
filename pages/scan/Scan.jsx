@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AnotherButton from '../const/AnotherButton'
+import { Dimensions,StyleSheet } from 'react-native';
+
+
+const { width } = Dimensions.get('window');
 
 
 const product = "product";
@@ -60,7 +64,7 @@ export default function CodeScanner({navigation}) {
           )}
           
           <View style={{height:100,width:400,left:340}}>
-          <AnotherButton title="click me"  onPress={()=> navigation.navigate('Items')}/>
+          <AnotherButton title="View Cart"  onPress={()=> navigation.navigate('Items')}/>
           </View>           
     </View>
     
@@ -88,5 +92,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     textAlign: 'left',
+    fontSize: width < 400 ? 16 : 24,
+    // fontWeight: 'bold',
   },
 });

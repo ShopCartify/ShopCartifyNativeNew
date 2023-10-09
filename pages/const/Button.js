@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity} from "react-native";
 import COLORS from "./Colors";
+import { SIZES } from "./Sizes";
 
 const Button = ({title,onPress = () => {}}) => {
     return(
@@ -8,9 +9,9 @@ const Button = ({title,onPress = () => {}}) => {
     activeOpacity={0.7} 
     onPress={onPress}
      style ={{
-        height:55,
-        width:'100%',
-        top:30,
+        height:6/100*(SIZES.height),
+        width:90/100*(SIZES.width),
+        top:10,
         borderRadius:10,
         backgroundColor:COLORS.yellow ,
         justifyContent:'center',

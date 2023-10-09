@@ -10,6 +10,12 @@ import Loader from '../const/Loader';
 // import { ToastContainer, toast } from "react-toastify";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { Dimensions,StyleSheet } from 'react-native';
+
+
+const { width } = Dimensions.get('window');
+import BASE_URL from '../../secrets/.SecretConstants';
+
 
 
 
@@ -20,6 +26,7 @@ const SignUpScreen = ({navigation})=> {
     firstName: "",
     lastName: "",
     password: "",
+     showPassword: false,
     userName: "",
   })
 
@@ -61,21 +68,25 @@ const [loading,setLoading]= React.useState(false);
   //   valid = false
   // }
 
+
+ 
+
   if(valid){
     register();
   }
 }
 
   const register = async ()=>{
-    alert("processing ... ",inputs.userName,"'s", "registration.")
+    alert("processing ... "+inputs.firstName)
+
     
 		try {
 			const response = await axios.post(
 				BASE_URL+'/api/v1/auth/register' ,
-          Input
+          inputs
 			
 			)
-      alart('response is: ' ,  response);
+      console.log('response is: ' +  response.data.id);
       alert('sign up was successful');
 		} catch (error) {
       alert(error);
@@ -139,7 +150,7 @@ const handleError =(errorMessage,input)=>{
           <Input 
               // KeyboardType="numeric"
               placeholder="Enter your lastName"
-              iconName="phone-outline"
+              iconName="account-outline"
               label="Last Name"
               error={error.lastName}
               onfocus={()=>
@@ -148,6 +159,7 @@ const handleError =(errorMessage,input)=>{
             />
             <Input 
               placeholder="Enter your password"
+              secureTextEntry={true}
               iconName="lock-outline"
               label="Password"
               error={error.password}
@@ -158,13 +170,13 @@ const handleError =(errorMessage,input)=>{
             />
             
              <Input 
-              placeholder="Enter your username"
+              placeholder="Enter your user name"
               iconName="account-outline"
               label="user name"
               error={error.userName}
               onfocus={()=>
               handleError(null,'userName')}
-              onChangeText={(text) => handleOnChange(text, 'username')}
+              onChangeText={(text) => handleOnChange(text, 'userName')}
             />
            
             <Button title="SignUp" onPress={validate}/>
@@ -188,3 +200,16 @@ const handleError =(errorMessage,input)=>{
   )
 }
 export default SignUpScreen;
+
+
+const style = StyleSheet.create({
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  text: {
+    fontSize: width < 400 ? 16 : 24,
+    fontWeight: 'bold',
+  },
+});

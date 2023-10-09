@@ -4,6 +4,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import wine from '../../assets/theme/wine.jpeg' 
 import Logo from '../../assets/theme/applogo.png'
+import { Dimensions, StyleSheet } from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 const WishList = () => {
   const [items, setItems] = useState([
@@ -74,14 +77,19 @@ const WishList = () => {
     </ScrollView>
   );
 };
-import { StyleSheet } from 'react-native';
+
 
 const wishlistStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4b4b88',
     height:900,
+   
   },
+    text: {
+      fontSize: width < 400 ? 16 : 24,
+      fontWeight: 'bold',
+    },
   houseall: {
     padding: 20,
   },

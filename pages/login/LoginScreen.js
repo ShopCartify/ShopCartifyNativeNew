@@ -10,6 +10,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // import HomeScreen from './HomeScreen';
 import LottieView from 'lottie-react-native';
 
+import { Dimensions,StyleSheet } from 'react-native';
+import { SIZES } from '../const/Sizes';
+
+
+const { width } = Dimensions.get('window');
+import axios from 'axios';
+import BASE_URL from '../../secrets/.SecretConstants';
+
+
 
 
 const LoginScreen = ({navigation})=> {
@@ -20,6 +29,7 @@ const LoginScreen = ({navigation})=> {
   })  
 const [error,setError]= React.useState({});
 const [loading,setLoading]= React.useState(false);
+
   const validate = () => {;
     let valid = true;
   Keyboard.dismiss();
@@ -35,32 +45,50 @@ const [loading,setLoading]= React.useState(false);
   if(valid){
     login();
   }
-  const login = ()=>{
-    setLoading(true);
-    setTimeout(async()=>{
-      setLoading(false);
-      let userData = await AsyncStorage.getItem("user");
-      if(userData){
-        userData = JSON.parse(userData);
-        if(inputs.email == userData.email && 
-          inputs.password == userData.password
-          ){
-          AsyncStorage.setItem(
-            "user"
-            ,JSON.stringify({...userData,loggedin:true}),
-            );
-            navigation.navigate('HomeScreen')
-        }else{
-          Alert.alert('Error','invalid details')
-        }
-      }else{
-        Alert.alert('Error','user does not exist')
-      }
-    }, 3000);
   }
+  const login = async ()=>{
+    alert("processing ... ")
+
+    
+		try {
+			const response = await axios.post(
+				BASE_URL+'/api/v1/auth/login' ,
+          inputs
+			
+			)
+      console.log('response is: ' +  response.data.id);
+      alert('sign up was successful');
+      navigation.navigate('user_dashboard')
+
+		} catch (error) {
+      alert(error);
+		}
+    // setLoading(true);
+    // setTimeout(async()=>{
+    //   setLoading(false);
+    //   let userData = await AsyncStorage.getItem("user");
+    //   if(userData){
+    //     userData = JSON.parse(userData);
+    //     if(inputs.email == userData.email && 
+    //       inputs.password == userData.password
+    //       ){
+    //       AsyncStorage.setItem(
+    //         "user"
+    //         ,JSON.stringify({...userData,loggedin:true}),
+    //         );
+    //         navigation.navigate('HomeScreen')
+    //     }else{
+    //       Alert.alert('Error','invalid details')
+    //     }
+    //   }else{
+    //     Alert.alert('Error','user does not exist')
+    //   }
+    // }, 3000);
+  }
+
    
 
-  }
+  
 const handleOnChange = (text,input)=>{
   setInputs(prevState => ({...prevState,[input]: text}))
 };
@@ -70,14 +98,11 @@ const handleError =(errorMessage,input)=>{
 
   return (
     
-    <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,height:900}}>
+    <SafeAreaView style={styles.mainContainer}>
     <Loader visible ={loading}/>
-      <ScrollView
-         contentContainerStyle={{
-            // paddingTop:'200%',
-            paddingHorizontal:20,
-            }}>
-            <Text style={{color:COLORS.white, fontSize:40, fontWeight:'bold',top:0}}>
+      <ScrollView contentContainerStyle={styles.container}
+            >
+            <Text style={{color:COLORS.white,fontSize: 10/100*(SIZES.width), fontWeight:'bold',top:10}}>
               Login
             </Text>
             <Text style={{color:COLORS.grey, fontSize:18, marginVertical:10,top:20}}>
@@ -89,10 +114,11 @@ const handleError =(errorMessage,input)=>{
                 source={require('../../assets/theme/animationbb.json')}
                 autoPlay
                 loop
-                style={{width: 550, height: 350,top:0,right:50,
+                style={{width: 550/100*(SIZES.width), height: 30/100*(SIZES.height),alignItems:"center",
                 }}
                 />
             </View>
+            <View style={{width:90/100*(SIZES.width)}}>
 
             <Input 
               placeholder="Enter your email address"
@@ -115,20 +141,23 @@ const handleError =(errorMessage,input)=>{
               // error="input.email"
               onChangeText={(text) => handleOnChange(text, 'password')}
             />
-          
-            <Button title="Login"onPress={()=> navigation.navigate('UserDashboard')} />
+            </View>
+   
+            <Button title="Login"onPress={validate} />
             <Text onPress={()=> navigation.navigate('SignUpScreen ')}
+
             // onPress={validate}
               style={{
                 color:COLORS.grey,
                 textAlign:'center',
-                fontSize:16,
+                fontSize: 3.5/100*(SIZES.width),
                 fontWeight:'bold',
-                top:45,
+                top:31,
                 left:20,
               }}>
               
-              <Text>
+              
+               <Text>
               Dont have an account?Register 
               </Text>
             </Text>
@@ -138,3 +167,27 @@ const handleError =(errorMessage,input)=>{
   )
 }
 export default LoginScreen;
+
+
+const styles = StyleSheet.create({
+
+  mainContainer: { 
+    flex:1, 
+    width:SIZES.width, 
+    height: SIZES.height, 
+    backgroundColor: COLORS.green, 
+    paddingHorizontal: 3/100*(SIZES.width),
+},
+  container: {
+    // flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: "center",
+    paddingBottom: 20/100*(SIZES.height),
+
+  },
+  text: {
+    fontSize: width < 400 ? 16 : 24, 
+    fontWeight: 'bold',
+  },
+});
