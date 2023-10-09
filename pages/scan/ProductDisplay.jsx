@@ -114,7 +114,7 @@ const ProductDisplay = ({}) => {
 	};
 	const handleCart=(event)=>{
 		event.preventDefault();
-		navigation.navigate("scanScreen");
+		navigation.navigate("scan");
 	}
 
 	useEffect(() => {
@@ -132,25 +132,21 @@ const ProductDisplay = ({}) => {
     
        
      
-      <View >
-
-        <Text>Product Detail</Text>
-
-
-        <View >
-          <View >
-            <Text >Name : {items[0].productName}</Text>
-            <Text >Description : {items[0].productDescription}</Text>
-            <Text>Price : {items[0].productPrice}</Text>
+      <View style={pros.wrapProduct}>
+        {/* <View > */}
+          <View style={pros.miniProduct}>
+            <Text style={pros.txt}>Name: {items[0].productName}</Text>
+            <Text style={pros.txt}>Description: {items[0].productDescription}</Text>
+            <Text style={pros.txt}>Price: {items[0].productPrice}</Text>
           </View>
-        </View>
+        {/* </View> */}
 
         {/* <Button title='Add To Cart' onPress={navigation.navigate("scanScreen")}></Button> */}
 		{/* <Link to="/scanScreen">Add To Cart</Link> */}
-		<Button title='Add To Cart' onPress={handleCart} />
-		
-
-      </View>
+		<View>
+			<Button title='Add To Cart' onPress={handleCart}/>
+		</View>
+		</View>
     </ScrollView>
 	</SafeAreaView>
   );
@@ -158,15 +154,41 @@ const ProductDisplay = ({}) => {
 
 const pros = StyleSheet.create({
 	holder:{
-		flex:1 ,  
-		backgroundColor:'#fff', 
+		flex:1,  
+		backgroundColor:'#4b4b88', 
 		paddingTop: 50,
 	},
 
 	titleText:{
+		textAlign: 'center',
 		fontSize:18,
+		fontWeight: 'bold',
 		marginBottom:10,
 	},
+	wrapProduct:{
+		
+		// width: 500,
+		flex:1,
+		// alignContent: 'center',
+		marginTop: 10,
+		marginHorizontal: 10,
+		backgroundColor:'white',
+		borderRadius: 10,
+		padding:15,
+		// #4b4b88
+	},
+
+	txt:{
+		fontSize:15,
+		fontWeight:'bold',
+	},
+
+	miniProduct:{
+		marginBottom: 10,
+	},
+	// addcart:{
+	// 	backgroundColor: 'red',
+	// },
 
 });
 

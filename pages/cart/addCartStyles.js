@@ -100,11 +100,11 @@ export default StyleSheet.create({
         fontSize:20,
         color:'white'
     },
-    n:{
-        fontWeight:'bold',
+    cost:{
+        fontWeight:'normal',
         marginRight:40,
         color:'white',
-        fontSize:20,
+        fontSize:15,
         
 
     },

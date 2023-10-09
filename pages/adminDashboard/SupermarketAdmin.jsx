@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation, Link } from '@react-navigation/native';
+// import {FontAwesome5} from 'react-native-vector-icons/FontAwesome5';
+
 
 const SupermarketAdmin = () => {
   const admin ={
@@ -19,6 +21,7 @@ const SupermarketAdmin = () => {
             <Text style={styles.titext}>Supermarket Admin</Text>
           </View>      
           <View style={styles.sectionsOne}>
+          {/* <icon name="Home"/> */}
             <Text style={styles.pro}>Products</Text>
             <View>
                 <Text style={styles.inputs}>Search Products</Text>
@@ -75,7 +78,7 @@ const SupermarketAdmin = () => {
             </View>
           </View>       
 
-          <View style={styles.sections}>
+          <View style={styles.sectionLast}>
             <Text style={styles.pro}>Reports</Text>
             <View>
                 <Text style={styles.inputs}>View notifications</Text>
@@ -86,7 +89,7 @@ const SupermarketAdmin = () => {
             </View>          
 
             <View>
-                <Text style={styles.inputs}>Respond to reports</Text>
+                <Text style={styles.inputs}>Respond to reports</Text> 
             </View>
             
           </View>
@@ -101,12 +104,13 @@ const styles = StyleSheet.create({
   wrapper: {
     // padding: 30,
     // width: 900,
-    backgroundColor: '#4b4b88',
+    // backgroundColor: '#4b4b88',
+    // backgroundColor: 'papayawhip',
     // marginTop: 70,
   },
 
   allwrap:{
-    width:900,
+    // width:900,
     backgroundColor:'#4b4b88',
   },
 
@@ -121,7 +125,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 20,
     marginBottom: 20,
-    marginLeft: 60,
+    marginLeft: 70,
   },
 
   inputs: {
@@ -141,18 +145,48 @@ const styles = StyleSheet.create({
   },
 
   sectionsOne:{
-    marginBottom:20,
-        backgroundColor: '#43437a',
+    // flex: 0.3,
+    // backgroundColor: 'beige',
+    borderWidth: 4,
+    // borderColor:none,
+    // marginBottom:15,
+    marginRight:15,
+    marginLeft: 15,
+    borderRadius: 13,
+    borderColor: 'transparent',
+    backgroundColor: '#43437a',
   },
 
   sectionsTwo:{
+    borderWidth:4,
+    marginRight:15,
+    marginLeft: 15,
+    borderRadius: 13,
+    borderColor: 'transparent',
     backgroundColor: '#43437a',
     marginTop: 10,
 
 },
 
   sections:{
-    marginTop: 30,
+    marginTop: 10,
+    borderWidth:4,
+    marginRight:15,
+    marginLeft: 15,
+    borderRadius: 13,
+    borderColor: 'transparent',
+    backgroundColor: '#43437a',
+    // backgroundColor:'white',
+  },
+
+  sectionLast:{
+    marginTop: 10,
+    marginBottom:30,
+    borderWidth:4,
+    marginRight:15,
+    marginLeft: 15,
+    borderRadius: 13,
+    borderColor: 'transparent',
     backgroundColor: '#43437a',
     // backgroundColor:'white',
   },
