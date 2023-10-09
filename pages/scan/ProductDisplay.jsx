@@ -1,40 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, Button, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Button, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
-// import { ToastContainer, toast } from "react-toastify";
-// import axios from 'axios';
-// import CodeScanner from './Scan';
 import { useNavigation } from '@react-navigation/core';
 // import { Link } from '@react-navigation/native';
 // import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
 import BASE_URL from '../../secrets/.SecretConstants';
-// import axios from 'axios';
 
-let cardLogo
 
-const items = [
-	{
-		image: cardLogo,
-		productDescription: "product desc",
-		productPrice: 250,
-		productName: "Coke",
-	},
-  
-	{
-		image: cardLogo,
-		productDescription: "product desc",
-		productPrice: 100,
-		productName: "Water",
-	},
-	{
-		image: cardLogo,
-		productDescription: "product desc",
-		productPrice: 4500,
-		productName: "Pizza",
-	},
-];
 
 const product = "product";
 const products = "products"
@@ -43,11 +17,10 @@ const ProductDisplay = ({}) => {
 
   const [storedValue , setStoredValue] = useState()
   const [productDetail , setProductDetail] = useState()
- 
+  const [isNotLoading, setNotLoading] = useState(false)
   const[error , setError] = useState()
   const navigation = useNavigation();
 
- 
 
   const fetchData =useCallback(async ()=>{
     
@@ -57,65 +30,60 @@ const ProductDisplay = ({}) => {
    
 		try {
 			const response = await axios.get(
-				BASE_URL+"/api/v1/productController/findProductToken/" +
+				BASE_URL+"/api/v1/productController/findProductByToken/" +
 					data,
 			
 			);
-			// alert(response.data.data);
-      // setProductDetail(response.data.data)
-	  console.log(response.data);
-	  console.log();(response.productName);
-	  console.log("rest");
-	  setProductDetail(response.data)
-			// toast.success(response);
-			alert(response);
+			console.log(response.data);	
+			if (response.status === 200) {
+				
+	
+	  			setProductDetail(response.data.data)
+	  			setNotLoading(true)
 
-			// console.log(response.data.data);
+			console.log(response.data.data);
+			}else{
+				throw new Error("Product not found")
+			}
+			
       
 		} catch (error) {
-      randomise(data)
-      // alert(productDetail)
-      console.log(error);
-	  alert(error)
-	  	console.error(error)
-			// setError(error.response.data.data);
-			// console.log(error.response.data.data);
+			if(error.message === "Request failed with status code 500" ){
+				
+				console.log(error.message)
+			}else if(error.message === "Product not found") {
+				console.log(error.message);
+			}else{
+				console.log("am here");
+			}
+
+      	
+			
 		}
   }, []);
-  const randomise =(value)=>{
-    if (value === "1") setProductDetail(items[0]) 
-    if (value === "2") setProductDetail(items[1])
-    if (value === "3") setProductDetail(items[2])
-    
-  }
 
-  const storeData = () =>{
-    // AsyncStorage.setItem(product, storedValue)
-  }
 
     const addToCart =async () => {
-      // let productsArray = await AsyncStorage.getItem(products);
+      let productsArray = await AsyncStorage.getItem(products);
 
 		if (productsArray === null) {
 			productsArray = [];
+			
 		} else {
 			productsArray = JSON.parse(productsArray);
 		}
-    console.log(productDetail);
+
 		productsArray.push(productDetail);
-    console.log(productsArray);
+   
 		AsyncStorage.setItem(products, JSON.stringify(productsArray));
-    // alert(AsyncStorage.getItem(products))
-		// console.log(JSON.parse(AsyncStorage.getItem(products)));
-
-
-		// navigation.navigate('');
-
-		navigation.navigate("scanScreen");
+    let arr = 	JSON.parse(await AsyncStorage.getItem(products))
+	alert(arr[0])
+	
 
 	};
 	const handleCart=(event)=>{
 		event.preventDefault();
+		addToCart()
 		navigation.navigate("scan");
 	}
 
@@ -130,29 +98,27 @@ const ProductDisplay = ({}) => {
        {/* <View > */}
       
         <Text style={pros.titleText}>Product Details</Text>
-
-    
-       
-     
-      <View >
-
-        <Text>Product Detail</Text>
-
-
-        <View >
-          <View >
-            {/* <Text >Name : {productDetail.id}</Text> */}
-            <Text >Description : {items[0].productDescription}</Text>
-            <Text>Price : {items[0].productPrice}</Text>
-          </View>
-        </View>
-
-        {/* <Button title='Add To Cart' onPress={navigation.navigate("scanScreen")}></Button> */}
-		{/* <Link to="/scanScreen">Add To Cart</Link> */}
-		<Button title='Add To Cart' onPress={handleCart} />
+		 <View >
 		
+		<Text>Product Detail</Text>
+		<View >
+			<View >
+				<View style={styles.container}>
+					{/* <Image
+						source={isNotLoading ?productDetail.productQrCodeUrl : <Text> Loading... </Text>} // Replace with your image source
+						style={styles.image}
+					/> */}
+   				 </View>
+			<Text >Name : {isNotLoading ?productDetail.productName : <Text> Loading... </Text>} </Text>
+			<Text >Description : {isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
+			<Text>Price : {isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
+			</View>
+		</View>
+	
+		<Button title='Add To Cart' onPress={handleCart} />
 
-      </View>
+		</View>
+
     </ScrollView>
 	</SafeAreaView>
   );
@@ -171,5 +137,17 @@ const pros = StyleSheet.create({
 	},
 
 });
+const styles = StyleSheet.create({
+	container: {
+	  flex: 1,
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	},
+	image: {
+	  width: 200, // Set the width of the image
+	  height: 200, // Set the height of the image
+	  resizeMode: 'contain', // Adjust the resizeMode as needed (e.g., 'cover', 'stretch')
+	},
+  });
 
 export default ProductDisplay;
