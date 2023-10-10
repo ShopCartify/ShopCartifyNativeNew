@@ -10,7 +10,7 @@ const Button = ({title,onPress = () => {}}) => {
     onPress={onPress}
      style ={{
         height:6/100*(SIZES.height),
-        width:90/100*(SIZES.width),
+        width:87/100*(SIZES.width),
         top:10,
         borderRadius:10,
         backgroundColor:COLORS.yellow ,

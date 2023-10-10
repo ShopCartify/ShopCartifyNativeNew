@@ -100,15 +100,18 @@ const Items = ({navigation}) => {
       
       <View style={addCartStyles.totl}>
         <Text style={addCartStyles.amount}>Total amount</Text>
-        <Text style={addCartStyles.n}>N {4500}</Text>
+        <Text style={addCartStyles.cost}>N{4500}</Text>
       </View>
+      {/* <View></View> */}
       <TouchableOpacity style={{height:80}} onPress={() => navigation.navigate('productDisplay')}>
-        <ItemButton title= "VIEW WISH LIST"/>
+        <ItemButton title= "Wish list"/>
       </TouchableOpacity>
+
       <TouchableOpacity onPress={() => storageRetrival()}>
-      <ItemButton title="CHECK OUT"/>
+      <ItemButton title="Check out"/>
         {/* <Button style={addCartStyles.buttonTex}>CHECK OUT</Button> */}
       </TouchableOpacity>
+
     </View>
     </View>
      </View>

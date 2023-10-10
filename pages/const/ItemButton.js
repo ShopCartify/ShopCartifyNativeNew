@@ -2,6 +2,8 @@
 import React from "react";
 import { Text, TouchableOpacity} from "react-native";
 import COLORS from "./Colors";
+
+
 const AddButton = ({title,onPress = () => {}}) => {
     return(
     <TouchableOpacity
@@ -13,7 +15,7 @@ const AddButton = ({title,onPress = () => {}}) => {
         width:'100%',
         top:100,
         borderRadius:10,
-        backgroundColor:COLORS.yellow ,
+        backgroundColor: COLORS.yellow,
         justifyContent:'center',
         alignItems:'center'
         }}>
