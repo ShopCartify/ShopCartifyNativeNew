@@ -9,10 +9,10 @@ import Checkbutton from '../const/Checkbutton';
 import Button from '../const/Button';
 import Loader from '../const/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import HomeScreen from './HomeScreen';
 import LottieView from 'lottie-react-native';
 // import { CheckBox } from '@rneui/themed';
 // import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 import { Dimensions, StyleSheet } from 'react-native';
@@ -212,6 +212,37 @@ const LoginScreen = ({ navigation }) => {
           
       
 
+            <Input 
+              placeholder="Enter your password"
+              iconName="lock-outline"
+              label="Password"
+              error={error.password}
+              onfocus={()=>
+              handleError(null,'password')}
+              // error="input.email"
+              onChangeText={(text) => handleOnChange(text, 'password')}
+            />
+           
+   
+            <Button title="Login"onPress={validate} />
+            <Text onPress={()=> navigation.navigate('SignUpScreen')}
+
+            // onPress={validate}
+              style={{
+                color:COLORS.grey,
+                textAlign:'center',
+                fontSize: 3.5/100*(SIZES.width),
+                fontWeight:'bold',
+                top:31,
+                left:20,
+              }}>
+              {/* <Button title="Pay"onPress={()=> navigation.navigate('pay')} /> */}
+              
+               <Text>
+              Dont have an account?Register 
+              </Text>
+            </Text>
+
         <Button title="Login" onPress={validate} />
         <Text onPress={() => navigation.navigate('SignUpScreen')}
 
@@ -230,6 +261,7 @@ const LoginScreen = ({ navigation }) => {
             Dont have an account? Register
           </Text>
         </Text>
+
 
       </ScrollView>
     </SafeAreaView>

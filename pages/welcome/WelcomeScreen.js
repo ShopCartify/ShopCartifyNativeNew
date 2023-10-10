@@ -55,41 +55,9 @@ import SignUpScreen from '../sign/SignUpScreen';
             source={require('../../assets/theme/applogo.png')}
             style={styles.logo}
           />
-          {/* <View style={styles.buttonWrapper}>
-          <AnotherButton  title="Signup"  onPress={()=> navigation.navigate('SignUpScreen')}/>
-          <AnotherButton title="Login"  onPress={()=> navigation.navigate('LoginScreen')}/>          
-          </View> */}
-         
-
-
-          {/* <TouchableOpacity style={styles.openMenu} onPress={toggleMenu}>
-            <Text style={styles.menuText}>☰</Text>
-          </TouchableOpacity>
-          {isMenuOpen && (
-            <View style={styles.menu}>
-              <TouchableOpacity style={styles.closeMenu} onPress={toggleMenu}>
-                <Text style={styles.menuText}>✕</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Home</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>About</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Contact us</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Services</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Login</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Create account</Text>
-              </TouchableOpacity> */}
+      
             </View>
-          {/* )} */}
+        
       
 
         <View style={styles.imageContainer}>
@@ -132,8 +100,12 @@ import SignUpScreen from '../sign/SignUpScreen';
 
    
      
+
+     {/* <WelcomeButton title="Get started"  onPress={()=> navigation.navigate('SignUpScreen')} */}
+
      {/* <WelcomeButton
       title="Get started"  onPress={()=> navigation.navigate('SupermarketScreen')}
+
           style={{
              
         marginTop:100,

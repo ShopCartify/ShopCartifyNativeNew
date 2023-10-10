@@ -35,13 +35,14 @@ const ProductDisplay = ({}) => {
       let value = await AsyncStorage.getItem("product")
       let data = JSON.stringify(value)
 
-   
+		
 		try {
 			const response = await axios.get(
-				BASE_URL+"/api/v1/productController/findProductByToken/" +
+				"https://521e-62-173-45-70.ngrok-free.app/api/v1/productController/findProductByToken/" +
 					data,
 			
 			);
+			console.log(response);
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {

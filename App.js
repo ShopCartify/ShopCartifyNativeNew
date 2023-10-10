@@ -23,8 +23,14 @@ import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin'
 import Admins from './pages/adminDashboard/Admins';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword'
 import CreateFamily from './pages/createfamily/CreateFamily';
+
 import SupermarketLogin from './pages/supermarket/SupermarketLogin'
   
+
+
+// import UploadWidget from './pages/imageUploader/UploadWidget';
+import Pay from './pages/payment/Pay';
+
 
 
 
@@ -78,7 +84,15 @@ const App = () => {
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
           <Stack.Screen name ="createFamily" component={CreateFamily}/>
+
            <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
+
+          <Stack.Screen name ="pay" component={Pay}/>
+         
+           {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
+
+           {/* <Stack.Screen name ="ProducCart" component={ProducCart}/> */}
+
 
 
 
