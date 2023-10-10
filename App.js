@@ -23,14 +23,10 @@ import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin'
 import Admins from './pages/adminDashboard/Admins';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword'
 import CreateFamily from './pages/createfamily/CreateFamily';
-<<<<<<< HEAD
+
 import UploadWidget from './pages/imageUploader/UploadWidget';
 import Pay from './pages/payment/Pay';
-import MakePayment from './pages/payment/MakePayment';
-=======
-  
 
->>>>>>> 60cd3da26901e1d799ac78c80e31b56032672cef
 
 
 const Stack = createStackNavigator();
@@ -83,13 +79,12 @@ const App = () => {
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
           <Stack.Screen name ="createFamily" component={CreateFamily}/>
-<<<<<<< HEAD
+
           <Stack.Screen name ="pay" component={Pay}/>
-          <Stack.Screen name ="payment" component={MakePayment}/>
+         
            {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
-=======
+
            {/* <Stack.Screen name ="ProducCart" component={ProducCart}/> */}
->>>>>>> 60cd3da26901e1d799ac78c80e31b56032672cef
 
 
 
