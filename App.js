@@ -23,6 +23,7 @@ import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin'
 import Admins from './pages/adminDashboard/Admins';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword'
 import CreateFamily from './pages/createfamily/CreateFamily';
+import SupermarketLogin from './pages/supermarket/SupermarketLogin'
   
 
 
@@ -77,7 +78,7 @@ const App = () => {
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
           <Stack.Screen name ="createFamily" component={CreateFamily}/>
-           {/* <Stack.Screen name ="ProducCart" component={ProducCart}/> */}
+           <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
 
 
 

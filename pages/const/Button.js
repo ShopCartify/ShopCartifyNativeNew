@@ -11,7 +11,7 @@ const Button = ({title,onPress = () => {}}) => {
      style ={{
         height:6/100*(SIZES.height),
         width:87/100*(SIZES.width),
-        top:10,
+        top:4/100*(SIZES.width),
         borderRadius:10,
         backgroundColor:COLORS.yellow ,
         justifyContent:'center',

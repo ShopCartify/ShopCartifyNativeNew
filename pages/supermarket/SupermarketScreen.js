@@ -159,14 +159,14 @@ const SupermarketScreen = ({ }) => {
           />
         </View>
 
-        <View style={{ top:-29 }}>
+        {/* <View style={{ top:-29 }}>
           <Button title="Pick a File" />
           <Text>{selectedImage ? 'Yes' : ''}</Text>
           <Button title="Pick an Image" />
-        </View>
+        </View> */}
         <Button title="Sign Up" onPress={register} />
         <Text
-          onPress={() => navigation.navigate('LoginScreen')}
+          onPress={() => navigation.navigate('SupermarketLogin')}
           style={{
             color: COLORS.grey,
             textAlign: 'center',
