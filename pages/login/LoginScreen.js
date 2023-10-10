@@ -144,7 +144,7 @@ const handleError =(errorMessage,input)=>{
             </View>
    
             <Button title="Login"onPress={validate} />
-            <Text onPress={()=> navigation.navigate('SignUpScreen ')}
+            <Text onPress={()=> navigation.navigate('SignUpScreen')}
 
             // onPress={validate}
               style={{
@@ -155,7 +155,7 @@ const handleError =(errorMessage,input)=>{
                 top:31,
                 left:20,
               }}>
-              
+              <Button title="Pay"onPress={()=> navigation.navigate('pa')} />
               
                <Text>
               Dont have an account?Register 

@@ -24,6 +24,8 @@ import Admins from './pages/adminDashboard/Admins';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword'
 import CreateFamily from './pages/createfamily/CreateFamily';
 import UploadWidget from './pages/imageUploader/UploadWidget';
+import Pay from './pages/payment/Pay';
+import MakePayment from './pages/payment/MakePayment';
 
 
 const Stack = createStackNavigator();
@@ -76,6 +78,8 @@ const App = () => {
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
           <Stack.Screen name ="createFamily" component={CreateFamily}/>
+          <Stack.Screen name ="pay" component={Pay}/>
+          <Stack.Screen name ="payment" component={MakePayment}/>
            {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
 
 
