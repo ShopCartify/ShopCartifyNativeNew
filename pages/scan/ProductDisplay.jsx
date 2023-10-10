@@ -1,26 +1,25 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, Button, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 // import { Link } from '@react-navigation/native';
 // import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
-
 // import axios from 'axios';
 import { Dimensions } from 'react-native';
-
-
 const { width } = Dimensions.get('window');
-
-
 import BASE_URL from '../../secrets/.SecretConstants';
-
+// import WelcomeButton from '../const/WelcomeButton';
+import Button from '../const/Button';
+import AddButton from '../const/ItemButton';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
 const product = "product";
 const products = "products"
+// const productQrCodeUrl = ""
 
 const ProductDisplay = ({}) => {
 
@@ -107,25 +106,34 @@ const ProductDisplay = ({}) => {
        {/* <View > */}
       
         <Text style={pros.titleText}>Product Details</Text>
-		 <View >
-		
-		<Text>Product Detail</Text>
+		 <View>
 		<View >
-			<View >
-				<View style={styles.container}>
-					<Image
-						source={isNotLoading ?productDetail.productQrCodeUrl : undefined} // Replace with your image source
-						style={styles.image}
-					/>
-   				 </View>
-			<Text >Name : {isNotLoading ?productDetail.productName : <Text> Loading... </Text>} </Text>
-			<Text >Description : {isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
-			<Text>Price : {isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
-			</View>
-		</View>
-	
-		<Button title='Add To Cart' onPress={handleCart} />
+			<View  style={pros.wrapProduct}>
+				<View style={pros.container}>
+				{/* <Image source={isNotLoading ?productDetail.productQrCodeUrl : undefined} style={pros.image}/> */}
+				<Image source={{ uri: 'http://res.cloudinary.com/dhhhqruoy/image/upload/v1696927822/ShopCartify/QrcodeImages/bagiM8i6.png' }}
+  					style={pros.image} />
 
+					<View style={pros.miniProduct}>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Name:</Text>{isNotLoading ?productDetail.productName : <Text> Loading... </Text>} </Text>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Description:</Text>{isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
+					</View>
+   				</View>
+
+				   {/* <View style={pros.miniProduct}>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Name:</Text>{isNotLoading ?productDetail.productName : <Text> Loading... </Text>} </Text>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Description:</Text>{isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
+					</View> */}
+			
+			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={handleCart}/></View>
+			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={''}/></View>
+			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={''}/></View>
+			
+			</View>
+
+		</View>
 		</View>
 
     </ScrollView>
@@ -137,33 +145,68 @@ const pros = StyleSheet.create({
 	holder:{
 		flex:1,  
 		backgroundColor:'#4b4b88', 
-		paddingTop: 50,
+		paddingTop: 200,
 	},
 
 	titleText:{
 		textAlign: 'center',
-		fontSize:18,
+		fontSize:20,
 		fontWeight: 'bold',
 		marginBottom:10,
+		color: 'white',
 	},
 	text: {
 		fontSize: width < 400 ? 16 : 24, 
 		fontWeight: 'bold',
 	  },
-
-});
-const styles = StyleSheet.create({
+ 
 	container: {
 	  flex: 1,
 	  justifyContent: 'center',
-	  alignItems: 'center',
+	//   alignItems: 'center',
 	},
+
 	image: {
-	  width: 200, // Set the width of the image
-	  height: 200, // Set the height of the image
-	  resizeMode: 'contain', // Adjust the resizeMode as needed (e.g., 'cover', 'stretch')
+	  flex: 1,
+	  width: 100,
+	  height: 100,
+	  borderWidth: 2,
+	  borderColor: 'grey',
+	  marginBottom:-75,
+	//   marginTop: -
+	//   resizeMode: 'contain',
 	},
-  });
+
+	wrapProduct:{
+		// width: 500,
+		flex:1,
+		// alignContent: 'center',
+		marginTop: 10,
+		marginHorizontal: 10,
+		backgroundColor:'white',
+		borderRadius: 10,
+		padding:15,
+		// #4b4b88
+	},
+
+	txt:{
+		fontSize:15,
+		fontWeight:'normal',
+		lineHeight: 30,
+		// marginTop: -30,
+	},
+
+	miniProduct:{
+		marginBottom: 10,
+		marginTop:-20,
+		marginLeft: 120,
+	},
+
+	addcart:{
+		marginBottom: 30,
+	},
+
+});
 
 export default ProductDisplay;
 
