@@ -63,9 +63,9 @@ export default function CodeScanner({navigation}) {
 
           )}
           
-          <View style={{height:100,width:400,left:340}}>
+          {/* <View style={{height:100,width:400,left:340}}>
           <AnotherButton title="View Cart"  onPress={()=> navigation.navigate('Items')}/>
-          </View>           
+          </View>            */}
     </View>
     
   );
@@ -73,20 +73,20 @@ export default function CodeScanner({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 200,
-    flexDirection: 'column',
+    flex: 1,
+    // flexDirection: 'column',
     justifyContent: 'flex-end',
-    backgroundColor: '#4b4b88',
+    // backgroundColor: '#4b4b88',
   },
   scannerContainer: {
     flexDirection: 'row',
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'baseLine',
     alignItems: 'baseline',
-    backgroundColor: '#4b4b88',
+    backgroundColor: '#ffdab9',
   },
   dataContainer: {
-    padding: 40,
+    // padding: 30,
     backgroundColor: '#4b4b88',
   },
   text: {
