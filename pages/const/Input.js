@@ -115,7 +115,7 @@ const Input = ({
       >
         <Icon
           name={iconName}
-          style={{ fontSize: 22, color: COLORS.darkBlue, marginLeft: 10, top: 1 }}
+          style={{ fontSize: 6/100*(SIZES.width), color: COLORS.darkBlue, marginLeft: 2/100*(SIZES.width),  }}
         />
         <TextInput
           secureTextEntry={hidePassword}
@@ -127,13 +127,13 @@ const Input = ({
           onBlur={() => {
             setIsFocused(false);
           }}
-          style={{ color: COLORS.darkBlue, top:2, flex: 1, left: 6 }}
+          style={{ color: COLORS.darkBlue, flex: 1, left: 1/100*(SIZES.width) }}
           {...props}
         />
         {password && (
           <TouchableOpacity
             onPress={() => setHidePassword(!hidePassword)}
-            style={{ left: 340, top: -15, zIndex: 2 }}
+            style={{top: -15/100*(SIZES.width), zIndex: 2 }}
           >
             <Icon
               style={{ fontSize: 10/100*(SIZES.width), color: COLORS.darkBlue }}
@@ -161,12 +161,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     height: 6/100*(SIZES.height),
-    top:0,
+    top:1/100*(SIZES.width),
     backgroundColor: COLORS.light,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
+    marginTop:-1/100*(SIZES.width)
   }
 });
 

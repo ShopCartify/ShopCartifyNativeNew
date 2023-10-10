@@ -15,10 +15,26 @@ import { SIZES } from '../const/Sizes';
   const HeroSection = ({navigation})=> {
   // const navigation = useNavigation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const handleLoginPress = () => {
+    navigation.navigate('LoginScreen');
+  };
+
+  
+   const handleNavigation = () => {
+    let isRegistered = false 
+    if (isRegistered) {
+ 
+      navigation.navigate('SupermarketScreen');
+    } else {
+      navigation.navigate('SignUpScreen');
+    }
+  };
+
 
   return (
   
@@ -92,26 +108,55 @@ import { SIZES } from '../const/Sizes';
           />
       
         </View>
-        <View style={styles.hhh}>
-        <Text  style={{top:-26/100*(SIZES.width),fontSize:4/100*(SIZES.width),color:COLORS.light}}>
-      Already have an account?{' '}
-      <TouchableOpacity>
-        <Text style={{fontSize:4/100*(SIZES.width),color:COLORS.blue,top:1/100*(SIZES.width)}}>
-          Login
-        </Text>
-      </TouchableOpacity>
-    </Text>
+       
+    
+    <View style={styles.hhh}>
+      <Text style={styles.text}>
+        Already have an account?{' '}
+        <TouchableOpacity onPress={handleLoginPress}>
+          <Text style={styles.loginText}>Login</Text>
+        </TouchableOpacity>
+      </Text>
     </View>
+
+
+   
      
-     <WelcomeButton title="Get started"  onPress={()=> navigation.navigate('')}
+     {/* <WelcomeButton
+      title="Get started"  onPress={()=> navigation.navigate('SupermarketScreen')}
           style={{
              
         marginTop:100,
         top:15/100*(SIZES.width),
        
 
-          }}
-        />
+          }} */}
+        {/* /> */}
+
+        {/* <WelcomeButton
+  title={isRegistered ? "Register Supermarket" : "Get Started"}
+  onPress={() => {
+    if (isRegistered) {
+      // User is registered, navigate to the supermarket registration screen
+      navigation.navigate('SupermarketScreen');
+    } else {
+      // User is not registered, navigate to the registration screen
+      navigation.navigate('SignUpScreen');
+    }
+  }}
+  style={{
+    marginTop: 100,
+    top: 15 / 100 * (SIZES.width),
+  }}
+/> */}
+
+<WelcomeButton title= 'Get started' onPress={handleNavigation} 
+    style={{
+    marginTop: 100,
+    top: 15 / 100 * (SIZES.width),
+  }}
+
+/>
         {/* <Text style={styles.text}>
           Do you know that you can become a supermarket owner,
           you can register to get started .
@@ -183,30 +228,18 @@ highlight: {
   },
 
   hhh:{
-    top:2/100*(SIZES.width)
+    top:-5/100*(SIZES.width),
+    left:5/100*(SIZES.width)
+  },
+  loginText:{
+    color:COLORS.blue,
+    fontSize:4/100*(SIZES.width),
+    fontWeight:'bold',
+    left:1/100*(SIZES.width),
+    top:1/100*(SIZES.width),
+    color:COLORS.red
 
   },
-  menuText: {
-    // fontSize: 10,
-    // color: COLORS.white,
-    // left:80,
-    // width:100,
-    // fontWeight:'900'
-  },
-  // menu: {
-  //   position: 'absolute',
-  //   top: 10,
-  //   right: 10,
-  //   backgroundColor: COLORS.green,
-  //   padding: 10,
-  // },
-  // closeMenu: {
-  //   alignSelf: 'flex-end',
-  //   padding: 10,
-  // },
-  // menuItem: {
-  //   paddingVertical: 10,
-  // },
   imageContainer: {
     alignItems: 'center',
     marginTop: -20,

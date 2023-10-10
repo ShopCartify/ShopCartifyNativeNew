@@ -85,8 +85,8 @@ const ProductDisplay = ({}) => {
 		productsArray.push(productDetail);
    
 		AsyncStorage.setItem(products, JSON.stringify(productsArray));
-    let arr = 	JSON.parse(await AsyncStorage.getItem(products))
-	alert(arr[0])
+    // let arr = 	JSON.parse(await AsyncStorage.getItem(products))
+	// alert(arr[0])
 	
 
 	};

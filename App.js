@@ -11,7 +11,7 @@ import PersonalScreen from './pages/personal/personalScreen'
 import SupermarketScreen from './pages/supermarket/SupermarketScreen'
 import DashHome from './pages/adminDashboard/DashHome';
 import CheckoutAdmin from './pages/adminDashboard/CheckoutAdmin';
-import SignUps from './pages/adminDashboard/adminSign';
+// import SignUps from './pages/adminDashboard/adminSign';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Items from './pages/cart/Items';
 import AddProduct from './pages/addproduct/AddproductScreen';
@@ -23,7 +23,8 @@ import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin'
 import Admins from './pages/adminDashboard/Admins';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword'
 import CreateFamily from './pages/createfamily/CreateFamily';
-import UploadWidget from './pages/imageUploader/UploadWidget';
+  
+
 
 
 const Stack = createStackNavigator();
@@ -76,7 +77,7 @@ const App = () => {
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
           <Stack.Screen name ="createFamily" component={CreateFamily}/>
-           {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
+           {/* <Stack.Screen name ="ProducCart" component={ProducCart}/> */}
 
 
 

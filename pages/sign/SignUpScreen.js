@@ -100,8 +100,10 @@ const [loading,setLoading]= React.useState(false);
     //     navigation.navigate('LoginScreen')
     //   }catch (error){
     //     alert('Error','Something went wrong', error)
-    //   }
+    //   } 
     // })
+
+    navigation.navigate('UserDashboard');
 
 }
 const handleOnChange = (text,input)=>{
