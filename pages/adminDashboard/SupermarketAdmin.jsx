@@ -1,20 +1,38 @@
 import React from 'react';
-import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator,} from 'react-native';
 import { useNavigation, Link } from '@react-navigation/native';
+import { useState, useEffect } from 'react';
 // import {FontAwesome5} from 'react-native-vector-icons/FontAwesome5';
 
 
 const SupermarketAdmin = () => {
+
+  const [loading, setLoading] = useState(true);
+
   const admin ={
     name: 'Hemba Cephas',
     email: 'hembacephas@gmail.com',
   }
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setLoading(false);
+    };
 
-  // const navigation = useNavigation;
+    fetchData();
+  }, []);
+
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.allwrap}>
       <ScrollView>
+      {loading ? (
+          <View style={styles.loader}>
+            <ActivityIndicator size="large" color="orange" />
+          </View>
+        ) : (
         <View style={styles.wrapper}>
 
           <View style = {styles.title}>
@@ -99,6 +117,7 @@ const SupermarketAdmin = () => {
           </View>
 
          </View>
+         )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -116,6 +135,15 @@ const styles = StyleSheet.create({
   allwrap:{
     // width:900,
     backgroundColor:'#4b4b88',
+  },
+
+  loader: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: '#4b4b88',
+    paddingTop:350,
+    paddingBottom:500,
   },
 
   title:{
