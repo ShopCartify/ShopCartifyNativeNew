@@ -30,7 +30,6 @@ const SupermarketAdmin = () => {
 
             <View>
                 <Text style={styles.inputs}>View All Products</Text>
-
                 <Text style={styles.inputs}>Search Products</Text>
             </View>
 
@@ -75,7 +74,6 @@ const SupermarketAdmin = () => {
           <View style={styles.sections}>
             <Text style={styles.pro}>History</Text>
             <View>
-
               <Text style={styles.inputs}>Purchase history</Text>
             </View>  
 
@@ -87,7 +85,6 @@ const SupermarketAdmin = () => {
 
             <View>
               <Text style={styles.inputs}>Transaction history</Text>
-
             </View>          
           </View>     
 
