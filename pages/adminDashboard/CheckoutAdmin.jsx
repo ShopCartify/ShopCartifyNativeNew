@@ -77,12 +77,13 @@ const checky = StyleSheet.create({
   },
 
   txt:{
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
     marginTop: 20,
     marginBottom: 20,
-    marginLeft: 20,
+    // marginLeft: 20,
+    textAlign: 'center'
   },
 
   inputs: {
@@ -94,7 +95,7 @@ const checky = StyleSheet.create({
     // backgroundColor: '#7978B5',
   },
   pro:{
-    color: 'grey',
+    color: 'orange',
     fontSize: 15,
     fontStyle: 'italic',
     fontWeight: 'bold',
