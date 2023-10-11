@@ -27,6 +27,12 @@ const ProductDisplay = ({}) => {
   const [productDetail , setProductDetail] = useState()
   const [isNotLoading, setNotLoading] = useState(false)
   const[error , setError] = useState()
+  const[addProductRequest, setAddProductRequest] = useState({
+	"productName": "",
+	"supermarketCode": "",
+	"cartUniqueId": AsyncStorage.getItem("cartUniqueId"),
+	"numberOfProducts": 1
+  })
   const navigation = useNavigation();
 
 
@@ -35,19 +41,21 @@ const ProductDisplay = ({}) => {
       let value = await AsyncStorage.getItem("product")
       let data = JSON.stringify(value)
 
-   
+		
 		try {
 			const response = await axios.get(
 				BASE_URL+"/api/v1/productController/findProductByToken/" +
 					data,
 			
 			);
+			console.log(response);
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {
 				
 	
 	  			setProductDetail(response.data.data)
+				setAddProductRequest(response.data.data)
 	  			setNotLoading(true)
 
 			console.log(response.data.data);
@@ -69,29 +77,57 @@ const ProductDisplay = ({}) => {
 		}
   }, []);
 
-
-    const addToCart =async () => {
+  const addToCartBackend =async () => {
+	try {
+		const response = await axios.get(
+			BASE_URL+"/api/v1/productController/findProductByToken/" +
+				addProductRequest,
 		
-      let productsArray = await AsyncStorage.getItem(products);
-
-		if (productsArray === null) {
-			productsArray = [];
+		);
+		console.log(response);
+		if (response.status !== 200){
+			throw new Error("Product not found")
+		}else if (response.status === 200) {
 			
-		} else {
-			productsArray = JSON.parse(productsArray);
+			AsyncStorage.setItem("cartUniqueId", JSON.stringify(response))
+
+		console.log(response.data);
 		}
+		
+  
+	} catch (error) {
+		if(error.message === "Request failed with status code 500" ){
+			
+			console.log(error.message)
+		}else if(error.message === "Product not found") {
+			console.log(error.message);
+		}else{
+			console.log(error.message);
+		}
+	}
 
-		productsArray.push(productDetail);
+  
+  };
+    // const addToCart =async () => {
+		
+		
+    //   let productsArray = await AsyncStorage.getItem(products);
+
+	// 	if (productsArray === null) {
+	// 		productsArray = [];
+			
+	// 	} else {
+	// 		productsArray = JSON.parse(productsArray);
+	// 	}
+
+	// 	productsArray.push(productDetail);
    
-		AsyncStorage.setItem(products, JSON.stringify(productsArray));
-    // let arr = 	JSON.parse(await AsyncStorage.getItem(products))
-	// alert(arr[0])
-	
-
-	};
+	// 	AsyncStorage.setItem(products, JSON.stringify(productsArray));
+    
+	// };
 	const handleCart=(event)=>{
 		event.preventDefault();
-		addToCart()
+		addToCartBackend()
 		navigation.navigate("scan");
 	}
 

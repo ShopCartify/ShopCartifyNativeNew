@@ -180,8 +180,8 @@ const handleError =(errorMessage,input)=>{
               handleError(null,'userName')}
               onChangeText={(text) => handleOnChange(text, 'userName')}
             />
-           
-            <Button title="SignUp" onPress={validate}/>
+           <Button title="SignUp" onPress={validate}/>
+            
             <Text onPress={()=> navigation.navigate('LoginScreen')}
               style={{
                 color:COLORS.grey,

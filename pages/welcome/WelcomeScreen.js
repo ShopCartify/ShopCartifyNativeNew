@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import WelcomeButton from '../const/WelcomeButton';
 import AnotherButton from '../const/AnotherButton'
 import { SIZES } from '../const/Sizes';
+import SignUpScreen from '../sign/SignUpScreen';
 
 
 
@@ -31,6 +32,15 @@ import { SIZES } from '../const/Sizes';
  
       navigation.navigate('SupermarketScreen');
     } else {
+      navigation.navigate('SupermarketScreen');
+    }
+  };
+  const handleScreen = () => {
+    let isRegistered = false 
+    if (isRegistered) {
+ 
+      navigation.navigate('SignUpScreen');
+    } else {
       navigation.navigate('SignUpScreen');
     }
   };
@@ -45,41 +55,9 @@ import { SIZES } from '../const/Sizes';
             source={require('../../assets/theme/applogo.png')}
             style={styles.logo}
           />
-          {/* <View style={styles.buttonWrapper}>
-          <AnotherButton  title="Signup"  onPress={()=> navigation.navigate('SignUpScreen')}/>
-          <AnotherButton title="Login"  onPress={()=> navigation.navigate('LoginScreen')}/>          
-          </View> */}
-         
-
-
-          {/* <TouchableOpacity style={styles.openMenu} onPress={toggleMenu}>
-            <Text style={styles.menuText}>☰</Text>
-          </TouchableOpacity>
-          {isMenuOpen && (
-            <View style={styles.menu}>
-              <TouchableOpacity style={styles.closeMenu} onPress={toggleMenu}>
-                <Text style={styles.menuText}>✕</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Home</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>About</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Contact us</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Services</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Login</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuText}>Create account</Text>
-              </TouchableOpacity> */}
+      
             </View>
-          {/* )} */}
+        
       
 
         <View style={styles.imageContainer}>
@@ -110,20 +88,24 @@ import { SIZES } from '../const/Sizes';
         </View>
        
     
-    <View style={styles.hhh}>
+    {/* <View style={styles.hhh}>
       <Text style={styles.text}>
         Already have an account?{' '}
         <TouchableOpacity onPress={handleLoginPress}>
           <Text style={styles.loginText}>Login</Text>
         </TouchableOpacity>
       </Text>
-    </View>
+    </View> */}
 
 
    
      
+
+     {/* <WelcomeButton title="Get started"  onPress={()=> navigation.navigate('SignUpScreen')} */}
+
      {/* <WelcomeButton
       title="Get started"  onPress={()=> navigation.navigate('SupermarketScreen')}
+
           style={{
              
         marginTop:100,
@@ -149,19 +131,28 @@ import { SIZES } from '../const/Sizes';
     top: 15 / 100 * (SIZES.width),
   }}
 /> */}
+<Text style={styles.tet}>
+      Are you a {" "}
+      <Text style={styles.highlight}>ShopCartify user,</Text>
+      Click to get started    
+    </Text>
+            
 
-<WelcomeButton title= 'Get started' onPress={handleNavigation} 
+
+<WelcomeButton title= 'Get started' onPress={handleScreen}
     style={{
     marginTop: 100,
     top: 15 / 100 * (SIZES.width),
   }}
 
 />
-        {/* <Text style={styles.text}>
-          Do you know that you can become a supermarket owner,
-          you can register to get started .
-        </Text> */}
-  
+
+<WelcomeButton title= 'Get started' onPress={handleNavigation} 
+    style={{
+    marginTop: 100,
+    top: 18 / 100 * (SIZES.width),
+  }}
+  />  
         <Text style={styles.text}>
       Are you a {" "}
       <Text style={styles.highlight}>Supermarket Owner, </Text>
@@ -195,10 +186,20 @@ highlight: {
       fontSize: 4/100*(SIZES.width), 
       alignItems: 'center', 
       fontWeight:'bold' ,
-      top:-18/100*(SIZES.width),
-      width:80/100*(SIZES.width),
+      top:-10/100*(SIZES.width),
+      width:67/100*(SIZES.width),
       color:COLORS.light,
       
+    },
+    tet:{
+      fontSize: 4/100*(SIZES.width), 
+      alignItems: 'center', 
+      fontWeight:'bold' ,
+      top:33/100*(SIZES.width),
+      width:67/100*(SIZES.width),
+      color:COLORS.light,
+
+
     },
   header: {
     flexDirection: 'row',
@@ -227,10 +228,7 @@ highlight: {
     padding: 10,
   },
 
-  hhh:{
-    top:-5/100*(SIZES.width),
-    left:5/100*(SIZES.width)
-  },
+
   loginText:{
     color:COLORS.blue,
     fontSize:4/100*(SIZES.width),
@@ -275,7 +273,7 @@ highlight: {
   qrcode: {
    width: 40/100*(SIZES.width),
    height:25/100*(SIZES.height),
-    top:-6/100*(SIZES.width) 
+    top:-3.5/100*(SIZES.width) 
   },
   getStarted:{
   width:20/100*(SIZES.width)

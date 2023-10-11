@@ -54,17 +54,17 @@ const Items = ({navigation}) => {
        <View style={addCartStyles.add}>
         <View style={addCartStyles.ccc}>
           <Image source={item.image} style={addCartStyles.image} />
-          <Text style={addCartStyles.productName}>{item.productName}</Text>
-          <Text style={addCartStyles.productDesc}>{item.desc}</Text>
-          <Text style={addCartStyles.price}>{item.price}</Text>
-                <View  style={{ flexDirection: 'row' }}>
+            <Text style={addCartStyles.productName}>{item.productName}</Text>
+              <Text style={addCartStyles.productDesc}>{item.desc}</Text>
+              <Text style={addCartStyles.price}>{item.price}</Text>
+                    <View  style={{ flexDirection: 'row' }}>
                 {/* <Text style={addCartStyles.remove}>REMOVE</Text> */}
             <Icon name="shopping-cart" size={24} color="red" top={8} left={45} />
             <Icon name="trash-o" size={30} color="red" top= {35} right={230} />
-          <TouchableOpacity style={addCartStyles.incrementDecrementButton} onPress={decrement}>
-          <Text style={addCartStyles.buttonWritee}> - </Text>
-          </TouchableOpacity>
-          <Text style={addCartStyles.buttonTe}>0</Text>
+              <TouchableOpacity style={addCartStyles.incrementDecrementButton} onPress={decrement}>
+              <Text style={addCartStyles.buttonWritee}> - </Text>
+                  </TouchableOpacity>
+                  <Text style={addCartStyles.buttonTe}>0</Text>
               <View style={addCartStyles.incrementSection}>
           <TouchableOpacity style={addCartStyles.incrementDecrementButton}onPress={increment}>
           <Text style={addCartStyles.buttonWrite}> + </Text>
