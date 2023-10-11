@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     flex:1, 
     width: SIZES.width, 
     height: SIZES.height, 
-    backgroundColor: COLORS.green, 
+    backgroundColor: COLORS.green,  
     paddingHorizontal: 3/100*(SIZES.width),
 },
 highlight: {

@@ -51,15 +51,15 @@ const UserDashboard = () => {
                 <Link to="/WishList" style={styles.inputs}>View Wishlist</Link>
             </View>
 
-            <View>
-                {/* <Link to="/" style={styles.inputs}>Family</Link> */}
-            </View>
+             <View>
+                <Link to="/CreateFamily" style={styles.inputs}>CreateFamily</Link>
+            </View> 
             <View className="Image">
                 <LottieView 
-                source={require('../../assets/theme/animation.json')}
+                source={require('../../assets/theme/GIRL.json')}
                 autoPlay
                 loop
-                style={{width: 550, height: 350,top:0,right:30,
+                style={{width: 550, height: 350,right:30,
                 }}
                 />
             </View> 
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 20,
     marginBottom: 20,
-    marginLeft: 60,
+    marginLeft: 110,
   },
 
   inputs: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     // backgroundColor: '#7978B5',
   },
   pro:{
-    color: 'grey',
+    color: 'orange',
     fontSize: 15,
     fontStyle: 'italic',
     fontWeight: 'bold',

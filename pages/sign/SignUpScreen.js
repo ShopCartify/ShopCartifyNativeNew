@@ -82,7 +82,7 @@ const [loading,setLoading]= React.useState(false);
 
 		try {
 			const response = await axios.post(
-				BASE_URL+"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/    aUserDashboard" ,
+				BASE_URL+"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/aUserDashboard" ,
           inputs
 			
 			)
@@ -103,7 +103,7 @@ const [loading,setLoading]= React.useState(false);
     //   } 
     // })
 
-    navigation.navigate('UserDashboard');
+    navigation.navigate("/user_dashboard");
 
 }
 const handleOnChange = (text,input)=>{
