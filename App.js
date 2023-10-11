@@ -70,7 +70,7 @@ const App = () => {
       ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>  
 
-          {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} /> 
@@ -87,15 +87,15 @@ const App = () => {
           <Stack.Screen name ="productDisplay" component={ProductDisplay}/> 
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
-          <Stack.Screen name ="createFamily" component={CreateFamily}/> */}
+          <Stack.Screen name ="createFamily" component={CreateFamily}/>
 
 
-          <Stack.Screen name ="payment" component={Pay}/>
+          {/* <Stack.Screen name ="payment" component={Pay}/> */}
 
            <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
 
           <Stack.Screen name ="pay" component={Pay}/>
->
+
          
            {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
 
