@@ -28,12 +28,16 @@ import UploadWidget from './pages/imageUploader/UploadWidget';
 import Payment from './pages/payment/Payment';
 
 import SupermarketLogin from './pages/supermarket/SupermarketLogin'
+import Notification from './pages/notifications/Notification';
   
 
 
 // import UploadWidget from './pages/imageUploader/UploadWidget';
+import PaystackPayment from './pages/payment/Pay';
+
 
 import Pay from './pages/payment/Pay';
+
 
 
 
@@ -70,7 +74,7 @@ const App = () => {
       ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>  
 
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> 
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} /> 
@@ -88,6 +92,9 @@ const App = () => {
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
           <Stack.Screen name ="createFamily" component={CreateFamily}/>
+         <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
+          <Stack.Screen name ="pay" component={PaystackPayment}/>
+
 
 
           {/* <Stack.Screen name ="payment" component={Pay}/> */}
@@ -95,11 +102,10 @@ const App = () => {
            <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
 
           <Stack.Screen name ="pay" component={Pay}/>
-
          
            {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
 
-           {/* <Stack.Screen name ="ProducCart" component={ProducCart}/> */}
+           {/* <Stack.Screen name ="Notification" component={Notification}/> */}
 
 
 

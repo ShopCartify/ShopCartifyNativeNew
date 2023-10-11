@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, Text} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import AnotherButton from '../const/AnotherButton'
+// import AnotherButton from '../const/AnotherButton'
 import { Dimensions,StyleSheet } from 'react-native';
-
+import CartButton from '../const/CartButton';
+// import Expo from 'expo'
 
 const { width } = Dimensions.get('window');
 
@@ -24,6 +25,15 @@ export default function CodeScanner({navigation}) {
     })();
   }, []);
 
+  // useEffect(() => {
+  //   Expo.BarCodeScanner.startScanningAsync();
+  //   const scanAgain = BarCodeScanner.addListener('barCodeScanned', handleBarCodeScanned);
+  
+  //   return () => {
+  //     scanAgain.remove();
+  //   };
+  // }, []);
+ 
   const handleBarCodeScanned = ({ type, data }) => {
 
     setScanned(true);
@@ -36,9 +46,7 @@ export default function CodeScanner({navigation}) {
 
   return (
     <View style={styles.container}>
-      {hasPermission === null ? (
-        <Text style={styles.text}>Camera permission?</Text>
-      ) : hasPermission === false ? (
+      {hasPermission === null ? (<Text style={styles.text}>Camera permission?</Text>) : hasPermission === false ? (
         <Text style={styles.text}>No access to camera</Text>
       ) : (
         <View style={styles.scannerContainer}>
@@ -48,24 +56,20 @@ export default function CodeScanner({navigation}) {
           />
         </View>
       )}
-      {scannedData && (
+      
+      {/* {scannedData && (
         <View style={styles.dataContainer}>
-          {/* <Text style={styles.text}>Item:</Text> */}
-          {/* <Text style={styles.text}>{scannedData}</Text> */}
+          <Text style={styles.text}>Item:</Text>
+          <Text style={styles.text}>{scannedData}</Text>
         </View>
-      )}
+      )} */}
 
       {scanned && (
           
-        <View style={{height:100,width:400,left:100,top:-55}}>
-          <AnotherButton title="view cart"  onPress={()=>  navigation.navigate('Items')}/>
-        </View> 
-
+        <View style={styles.cartButt1}>
+          <CartButton title="View Cart"  onPress={()=>  navigation.navigate('Items')}/>
+        </View>
           )}
-          
-          {/* <View style={{height:100,width:400,left:340}}>
-          <AnotherButton title="View Cart"  onPress={()=> navigation.navigate('Items')}/>
-          </View>            */}
     </View>
     
   );
@@ -74,21 +78,33 @@ export default function CodeScanner({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
+    flexDirection: 'column',
     justifyContent: 'flex-end',
-    // backgroundColor: '#4b4b88',
+    backgroundColor: '#ffc107',
   },
+
+  cartButt1:{
+    height: 100, 
+    // left:15,
+    // top: 10,
+  },
+
   scannerContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'baseLine',
     alignItems: 'baseline',
-    backgroundColor: '#ffdab9',
+    backgroundColor: '#fff',
+    // marginTop: 80,
+    // marginBottom:80,
+    // padding: 100,
   },
-  dataContainer: {
-    // padding: 30,
-    backgroundColor: '#4b4b88',
-  },
+
+  // dataContainer: {
+  //   padding: 10,
+  //   backgroundColor: '#4b4b88',
+  // },
+
   text: {
     color: 'white',
     textAlign: 'left',

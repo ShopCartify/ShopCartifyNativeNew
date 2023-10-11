@@ -46,6 +46,15 @@ const LoginScreen = ({ navigation }) => {
   const [showInput, setShowInput] = useState(false);
   const [isFocused, setIsFocused] = useState(false)
 
+
+  // const handleCheckboxChange = () => {
+  //   if(showInput===false)
+  //   setShowInput(true);
+  // else{
+  //   setShowInput(false)
+  // }
+  // };
+
   const handleCheckboxChange = () => {
     if(showInput===false)
     setShowInput(true);
@@ -56,6 +65,7 @@ const LoginScreen = ({ navigation }) => {
   const handleRegisterPress = () => {
     navigation.navigate('SignUpScreen');
   };
+
 
 
   const validate = () => {
@@ -224,7 +234,7 @@ const LoginScreen = ({ navigation }) => {
           
       
 
-            <Input 
+            {/* <Input 
               placeholder="Enter your password"
               iconName="lock-outline"
               label="Password"
@@ -233,27 +243,8 @@ const LoginScreen = ({ navigation }) => {
               handleError(null,'password')}
               // error="input.email"
               onChangeText={(text) => handleOnChange(text, 'password')}
-            />
+            /> */}
            
-   
-            <Button title="Login"onPress={validate} />
-            <Text onPress={()=> navigation.navigate('SignUpScreen')}
-
-            // onPress={validate}
-              style={{
-                color:COLORS.grey,
-                textAlign:'center',
-                fontSize: 3.5/100*(SIZES.width),
-                fontWeight:'bold',
-                top:31,
-                left:20,
-              }}>
-              {/* <Button title="Pay"onPress={()=> navigation.navigate('pay')} /> */}
-              
-               <Text>
-              Dont have an account?Register 
-              </Text>
-            </Text>
 
         <Button title="Login" onPress={validate} />
         <Text onPress={() => navigation.navigate('SignUpScreen')}
