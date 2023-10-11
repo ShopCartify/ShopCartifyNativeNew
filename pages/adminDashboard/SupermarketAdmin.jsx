@@ -132,6 +132,10 @@ const SupermarketAdmin = () => {
             <View>
                 <Text style={styles.inputs}>Respond to reports</Text> 
             </View>
+
+            <View>
+                <Text style={styles.inputs}>Log out</Text> 
+            </View>
             
           </View>
 

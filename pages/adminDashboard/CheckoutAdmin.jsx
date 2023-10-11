@@ -45,6 +45,10 @@ const CheckoutAdmin = () => {
             <View>
                 <Link to="/" style={checky.inputs}>Respond to reports</Link>
             </View>
+
+            <View>
+                <Link to="/" style={checky.inputs}>Log out</Link>
+            </View>
           </View>
          </View>
       </ScrollView>
