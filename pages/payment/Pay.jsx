@@ -1,6 +1,6 @@
 import  { Paystack, PayStackWebView , paystackProps}  from 'react-native-paystack-webview';
 // import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView,Ljinking } from 'react-native';
-import WelcomeButton from '../const/WelcomeButton';
+// import WelcomeButton from '../const/WelcomeButton';
 import { View, Button, Text, SafeAreaView, ScrollView } from 'react-native';
 
 const Pay =()=>{
@@ -30,7 +30,7 @@ const Pay =()=>{
           autoStart={true}
 
         /> */}
-        <Text>Man</Text>
+     <Text>Man</Text>
 		 </View >
 
   );
@@ -39,7 +39,7 @@ const Pay =()=>{
 
 export default Pay
 
-import React, { useRef } from 'react';
+// import React, { useRef } from 'react';
 // import  { Paystack, PayStackWebView , paystackProps}  from 'react-native-paystack-webview';
 
 // import { View, TouchableOpacity,Text } from 'react-native';

@@ -25,6 +25,7 @@ import ForgotPassword from './pages/forgotPassword/ForgotPassword'
 import CreateFamily from './pages/createfamily/CreateFamily';
 
 import UploadWidget from './pages/imageUploader/UploadWidget';
+import Payment from './pages/payment/Payment';
 import Pay from './pages/payment/Pay';
 
 
@@ -61,7 +62,7 @@ const App = () => {
       ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>  
 
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} /> 
@@ -78,9 +79,9 @@ const App = () => {
           <Stack.Screen name ="productDisplay" component={ProductDisplay}/> 
           <Stack.Screen name ="Admin" component={Admins}/>
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
-          <Stack.Screen name ="createFamily" component={CreateFamily}/>
+          <Stack.Screen name ="createFamily" component={CreateFamily}/> */}
 
-          <Stack.Screen name ="pay" component={Pay}/>
+          <Stack.Screen name ="payment" component={Pay}/>
          
            {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
 
