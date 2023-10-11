@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback,useEffect } from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
 // import Line from './Line';
 import { useNavigation, Link } from '@react-navigation/native';
@@ -11,12 +11,41 @@ const { width } = Dimensions.get('window');
 
 
 const UserDashboard = () => {
-  const admin ={
-    name: AsyncStorage.getItem("user").email,
-    email: 'hembacephas@gmail.com',
+
+  const [email, setEmail] = useState("")
+  const [id, setId] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [userName, setUserName] = useState("")
+  
+
+  const userData = (user) =>{
+    setEmail(user.email)
+    setId(user.id)
+    setFirstName(user.firstName)
+    setLastName(user.lastName)
+    setUserName(user.userName)
+
   }
 
   const navigation = useNavigation;
+
+  const fetchData =useCallback(async ()=>{
+   
+    
+    let value = await AsyncStorage.getItem("user")
+    let user = JSON.parse(value)
+
+    userData(user)
+    
+   
+    console.log("logged in user email ", email);
+
+}, []);
+
+useEffect(() => {
+fetchData();
+}, [fetchData]);
 
   return (
     <SafeAreaView style={styles.allwrap}>
@@ -27,7 +56,7 @@ const UserDashboard = () => {
             <Text style={styles.titext}>User dashboard</Text>
           </View>      
           <View style={styles.sectionsOne}>
-            <Text style={styles.pro}>{admin.name}</Text>
+           <Text> Welcome <Text style={styles.pro}> {email}</Text> </Text>
             <Text style={styles.pro}>Information</Text>
             <View>
                 <Link to="/scan" style={styles.inputs}>Scan</Link>

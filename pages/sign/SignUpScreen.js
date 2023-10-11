@@ -34,6 +34,7 @@ const SignUpScreen = ({navigation})=> {
     firstName: "",
     lastName: "",
     userName: "",
+    id: ""
   })
 
   
@@ -96,7 +97,7 @@ const [loading,setLoading]= React.useState(false);
       alert('sign up was successful');
       let responseValue = response.data
       setUser(responseValue)
-      AsyncStorage.setItem("user", user)
+      AsyncStorage.setItem("user", JSON.stringify(responseValue))
 
       navigation.navigate('user_dashboard');
 
@@ -203,9 +204,10 @@ const handleError =(errorMessage,input)=>{
                 textAlign:'center',
                 fontSize:16,
                 fontWeight:'bold',
-                top:30,
+                top:10,
                 left:20,
-              }}>
+              }}
+              >
               
               <Text>
               Already have an account?Login 
