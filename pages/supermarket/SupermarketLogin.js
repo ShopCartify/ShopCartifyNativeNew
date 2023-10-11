@@ -21,8 +21,7 @@ import { SIZES } from '../const/Sizes';
 const { width } = Dimensions.get('window');
 import axios from 'axios';
 import BASE_URL from '../../secrets/.SecretConstants';
-import { Ionicons } from '@expo/vector-icons';
-import { Pressable } from 'react-native';
+
 
 
 
@@ -131,8 +130,8 @@ const LoginScreen = ({ navigation }) => {
             onChangeText={(text) => handleOnChange(text, 'password')}
           />
 
-<Input
-            placeholder="Enter generated code"
+          <Input
+            placeholder="Enter Generated code"
             iconName="lock-outline"
             label="Check code"
             error={error.password}

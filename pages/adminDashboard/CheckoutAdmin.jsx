@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 import { Link, useNavigation } from '@react-navigation/native';
+import { SIZES } from '../const/Sizes';
 
 const CheckoutAdmin = () => {
   
@@ -55,10 +56,12 @@ const CheckoutAdmin = () => {
     </SafeAreaView>
   );
 };
+export default CheckoutAdmin;
 
 const checky = StyleSheet.create({
   biggy:{
     backgroundColor: '#4b4b88',
+    height:500/100*(SIZES.width)
   },
 
   cont: {
@@ -74,12 +77,13 @@ const checky = StyleSheet.create({
   },
 
   txt:{
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
     marginTop: 20,
     marginBottom: 20,
-    marginLeft: 20,
+    // marginLeft: 20,
+    textAlign: 'center'
   },
 
   inputs: {
@@ -91,7 +95,7 @@ const checky = StyleSheet.create({
     // backgroundColor: '#7978B5',
   },
   pro:{
-    color: 'grey',
+    color: 'orange',
     fontSize: 15,
     fontStyle: 'italic',
     fontWeight: 'bold',
@@ -106,4 +110,4 @@ const checky = StyleSheet.create({
 
 });
 
-export default CheckoutAdmin;
+

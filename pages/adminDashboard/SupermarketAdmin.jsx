@@ -24,18 +24,11 @@ const SupermarketAdmin = () => {
           {/* <icon name="Home"/> */}
             <Text style={styles.pro}>Products</Text>
             <View>
-
                 <Text style={styles.inputs}>Search Products</Text>
             </View>
 
             <View>
                 <Text style={styles.inputs}>View All Products</Text>
-                <Text style={styles.inputs}>Search Products</Text>
-            </View>
-
-            <View>
-                <Text style={styles.inputs}>View All Products</Text>
-
             </View>
 
             <View>
@@ -43,19 +36,11 @@ const SupermarketAdmin = () => {
             </View>
 
             <View>
-
                 <Text style={styles.inputs}>Remove Products</Text>
             </View>
 
             <View>
                 <Text style={styles.inputs}>Update Products</Text>
-
-                <Text style={styles.inputs}>Remove Products</Text>
-            </View>
-
-            <View>
-                <Text style={styles.inputs}>Update Products</Text>
-
             </View>
 
           </View>
@@ -63,11 +48,7 @@ const SupermarketAdmin = () => {
           <View style={styles.sectionsTwo}>
             <Text style={styles.pro}>Payments</Text>
             <View>
-
               <Text style={styles.inputs}>Confirm/Approve payment</Text>
-
-              <Text style={styles.inputs}>Confirm/Approve payment</Text>
-
             </View>
           </View>
 
@@ -79,19 +60,12 @@ const SupermarketAdmin = () => {
 
             <View>
               <Text style={styles.inputs}>Transaction history</Text>
-
-              <Text style={styles.inputs}>Purchase history</Text>
-            </View>  
-
-            <View>
-              <Text style={styles.inputs}>Transaction history</Text>
-            </View>          
+            </View>            
           </View>     
 
           <View style={styles.sections}>
             <Text style={styles.pro}>Admin</Text>
             <View>
-
               <Text style={styles.inputs}>Invite admin</Text>
             </View>
 
@@ -101,24 +75,12 @@ const SupermarketAdmin = () => {
 
             <View>
               <Text style={styles.inputs}>All checkout admins</Text>
-
-              <Text style={styles.inputs}>Invite admin</Text>
-            </View>
-
-            <View>
-              <Text style={styles.inputs}>All supermarket admins</Text>
-            </View>
-
-            <View>
-              <Text style={styles.inputs}>All checkout admins</Text>
-
             </View>
           </View>       
 
           <View style={styles.sectionLast}>
             <Text style={styles.pro}>Reports</Text>
             <View>
-
                 <Text style={styles.inputs}>View notifications</Text>
             </View>
 
@@ -166,12 +128,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginTop: 20,
-    marginBottom: 20,
-    marginLeft: 70,
+    marginBottom: 20, 
+    textAlign: 'center',
   },
 
   inputs: {
-    color: 'black',
+    color: 'white',
     fontSize: 15,
     // fontWeight: '',
     marginVertical: 9,
@@ -189,7 +151,7 @@ const styles = StyleSheet.create({
 
   },
   pro:{
-    color: 'grey',
+    color: 'orange',
     fontSize: 15,
     fontStyle: 'italic',
     fontWeight: 'bold',

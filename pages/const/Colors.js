@@ -12,7 +12,9 @@ const COLORS = {
     yellow:'#ffc107',
     pink: '#808080',
     lightBlue:'#a927ff',
-    lightBlue:'#86b1de'
+    litBlue:'#86b1de',
+    skyBlue:'rgb(129, 129,234)',
+    grenBlue:'rgb(127,172,255)'
 
 };
 export default COLORS;

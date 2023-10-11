@@ -17,7 +17,7 @@ const { width } = Dimensions.get('window');
 let userId = 1
 let supermarketCode =  "" 
 
-const SupermarketScreen = ({ }) => {
+const SupermarketScreen = ({}) => {
   const [inputs, setInputs] = useState({
     "supermarketName": "",
     "supermarketEmail": "",

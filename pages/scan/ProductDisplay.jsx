@@ -53,9 +53,9 @@ const ProductDisplay = ({}) => {
 				throw new Error("Product not found")
 			}else if (response.status === 200) {
 				
-	
 	  			setProductDetail(response.data.data)
 				setAddProductRequest(response.data.data)
+
 	  			setNotLoading(true)
 
 			console.log(response.data.data);
@@ -71,17 +71,24 @@ const ProductDisplay = ({}) => {
 			}else{
 				console.log(error.message);
 			}
-
-      	
-			
 		}
   }, []);
 
+  useEffect(() => {
+	fetchData();
+}, [fetchData]);
+
   const addToCartBackend =async () => {
 	try {
-		const response = await axios.get(
-			BASE_URL+"/api/v1/productController/findProductByToken/" +
-				addProductRequest,
+		const response = await axios.post(
+			// BASE_URL+
+			"shopcartifybackend-production.up.railway.app/api/v1/cartProduct/addToCart",
+			{
+				"productName": "frontend product",
+				"supermarketCode": "q97y7",
+				"cartUniqueId": "cart",
+				"numberOfProducts": 1
+			  }
 		
 		);
 		console.log(response);
@@ -128,12 +135,10 @@ const ProductDisplay = ({}) => {
 	const handleCart=(event)=>{
 		event.preventDefault();
 		addToCartBackend()
-		navigation.navigate("scan");
+		// navigation.navigate("scan");
 	}
 
-	useEffect(() => {
-		fetchData();
-	}, [fetchData]);
+	
 
 
   return (
@@ -164,7 +169,7 @@ const ProductDisplay = ({}) => {
 					</View> */}
 			
 			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={handleCart}/></View>
-			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={''}/></View>
+			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={'Items'}/></View>
 			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={''}/></View>
 			
 			</View>
