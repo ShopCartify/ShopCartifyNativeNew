@@ -26,7 +26,15 @@ import CreateFamily from './pages/createfamily/CreateFamily';
 
 import UploadWidget from './pages/imageUploader/UploadWidget';
 import Payment from './pages/payment/Payment';
+
+import SupermarketLogin from './pages/supermarket/SupermarketLogin'
+  
+
+
+// import UploadWidget from './pages/imageUploader/UploadWidget';
+
 import Pay from './pages/payment/Pay';
+
 
 
 
@@ -81,11 +89,18 @@ const App = () => {
           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>
           <Stack.Screen name ="createFamily" component={CreateFamily}/> */}
 
+
           <Stack.Screen name ="payment" component={Pay}/>
+
+           <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
+
+          <Stack.Screen name ="pay" component={Pay}/>
+>
          
            {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
 
            {/* <Stack.Screen name ="ProducCart" component={ProducCart}/> */}
+
 
 
 
