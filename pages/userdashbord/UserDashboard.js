@@ -1,72 +1,75 @@
 import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
-// import Line from './Line';
 import { useNavigation, Link } from '@react-navigation/native';
-// import adminStyles from './adminStyles';
 import LottieView from 'lottie-react-native';
 import { Dimensions } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const { width } = Dimensions.get('window');
 
-
 const UserDashboard = () => {
-  const admin ={
+  const admin = {
     name: 'Hemba Cephas',
     email: 'hembacephas@gmail.com',
-  }
+  };
 
-  const navigation = useNavigation;
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.allwrap}>
       <ScrollView>
         <View style={styles.wrapper}>
-
-          <View style = {styles.title}>
+          <View style={styles.title}>
             <Text style={styles.titext}>User dashboard</Text>
-          </View>      
+          </View>
           <View style={styles.sectionsOne}>
             <Text style={styles.pro}>Information</Text>
-            <View>
-                <Link to="/scan" style={styles.inputs}>Scan</Link>
+            <View style={styles.linkContainer}>
+              <FontAwesome name="barcode" size={30} color="white" />
+              <Link to="/scan" style={styles.inputs}>
+                Scan
+              </Link>
             </View>
-
-            
-            <View>
-                <Link to="/SupermarketScreen" style={styles.inputs}>Own a Supermarket</Link>
+            <View style={styles.linkContainer}>
+              <FontAwesome name="shopping-cart" size={30} color="white" />
+              <Link to="/SupermarketScreen" style={styles.inputs}>
+                Own a Supermarket
+              </Link>
             </View>
-
-            <View>
-                <Link to="/WelcomeScreen" style={styles.inputs}>Home button</Link>
+            <View style={styles.linkContainer}>
+              <FontAwesome name="home" size={30} color="white" />
+              <Link to="/WelcomeScreen" style={styles.inputs}>
+                Home button
+              </Link>
             </View>
-
-            <View>
-                <Link to="/PersonalScreen" style={styles.inputs}>Personal information</Link>
+            <View style={styles.linkContainer}>
+              <FontAwesome name="user" size={30} color="white" />
+              <Link to="/PersonalScreen" style={styles.inputs}>
+                Personal information
+              </Link>
             </View>
-
-            <View>
-                <Link to="/Items" style={styles.inputs}>View Cart</Link>
+            <View style={styles.linkContainer}>
+              <FontAwesome name="shopping-basket" size={30} color="white" />
+              <Link to="/Items" style={styles.inputs}>
+                View Cart
+              </Link>
             </View>
-            <View>
-                <Link to="/WishList" style={styles.inputs}>View Wishlist</Link>
+            <View style={styles.linkContainer}>
+              <FontAwesome name="heart" size={30} color="white" />
+              <Link to="/WishList" style={styles.inputs}>
+                View Wishlist
+              </Link>
             </View>
-
-             <View>
-                <Link to="/CreateFamily" style={styles.inputs}>CreateFamily</Link>
-            </View> 
-            <View className="Image">
-                <LottieView 
-                source={require('../../assets/theme/GIRL.json')}
-                autoPlay
-                loop
-                style={{width: 550, height: 350,right:30,
-                }}
-                />
-            </View> 
-
           </View>
-   
-         </View>
+          <View style={styles.imageContainer}>
+            <LottieView
+              source={require('../../assets/theme/animation.json')}
+              autoPlay
+              loop
+              style={styles.animation}
+            />
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -74,31 +77,17 @@ const UserDashboard = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    // padding: 30,
-    // width: 900,
     backgroundColor: '#4b4b88',
-    // marginTop: 70,
   },
-
-  allwrap:{
-    width:900,
-    backgroundColor:'#4b4b88',
+  allwrap: {
+    backgroundColor: '#4b4b88',
     flex: 1,
-   
   },
-
-  title:{
+  title: {
     marginTop: 45,
     marginBottom: 15,
   },
-   
-    text: {
-      fontSize: width < 400 ? 16 : 24, // Adjust font size based on screen width
-      fontWeight: 'bold',
-    },
-  
-
-  titext:{
+  titext: {
     fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
@@ -106,28 +95,37 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginLeft: 110,
   },
-
   inputs: {
     color: 'white',
     fontSize: 15,
-    // fontWeight: '',
     marginVertical: 9,
     paddingLeft: 20,
-    // backgroundColor: '#7978B5',
   },
-  pro:{
-    color: 'orange',
+  pro: {
+    color: 'grey',
     fontSize: 15,
     fontStyle: 'italic',
     fontWeight: 'bold',
     paddingLeft: 20,
   },
-
-  sectionsOne:{
-    marginBottom:100,
-        backgroundColor: '#43437a',
-        
+  sectionsOne: {
+    marginBottom: 100,
+    backgroundColor: '#43437a',
+  },
+  linkContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  imageContainer: {
+    alignItems: 'center',
+  },
+  animation: {
+    width: 550,
+    height: 350,
+    top: 0,
+    right: 30,
   },
 });
 
 export default UserDashboard;
+

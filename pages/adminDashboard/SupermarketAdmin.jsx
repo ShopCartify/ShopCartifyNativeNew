@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator,} from 'react-native';
+import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator, TouchableOpacity} from 'react-native';
 import { useNavigation, Link } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
-// import {FontAwesome5} from 'react-native-vector-icons/FontAwesome5';
+
+import {FontAwesome} from 'react-native-vector-icons/FontAwesome';
 
 
 const SupermarketAdmin = () => {
@@ -28,112 +29,156 @@ const SupermarketAdmin = () => {
   return (
     <SafeAreaView style={styles.allwrap}>
       <ScrollView>
-      {loading ? (
+        {loading ? (
           <View style={styles.loader}>
             <ActivityIndicator size="large" color="orange" />
           </View>
         ) : (
-        <View style={styles.wrapper}>
-
-          <View style = {styles.title}>
-            <Text style={styles.titext}>Supermarket Admin</Text>
-          </View>      
-          <View style={styles.sectionsOne}>
-          {/* <icon name="Home"/> */}
-            <Text style={styles.pro}>Products</Text>
+          <View style={styles.wrapper}>
             <View>
-                <Text style={styles.inputs}>Search Products</Text>
+              <Text style={styles.pro}>Products</Text>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('PScreen')}
+              >
+                <FontAwesome name="search" size={30} color="white" />
+                <Text style={styles.inputText}>Search Products</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('ViewAllProducts')}
+              >
+                <FontAwesome name="list" size={30} color="white" />
+                <Text style={styles.inputText}>View All Products</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.inputa}
+                onPress={() => navigation.navigate('AddProductScreen')}
+              >
+                <FontAwesome name="plus" size={30} color="white" />
+                <Text style={styles.inputText}>Add Products</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('RemoveProducts')}
+              >
+                <FontAwesome name="remove" size={30} color="white" />
+                <Text style={styles.inputText}>Remove Products</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('UpdateProducts')}
+              >
+                <FontAwesome name="edit" size={30} color="white" />
+                <Text style={styles.inputText}>Update Products</Text>
+              </TouchableOpacity>
             </View>
 
-            <View>
-                <Text style={styles.inputs}>View All Products</Text>
+            <View style={styles.sections}>
+              <Text style={styles.pro}>Payments</Text>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('ConfirmPayment')}
+              >
+                <FontAwesome name="check" size={30} color="white" />
+                <Text style={styles.inputText}>Confirm/Approve payment</Text>
+              </TouchableOpacity>
             </View>
 
-            <View>
-                <Link to="/AddproductScreen" style={styles.inputa}>Add Products</Link>
+            <View style={styles.sections}>
+              <Text style={styles.pro}>History</Text>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('PurchaseHistory')}
+              >
+                <FontAwesome name="history" size={30} color="white" />
+                <Text style={styles.inputText}>Purchase History</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('TransactionHistory')}
+              >
+                <FontAwesome name="history" size={30} color="white" />
+                <Text style={styles.inputText}>Transaction History</Text>
+              </TouchableOpacity>
             </View>
 
-            <View>
-                <Text style={styles.inputs}>Remove Products</Text>
+            <View style={styles.sections}>
+              <Text style={styles.pro}>Admin</Text>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('InviteAdmin')}
+              >
+                <FontAwesome name="user-plus" size={30} color="white" />
+                <Text style={styles.inputText}>Invite Admin</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('AllSupermarketAdmins')}
+              >
+                <FontAwesome name="users" size={30} color="white" />
+                <Text style={styles.inputText}>All supermarket admins</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('AllCheckoutAdmins')}
+              >
+                <FontAwesome name="users" size={30} color="white" />
+                <Text style={styles.inputText}>All checkout admins</Text>
+              </TouchableOpacity>
             </View>
 
-            <View>
-                <Text style={styles.inputs}>Update Products</Text>
+            <View style={styles.sectionLast}>
+              <Text style={styles.pro}>Reports</Text>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('ViewNotifications')}
+              >
+                <FontAwesome name="bell" size={30} color="white" />
+                <Text style={styles.inputText}>View notifications</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('SendReport')}
+              >
+                <FontAwesome name="send" size={30} color="white" />
+                <Text style={styles.inputText}>Send report</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('RespondToReports')}
+              >
+                <FontAwesome name="comments" size={30} color="white" />
+                <Text style={styles.inputText}>Respond to reports</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.inputs}
+                onPress={() => navigation.navigate('Logout')}
+              >
+                <FontAwesome name="sign-out" size={30} color="white" />
+                <Text style={styles.inputText}>Log out</Text>
+              </TouchableOpacity>
             </View>
-
           </View>
-
-          <View style={styles.sectionsTwo}>
-            <Text style={styles.pro}>Payments</Text>
-            <View>
-              <Text style={styles.inputs}>Confirm/Approve payment</Text>
-            </View>
-          </View>
-
-          <View style={styles.sections}>
-            <Text style={styles.pro}>History</Text>
-            <View>
-              <Text style={styles.inputs}>Purchase history</Text>
-            </View>  
-
-            <View>
-              <Text style={styles.inputs}>Transaction history</Text>
-            </View>            
-          </View>     
-
-          <View style={styles.sections}>
-            <Text style={styles.pro}>Admin</Text>
-            <View>
-              <Text style={styles.inputs}>Invite admin</Text>
-            </View>
-
-            <View>
-              <Text style={styles.inputs}>All supermarket admins</Text>
-            </View>
-
-            <View>
-              <Text style={styles.inputs}>All checkout admins</Text>
-            </View>
-          </View>       
-
-          <View style={styles.sectionLast}>
-            <Text style={styles.pro}>Reports</Text>
-            <View>
-                <Text style={styles.inputs}>View notifications</Text>
-            </View>
-
-            <View>
-              <Text style={styles.inputs}>Send report</Text>
-            </View>          
-
-            <View>
-                <Text style={styles.inputs}>Respond to reports</Text> 
-            </View>
-
-            <View>
-                <Text style={styles.inputs}>Log out</Text> 
-            </View>
-            
-          </View>
-
-         </View>
-         )}
+        )}
       </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    // padding: 30,
-    // width: 900,
-    // backgroundColor: '#4b4b88',
-    // backgroundColor: 'papayawhip',
-    // marginTop: 70,
+  iconTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  icon: {
+    marginRight: 10,
   },
 
   allwrap:{
-    // width:900,
     backgroundColor:'#4b4b88',
   },
 
@@ -163,19 +208,15 @@ const styles = StyleSheet.create({
   inputs: {
     color: 'white',
     fontSize: 15,
-    // fontWeight: '',
     marginVertical: 9,
     paddingLeft: 20,
-    // backgroundColor: '#7978B5',
   },
 
   inputa: {
     color: 'white',
     fontSize: 15,
-    // fontWeight: '',
     marginVertical: 9,
     paddingLeft: 20,
-    // backgroundColor: '#7978B5',
 
   },
   pro:{
@@ -187,11 +228,7 @@ const styles = StyleSheet.create({
   },
 
   sectionsOne:{
-    // flex: 0.3,
-    // backgroundColor: 'beige',
     borderWidth: 4,
-    // borderColor:none,
-    // marginBottom:15,
     marginRight:15,
     marginLeft: 15,
     borderRadius: 13,
@@ -218,7 +255,6 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     borderColor: 'transparent',
     backgroundColor: '#43437a',
-    // backgroundColor:'white',
   },
 
   sectionLast:{
@@ -230,7 +266,6 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     borderColor: 'transparent',
     backgroundColor: '#43437a',
-    // backgroundColor:'white',
   },
 
 });
