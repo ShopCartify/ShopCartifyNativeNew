@@ -115,9 +115,7 @@ const Items = ({navigation}) => {
       console.log(error.message);
     }else{
       console.log(error.message);
-    }
-
-      
+    }    
     
   }
 }, []);

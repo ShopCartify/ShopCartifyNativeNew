@@ -41,6 +41,7 @@ const LoginScreen = ({ navigation }) => {
     password: "",
 
   })
+
   const [error, setError] = React.useState({});
   const [loading, setLoading] = React.useState(false);
   const [showInput, setShowInput] = useState(false);
@@ -95,12 +96,19 @@ const LoginScreen = ({ navigation }) => {
         inputs
 
       )
-      console.log('response is: ' + response.data.id);
-      alert('sign up was successful');
-      navigation.navigate('user_dashboard')
+      // console.log('response is: ' + response.data);
+      alert('login successful');
+      let responseValue = response.data
+      
+      // setUser(responseValue)
+      AsyncStorage.setItem("user", JSON.stringify(responseValue))
+
+      navigation.navigate('user_dashboard') 
 
     } catch (error) {
       alert(error);
+      console.log("error");
+      console.log(error);
     }
     // setLoading(true);
     // setTimeout(async()=>{

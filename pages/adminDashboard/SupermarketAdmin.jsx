@@ -9,11 +9,6 @@ import {FontAwesome} from 'react-native-vector-icons/FontAwesome';
 const SupermarketAdmin = () => {
 
   const [loading, setLoading] = useState(true);
-
-  const admin ={
-    name: 'Hemba Cephas',
-    email: 'hembacephas@gmail.com',
-  }
   
   useEffect(() => {
     const fetchData = async () => {

@@ -1,19 +1,53 @@
-import React from 'react';
+import React, { useState, useCallback,useEffect } from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation, Link } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import { Dimensions } from 'react-native';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 
 const { width } = Dimensions.get('window');
 
 const UserDashboard = () => {
-  const admin = {
-    name: 'Hemba Cephas',
-    email: 'hembacephas@gmail.com',
-  };
+
+
+  const [email, setEmail] = useState("")
+  const [id, setId] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [userName, setUserName] = useState("")
+  
+
+  const userData = (user) =>{
+    setEmail(user.email)
+    setId(user.id)
+    setFirstName(user.firstName)
+    setLastName(user.lastName)
+    setUserName(user.userName)
+
+  }
 
   const navigation = useNavigation();
+
+  const fetchData =useCallback(async ()=>{
+   
+    
+    let value = await AsyncStorage.getItem("user")
+    let user = JSON.parse(value)
+
+    userData(user)
+    
+   
+    console.log("logged in user email ", email);
+
+}, []);
+
+useEffect(() => {
+fetchData();
+}, [fetchData]);
 
   return (
     <SafeAreaView style={styles.allwrap}>
@@ -23,6 +57,7 @@ const UserDashboard = () => {
             <Text style={styles.titext}>User dashboard</Text>
           </View>
           <View style={styles.sectionsOne}>
+           <Text> Welcome <Text style={styles.pro}> {email}</Text> </Text>
             <Text style={styles.pro}>Information</Text>
             <View style={styles.linkContainer}>
               <FontAwesome name="barcode" size={30} color="white" />

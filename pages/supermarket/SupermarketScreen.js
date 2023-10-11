@@ -10,11 +10,12 @@ import ImagePicker from 'react-native-image-picker';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
 import { Dimensions,StyleSheet } from 'react-native';
+import BASE_URL from '../../secrets/.SecretConstants';
 
 
 const { width } = Dimensions.get('window');
 
-let userId = 1
+
 let supermarketCode =  "" 
 
 const SupermarketScreen = ({}) => {
@@ -22,7 +23,7 @@ const SupermarketScreen = ({}) => {
     "supermarketName": "",
     "supermarketEmail": "",
     "cacUrl": "",
-    "registeredUserId": userId,
+    "registeredUserId": 1,
     "supermarketLocation": "",
   });
 
@@ -63,15 +64,16 @@ const SupermarketScreen = ({}) => {
     // alert(inputs.supermarketEmail)
 		try {
 			const response = await axios.post(
-				"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/supermarketAdminController/registerSupermarketAdmin" ,
+				BASE_URL+"/api/v1/supermarketAdminController/registerSupermarketAdmin" ,
           inputs
 			
 			)
       // console.log(response.data);
-      alert(response.data.data)
+      console.log(response.data.data)
       alert("successful registration")
       AsyncStorage.setItem("supermarket",JSON.stringify(response.data.data))  
       // navigation.navigate("SupermarketAdminScreen");
+      navigation.navigate("SupermarketAdmin");
 		} catch (error) {
       console.log(error);
 		}
@@ -86,7 +88,7 @@ const SupermarketScreen = ({}) => {
         // Alert.alert('Error','Something went wrong')
       }
     })
-    navigation.navigate("SupermarketAdmin");
+    // navigation.navigate("SupermarketAdmin");
 
   }
 

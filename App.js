@@ -36,7 +36,7 @@ const Stack = createStackNavigator();
 const App = () => {
 
   const [initialRouteName, setInitialRouteName] = React.useState('');
-  
+
   React.useEffect(() => {
      setTimeout(authUser, 2000);
   }, []);
@@ -90,7 +90,6 @@ const App = () => {
 
           {/* <Stack.Screen name ="payment" component={Pay}/> */}
 
-           {/* <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/> */}
 
           {/* <Stack.Screen name ="pay" component={Pay}/> */}
          
