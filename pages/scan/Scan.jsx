@@ -14,7 +14,7 @@ const product = "product";
 
 
 export default function CodeScanner({navigation}) {
-  const [hasPermission, setHasPermission] = useState(null);
+  const [hasPermission, setHasPermission] = useState(null);  
   const [scanned, setScanned] = useState(false);
   const [scannedData, setScannedData] = useState(null);
 

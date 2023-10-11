@@ -23,10 +23,8 @@ import SupermarketAdmin from './pages/adminDashboard/SupermarketAdmin'
 import Admins from './pages/adminDashboard/Admins';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword'
 import CreateFamily from './pages/createfamily/CreateFamily';
-
 import UploadWidget from './pages/imageUploader/UploadWidget';
 import Payment from './pages/payment/Payment';
-
 import SupermarketLogin from './pages/supermarket/SupermarketLogin'
 import Notification from './pages/notifications/Notification';
   

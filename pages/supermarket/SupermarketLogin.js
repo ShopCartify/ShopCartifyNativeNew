@@ -86,11 +86,11 @@ const LoginScreen = ({ navigation }) => {
       <ScrollView contentContainerStyle={styles.container}
       >
         <Text style={{ color: COLORS.white, fontSize: 6 / 100 * (SIZES.width),
-         fontWeight: 'bold', top: 20}}>
+         fontWeight: 'bold', top: 40}}>
           Supermarket Login
         </Text>
-        <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10, top: 20 }}>
-          Enter Your Details to Login
+        <Text style={{ color: COLORS.grey, fontSize: 15, marginVertical: 10, top: 30 }}>
+          Enter Your Details to Log in
         </Text>
 
         <View className="Image">
@@ -99,8 +99,8 @@ const LoginScreen = ({ navigation }) => {
             autoPlay
             loop
             style={{
-              width: 550 / 100 * (SIZES.width), 
-              height: 30 / 100 * (SIZES.height),
+              width: 400 / 100 * (SIZES.width), 
+              height: 20 / 100 * (SIZES.height),
                alignItems: "center",
                top:2/100*(SIZES.width)
             }}

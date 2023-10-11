@@ -117,11 +117,11 @@ const SupermarketScreen = ({}) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green      }}>
       <Loader visible={loading} />
       <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
-        <Text style={{ color: COLORS.white, fontSize: 30, fontWeight: 'bold', marginTop: 40 }}>
-          supermarket SignUp
+        <Text style={{ color: COLORS.white, fontSize: 30, fontWeight: 'bold', marginTop:45, textAlign:'center',}}>
+          Register supermarket
         </Text>
-        <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
-          Enter Your Details for Supermarket Information
+        <Text style={{ color: COLORS.grey, fontSize: 15, marginVertical:10, textAlign:'center', }}>
+          Enter supermarket information
         </Text>
         <View style={{ marginVertical: 10 }}>
          
@@ -143,7 +143,7 @@ const SupermarketScreen = ({}) => {
           />
       
           <Input
-            placeholder="Company Location"
+            placeholder="Company location"
             // iconName="location-outline"
             label="Company Location"
             error={error.companyLocation}
@@ -153,7 +153,7 @@ const SupermarketScreen = ({}) => {
            <Input
             placeholder="Enter your CAC Rc no."
             iconName="lock-outline"
-            label="CAC"
+            label="CAC-Rc no."
             // secureTextEntry={true}
             error={error.CAC}
             onFocus={() => handleError(null, 'CAC')}
