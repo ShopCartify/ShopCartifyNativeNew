@@ -169,12 +169,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginTop: 20,
-    marginBottom: 20,
-    marginLeft: 70,
+    marginBottom: 20, 
+    textAlign: 'center',
   },
 
   inputs: {
-    color: 'black',
+    color: 'white',
     fontSize: 15,
     // fontWeight: '',
     marginVertical: 9,
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
 
   },
   pro:{
-    color: 'grey',
+    color: 'orange',
     fontSize: 15,
     fontStyle: 'italic',
     fontWeight: 'bold',

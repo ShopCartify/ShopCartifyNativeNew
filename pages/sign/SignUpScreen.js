@@ -33,8 +33,6 @@ const SignUpScreen = ({navigation})=> {
     email: "",
     firstName: "",
     lastName: "",
-    password: "",
-     showPassword: false,
     userName: "",
   })
 
@@ -94,15 +92,20 @@ const [loading,setLoading]= React.useState(false);
           inputs
 			
 			)
-      console.log('response is: ' +  response.data);
+      console.log('response is: ' +  response.data.data);
       alert('sign up was successful');
+      let responseValue = response.data
+      setUser(responseValue)
+      AsyncStorage.setItem("user", user)
+
       navigation.navigate('user_dashboard');
+
 		} catch (error) {
       alert(error);
-      
+      console.log("network error! ");
 		}
 
-    navigation.navigate('user_dashboard');
+    
     // setLoading(true);
 
     // setTimeout(()=>{
@@ -114,6 +117,7 @@ const [loading,setLoading]= React.useState(false);
     //     alert('Error','Something went wrong', error)
     //   } 
     // })
+
 
 
 }
