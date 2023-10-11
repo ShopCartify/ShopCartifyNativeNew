@@ -79,10 +79,10 @@ const [loading,setLoading]= React.useState(false);
   const register = async ()=>{
     alert("processing ... "+inputs.firstName)
 
-    
+
 		try {
 			const response = await axios.post(
-				BASE_URL+'/api/v1/auth/register' ,
+				BASE_URL+"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/    aUserDashboard" ,
           inputs
 			
 			)
