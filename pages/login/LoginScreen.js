@@ -1,4 +1,6 @@
-import { Text, Keyboard, Alert, View,TextInput} from 'react-native'
+
+import { Text, Keyboard, Alert,TouchableOpacity, View} from 'react-native'
+
 import React, { useState } from 'react';
 // import React from 'react'
 import COLORS from '../const/Colors'
@@ -9,9 +11,15 @@ import Checkbutton from '../const/Checkbutton';
 import Button from '../const/Button';
 import Loader from '../const/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// import HomeScreen from './HomeScreen';
 import LottieView from 'lottie-react-native';
+import { CheckBox } from '@rneui/themed';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+
 // import { CheckBox } from '@rneui/themed';
 // import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 
@@ -38,6 +46,7 @@ const LoginScreen = ({ navigation }) => {
   const [showInput, setShowInput] = useState(false);
   const [isFocused, setIsFocused] = useState(false)
 
+
   // const handleCheckboxChange = () => {
   //   if(showInput===false)
   //   setShowInput(true);
@@ -45,6 +54,19 @@ const LoginScreen = ({ navigation }) => {
   //   setShowInput(false)
   // }
   // };
+
+  const handleCheckboxChange = () => {
+    if(showInput===false)
+    setShowInput(true);
+  else{
+    setShowInput(false)
+  }
+  };
+  const handleRegisterPress = () => {
+    navigation.navigate('SignUpScreen');
+  };
+
+
 
   const validate = () => {
     ;
@@ -237,10 +259,12 @@ const LoginScreen = ({ navigation }) => {
             left: 20,
           }}>
 
-
+          <TouchableOpacity onPress={handleRegisterPress}>
           <Text>
-            Dont have an account? Register
+            Dont have an account? 
           </Text>
+          <Text style={styles.loginText}>Register</Text>
+        </TouchableOpacity>
         </Text>
 
 

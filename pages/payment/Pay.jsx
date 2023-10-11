@@ -7,7 +7,8 @@ import Input from '../const/Input';
 import Button from '../const/Button';
 import COLORS from '../const/Colors';
 // import { TextInput } from 'react-native-gesture-handler';>
-
+// import WelcomeButton from '../const/WelcomeButton';
+import { View, Button, Text, SafeAreaView, ScrollView } from 'react-native';
 
 
 const Pay =()=>{
@@ -18,6 +19,7 @@ const Pay =()=>{
     </ScrollView>
 
   
+
 
       
         // <PayStackWebView
@@ -32,6 +34,7 @@ const Pay =()=>{
         // ActivityIndicatorColor="green"
         // safeAreaViewContainer = {{marginTop : 5}}
         // safeAreaViewContainerModal = {{marginTop : 5}}
+   
 
         // onCancel={(e) => {
         //     // handle response here
@@ -50,6 +53,7 @@ const Pay =()=>{
 const PaystackPayment = () => {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
+
 
   const initialiazePayment = async () => {
     try{
