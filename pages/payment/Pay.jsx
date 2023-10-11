@@ -1,14 +1,11 @@
 import  { Paystack, PayStackWebView , paystackProps}  from 'react-native-paystack-webview';
 // import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView,Ljinking } from 'react-native';
-import { View, Text,ScrollView, StyleSheet, TextInput} from 'react-native';
+import { View, Text,ScrollView, StyleSheet, TextInput, Button} from 'react-native';
 import { useState } from 'react';
 import axios from 'axios';
-import Input from '../const/Input';
-import Button from '../const/Button';
-import COLORS from '../const/Colors';
-// import { TextInput } from 'react-native-gesture-handler';>
-// import WelcomeButton from '../const/WelcomeButton';
-import { View, Button, Text, SafeAreaView, ScrollView } from 'react-native';
+import Input from '../const/Input'; 
+// import COLORS from '../const/Colors';
+
 
 
 const Pay =()=>{

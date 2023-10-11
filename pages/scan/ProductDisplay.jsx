@@ -48,7 +48,7 @@ const ProductDisplay = ({}) => {
 					data,
 			
 			);
-			console.log(response);
+			console.log(response.data.data);
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {

@@ -1,5 +1,5 @@
 import { View, Text, Keyboard } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import COLORS from '../const/Colors'
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { SafeAreaView } from 'react-native'
@@ -22,6 +22,14 @@ import BASE_URL from '../../secrets/.SecretConstants';
 const SignUpScreen = ({navigation})=> {
   // const validate = () => {};
   const [inputs,setInputs]= React.useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+     showPassword: false,
+    userName: "",
+  })
+  const [user, setUser] = useState({
     email: "",
     firstName: "",
     lastName: "",
@@ -82,15 +90,19 @@ const [loading,setLoading]= React.useState(false);
 
 		try {
 			const response = await axios.post(
-				BASE_URL+"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/    aUserDashboard" ,
+				BASE_URL+"/api/v1/auth/register" ,
           inputs
 			
 			)
-      console.log('response is: ' +  response.data.id);
+      console.log('response is: ' +  response.data);
       alert('sign up was successful');
+      navigation.navigate('user_dashboard');
 		} catch (error) {
       alert(error);
+      
 		}
+
+    navigation.navigate('user_dashboard');
     // setLoading(true);
 
     // setTimeout(()=>{
@@ -103,7 +115,6 @@ const [loading,setLoading]= React.useState(false);
     //   } 
     // })
 
-    navigation.navigate('UserDashboard');
 
 }
 const handleOnChange = (text,input)=>{

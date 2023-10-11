@@ -99,9 +99,9 @@ const App = () => {
 
           {/* <Stack.Screen name ="payment" component={Pay}/> */}
 
-           <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
+           {/* <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>j */}
 
-          <Stack.Screen name ="pay" component={Pay}/>
+          {/* <Stack.Screen name ="pay" component={Pay}/> */}
          
            {/* <Stack.Screen name ="UploadingImageWidget" component={UploadWidget}/> */}
 
