@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import React from 'react';
+import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator, TouchableOpacity} from 'react-native';
+import { useNavigation, Link } from '@react-navigation/native';
+import { useState, useEffect } from 'react';
+
+import {FontAwesome} from 'react-native-vector-icons/FontAwesome';
+
 
 const SupermarketAdmin = () => {
-  const [loading, setLoading] = useState(true);
 
+  const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     const fetchData = async () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -160,15 +164,13 @@ const SupermarketAdmin = () => {
 };
 
 const styles = StyleSheet.create({
-  // ... (other styles)
-
   iconTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
 
   icon: {
-    marginRight: 10, // Adjust the margin as needed
+    marginRight: 10,
   },
 
   allwrap:{
@@ -177,8 +179,11 @@ const styles = StyleSheet.create({
 
   loader: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: '#4b4b88',
+    paddingTop:350,
+    paddingBottom:500,
   },
 
   title:{

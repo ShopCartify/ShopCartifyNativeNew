@@ -13,18 +13,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import LottieView from 'lottie-react-native';
 // import { CheckBox } from '@rneui/themed';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-
-
 import { Dimensions, StyleSheet } from 'react-native';
 import { SIZES } from '../const/Sizes';
- 
-const { width } = Dimensions.get('window');
 import axios from 'axios';
 import BASE_URL from '../../secrets/.SecretConstants';
 
-
-
-
+const { width } = Dimensions.get('window');
 
 const LoginScreen = ({ navigation }) => {
   const [inputs, setInputs] = React.useState({

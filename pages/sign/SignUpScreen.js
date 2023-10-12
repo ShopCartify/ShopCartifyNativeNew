@@ -11,13 +11,10 @@ import Loader from '../const/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { Dimensions,StyleSheet } from 'react-native';
-
-
-const { width } = Dimensions.get('window');
 import BASE_URL from '../../secrets/.SecretConstants';
 
 
-
+const { width } = Dimensions.get('window');
 
 const SignUpScreen = ({navigation})=> {
   // const validate = () => {};
@@ -37,7 +34,6 @@ const SignUpScreen = ({navigation})=> {
     id: ""
   })
 
-  
 const [error,setError]= React.useState({});
 const [loading,setLoading]= React.useState(false);
 
