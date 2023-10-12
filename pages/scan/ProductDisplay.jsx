@@ -27,10 +27,11 @@ const ProductDisplay = ({}) => {
   const [productDetail , setProductDetail] = useState()
   const [isNotLoading, setNotLoading] = useState(false)
   const[error , setError] = useState()
+  const[uniqueCartId, setUniqueCartId] = useState();
   const[addProductRequest, setAddProductRequest] = useState({
 	"productName": "",
 	"supermarketCode": "",
-	"cartUniqueId": AsyncStorage.getItem("cartUniqueId"),
+	"cartUniqueId": uniqueCartId,
 	"numberOfProducts": 1
   })
   const navigation = useNavigation();
@@ -40,7 +41,9 @@ const ProductDisplay = ({}) => {
     
       let value = await AsyncStorage.getItem("product")
       let data = JSON.stringify(value)
-
+	   value = JSON.parse(await AsyncStorage.getItem("uniqueCart"))
+	  
+	   setUniqueCartId(JSON.stringify(value.uniqueCartId))
 		
 		try {
 			const response = await axios.get(
@@ -48,7 +51,7 @@ const ProductDisplay = ({}) => {
 					data,
 			
 			);
-			console.log(response.data.data);
+			
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {
@@ -58,7 +61,7 @@ const ProductDisplay = ({}) => {
 
 	  			setNotLoading(true)
 
-			console.log(response.data.data);
+			// console.log(response.data.data);
 			}
 			
       
@@ -79,6 +82,8 @@ const ProductDisplay = ({}) => {
 }, [fetchData]);
 
   const addToCartBackend =async () => {
+
+	console.log(addProductRequest.uniqueCartId);
 	try {
 		const response = await axios.post(
 			BASE_URL+
@@ -86,17 +91,17 @@ const ProductDisplay = ({}) => {
 		productDetail
 		
 		);
-		console.log(response);
+	
 		if (response.status !== 200){
 			throw new Error("Product not found")
 		}else if (response.status === 200) {
 			
-			AsyncStorage.setItem("cartUniqueId", JSON.stringify(response))
+			AsyncStorage.setItem("uniqueCart", JSON.stringify(response.data))
 
 		console.log(response.data);
 
-		alert( productName + " added")
-		navigation.navigate("WelcomeScreen")
+		
+		// navigation.navigate("scan")
 
 		}
 		

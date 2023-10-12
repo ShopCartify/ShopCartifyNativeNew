@@ -200,7 +200,7 @@ const handleError =(errorMessage,input)=>{
                 textAlign:'center',
                 fontSize:16,
                 fontWeight:'bold',
-                top:10,
+                top:25,
                 left:20,
               }}
               >
