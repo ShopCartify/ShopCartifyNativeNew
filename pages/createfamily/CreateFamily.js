@@ -13,6 +13,7 @@ import { Dimensions} from 'react-native';
 import axios from 'axios';
 import COLORS from '../const/Colors';
 import LottieView from 'lottie-react-native';
+import { SIZES } from '../const/Sizes';
 
 const { width } = Dimensions.get('window');
 
@@ -66,10 +67,16 @@ const CreateFamily = ({ navigation }) => {
       contentContainerStyle={styles.scrollViewContent} // Add this style
     >
       <View style={styles.container}>
-        <Image
-          source={require('../../assets/theme/applogo.png')}
-          style={styles.logo}
-        />
+      <Image
+            source={require('../../assets/theme/applogo.png')}
+          style={{left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          top:-2/100*(SIZES.width)
+          }}
+          />
 
         <View className="Image">
           <LottieView
@@ -77,14 +84,14 @@ const CreateFamily = ({ navigation }) => {
             autoPlay
             loop
             style={{
-              width: 470,
-              height: 350,
-              top: -30,
+              width: 200/100*(SIZES.width),
+              height: 65/100*(SIZES.width),
+              top: -2/100*(SIZES.width),
             }}
           />
         </View>
         <View style={styles.createFamily}>
-          <Text style={styles.header}>CREATE FAMILY ACCOUNT</Text>
+          <Text style={styles.header}>Creat family accout</Text>
           <TextInput
             style={styles.input}
             name="familyName"
@@ -141,7 +148,8 @@ const styles = StyleSheet.create({
     flexGrow: 1, // Allow content to expand within the ScrollView
   },
   createFamily: {
-    width: '80%',
+    width: 80/100*(SIZES.width),
+    top:20/100*(SIZES.width)
   },
   header: {
     fontWeight: '700',
@@ -149,16 +157,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'center',
     color: COLORS.light,
-    top: -400,
+    top: -350,
   },
   input: {
-    height: 40,
+    height: 12/100*(SIZES.width),
     borderWidth: 1,
     borderColor: 'gray',
     marginBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 10/100*(SIZES.width),
     backgroundColor: COLORS.light,
-    top: -70,
+    top: -20/100*(SIZES.width),
   },
   memberInputContainer: {
     flexDirection: 'row',

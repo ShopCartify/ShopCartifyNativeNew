@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert,Image } from
 import COLORS from '../const/Colors';
 import LottieView from 'lottie-react-native';
 import { Dimensions } from 'react-native';
+import { SIZES } from '../const/Sizes';
 
 
 const { width } = Dimensions.get('window');
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontWeight: '700',
-    fontSize: 30,
+    fontSize: 5/100*(SIZES.width),
     marginBottom: 10,
     top:-70,
     color:COLORS.light

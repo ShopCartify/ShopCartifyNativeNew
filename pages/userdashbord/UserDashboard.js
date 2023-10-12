@@ -5,6 +5,7 @@ import { useNavigation, Link } from '@react-navigation/native';
 // import adminStyles from './adminStyles';
 import LottieView from 'lottie-react-native';
 import { Dimensions } from 'react-native';
+import { SIZES } from '../const/Sizes';
 
 const { width } = Dimensions.get('window');
 
@@ -59,7 +60,7 @@ const UserDashboard = () => {
                 source={require('../../assets/theme/GIRL.json')}
                 autoPlay
                 loop
-                style={{width: 550, height: 350,right:30,
+                style={{width: 550/100*(SIZES.width), height: 80/100*(SIZES.width),right:40,
                 }}
                 />
             </View> 

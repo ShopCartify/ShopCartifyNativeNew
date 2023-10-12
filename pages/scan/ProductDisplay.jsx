@@ -13,6 +13,7 @@ import BASE_URL from '../../secrets/.SecretConstants';
 // import WelcomeButton from '../const/WelcomeButton';
 import Button from '../const/Button';
 import AddButton from '../const/ItemButton';
+import { SIZES } from '../const/Sizes';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
@@ -30,7 +31,7 @@ const ProductDisplay = ({}) => {
   const[addProductRequest, setAddProductRequest] = useState({
 	"productName": "",
 	"supermarketCode": "",
-	"cartUniqueId": AsyncStorage.getItem("cartUniqueId"),
+	// "cartUniqueId": JSON.parse(AsyncStorage.getItem("uniqueCart")).uniqueCartId,
 	"numberOfProducts": 1
   })
   const navigation = useNavigation();
@@ -48,7 +49,7 @@ const ProductDisplay = ({}) => {
 					data,
 			
 			);
-			console.log(response);
+			console.log(response.data.data);
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {
@@ -79,26 +80,27 @@ const ProductDisplay = ({}) => {
 }, [fetchData]);
 
   const addToCartBackend =async () => {
+
+	console.log(addProductRequest.uniqueCartId);
 	try {
 		const response = await axios.post(
-			// BASE_URL+
-			"shopcartifybackend-production.up.railway.app/api/v1/cartProduct/addToCart",
-			{
-				"productName": "frontend product",
-				"supermarketCode": "q97y7",
-				"cartUniqueId": "cart",
-				"numberOfProducts": 1
-			  }
+			BASE_URL+
+			"/api/v1/cart/addToCart",
+		productDetail
 		
 		);
-		console.log(response);
+	
 		if (response.status !== 200){
 			throw new Error("Product not found")
 		}else if (response.status === 200) {
 			
-			AsyncStorage.setItem("cartUniqueId", JSON.stringify(response))
+			AsyncStorage.setItem("uniqueCart", JSON.stringify(response.data))
 
 		console.log(response.data);
+
+		
+		// navigation.navigate("scan")
+
 		}
 		
   
@@ -138,13 +140,28 @@ const ProductDisplay = ({}) => {
 		// navigation.navigate("scan");
 	}
 
-	
+	const handleViewCart =()=>{
+		navigation.navigate('Items')
+	} 	
+	const handleScanAgain =()=>{
+		navigation.navigate('scan')
+	}
 
 
   return (
     <SafeAreaView style={pros.holder}>
     <ScrollView>   
        {/* <View > */}
+	   <Image
+            source={require('../../assets/theme/applogo.png')}
+          style={{left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          top:10/100*(SIZES.width)
+          }}
+          />
       
         <Text style={pros.titleText}>Product Details</Text>
 		 <View>
@@ -152,7 +169,7 @@ const ProductDisplay = ({}) => {
 			<View  style={pros.wrapProduct}>
 				<View style={pros.container}>
 				{/* <Image source={isNotLoading ?productDetail.productQrCodeUrl : undefined} style={pros.image}/> */}
-				<Image source={{ uri: 'http://res.cloudinary.com/dhhhqruoy/image/upload/v1696927822/ShopCartify/QrcodeImages/bagiM8i6.png' }}
+				<Image source={{ uri: isNotLoading ? productDetail.productQrCodeUrl : "akhj"}}
   					style={pros.image} />
 
 					<View style={pros.miniProduct}>
@@ -168,9 +185,12 @@ const ProductDisplay = ({}) => {
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
 					</View> */}
 			
-			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={handleCart}/></View>
-			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={'Items'}/></View>
-			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={''}/></View>
+			<View style={{marginBottom:10,
+			 marginTop:10,
+			 }}><Button title="Add To Cart" onPress={handleCart}/></View>
+			 
+			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View>
+			<View style={{marginBottom:20/100*(SIZES.width),}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
 			
 			</View>
 
@@ -186,15 +206,16 @@ const pros = StyleSheet.create({
 	holder:{
 		flex:1,  
 		backgroundColor:'#4b4b88', 
-		paddingTop: 200,
+		// paddingTop: 200,
 	},
 
 	titleText:{
 		textAlign: 'center',
 		fontSize:20,
 		fontWeight: 'bold',
-		marginBottom:10,
+		// marginBottom:10,
 		color: 'white',
+		top:35/100*(SIZES.width)
 	},
 	text: {
 		fontSize: width < 400 ? 16 : 24, 
@@ -222,7 +243,7 @@ const pros = StyleSheet.create({
 		// width: 500,
 		flex:1,
 		// alignContent: 'center',
-		marginTop: 10,
+		marginTop: 50/100*(SIZES.width),
 		marginHorizontal: 10,
 		backgroundColor:'white',
 		borderRadius: 10,
@@ -249,6 +270,4 @@ const pros = StyleSheet.create({
 
 });
 
-export default ProductDisplay;
-
-
+export default ProductDisplay;

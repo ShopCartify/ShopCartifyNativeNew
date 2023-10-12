@@ -1,4 +1,3 @@
-
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
@@ -60,13 +59,13 @@ const Items = ({navigation}) => {
       }
       return product;
     });
-
+  
     setItems(updatedItems);
-
+  
     const newTotalPrice = updatedItems.reduce((acc, product) => acc + product.total, 0);
-    setTotalPrice(newTotalPrice);
+    setTotal(newTotalPrice); // Update this line to setTotal
   };
-
+  
   const decrement = (item) => {
     const updatedItems = items.map((product) => {
       if (product.productName === item.productName && product.quantity > 0) {
@@ -76,12 +75,13 @@ const Items = ({navigation}) => {
       }
       return product;
     });
-
+  
     setItems(updatedItems);
-
+  
     const newTotalPrice = updatedItems.reduce((acc, product) => acc + product.total, 0);
-    setTotalPrice(newTotalPrice);
+    setTotal(newTotalPrice); // Update this line to setTotal
   };
+  
 
 
   const fetchData =useCallback(async ()=>{
@@ -115,9 +115,7 @@ const Items = ({navigation}) => {
       console.log(error.message);
     }else{
       console.log(error.message);
-    }
-
-      
+    }    
     
   }
 }, []);
@@ -176,11 +174,17 @@ fetchData();
       
     
       {/* <View></View> */}
-      <TouchableOpacity style={{height:80,top:-20}} onPress={() => navigation.navigate('productDisplay')}>
+      <TouchableOpacity style={{height:10/100*(SIZES.height),top:-18/100*(SIZES.width),
+      width:90/100*(SIZES.width),
+      left:2/100*(SIZES.width)}} onPress={() => navigation.navigate('productDisplay')}>
         <ItemButton title= "Wish list"/>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{top:-20}} onPress={() => storageRetrival()}>
+      <TouchableOpacity style={{top:-20/100*(SIZES.width),
+      width:90/100*(SIZES.width),
+      left:2/100*(SIZES.width),
+      height:10/100*(SIZES.height)
+      }} onPress={() => storageRetrival()}>
       <ItemButton title="Check out"/>
         {/* <Button style={addCartStyles.buttonTex}>CHECK OUT</Button> */}
       </TouchableOpacity>
@@ -194,6 +198,7 @@ fetchData();
 };
 
 export default Items;
+
 
 
 
@@ -218,19 +223,21 @@ const Styles = StyleSheet.create({
   //   borderRadius: 5,
   // }, 
   productName: {
-    fontSize: 16,
+    fontSize: 4/100*(SIZES.width),
     fontWeight: 'bold',
+    right:3/100*(SIZES.width)
     // marginLeft: 3,
   },
   productDesc: {
-    fontSize: 14,
+    fontSize: 4/100*(SIZES.width),
     color: 'gray',
-    marginLeft: 2,
+    right:2/100*(SIZES.width)
+    
   },
   price: {
-    fontSize: 16,
+    fontSize: 4/100*(SIZES.width),
     fontWeight: 'bold',
-    left:3
+    right:1/100*(SIZES.width)
   },
   quantitySection: {
     flexDirection: 'row',
@@ -239,21 +246,23 @@ const Styles = StyleSheet.create({
   incrementDecrementButton: {
     backgroundColor: '#007AFF',
     borderRadius: 15,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal: 2/100*(SIZES.width),
+    paddingVertical: 2/100*(SIZES.width),
     marginHorizontal: 5,
+    right:2/100*(SIZES.width)
   },
   buttonText: {
     fontSize: 16,
     color: 'white',
   },
   quantity: {
-    fontSize: 16,
+    fontSize: 4/100*(SIZES.width),
+    right:5
   },
   totalCost: {
-    fontSize: 16,
+    fontSize: 4/100*(SIZES.width),
     fontWeight: 'bold',
-    marginLeft: 10,
+    marginRight: 10/100*(SIZES.width),
     color: 'green',
   },
 });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Alert} from 'react-native';
+import { View, Text, SafeAreaView, ScrollView,styles, Alert,Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Input from '../const/Input';
 import Button from '../const/Button';
@@ -10,6 +10,7 @@ import ImagePicker from 'react-native-image-picker';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
 import { Dimensions,StyleSheet } from 'react-native';
+import { SIZES } from '../const/Sizes';
 
 
 const { width } = Dimensions.get('window');
@@ -112,13 +113,28 @@ const SupermarketScreen = ({}) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green      }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green}}>
       <Loader visible={loading} />
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
-        <Text style={{ color: COLORS.white, fontSize: 30, fontWeight: 'bold', marginTop: 40 }}>
-          supermarket SignUp
+      {/* <View style={styles.header}> */}
+          <Image
+            source={require('../../assets/theme/applogo.png')}
+          style={{  left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          }}
+          />
+      
+            {/* </View> */}
+      <ScrollView contentContainerStyle={{ paddingHorizontal: 6/100*(SIZES.width) }}>
+        <Text style={{ color: COLORS.white, fontSize: 5/100*(SIZES.width),
+         fontWeight: 'bold',
+          marginTop: 25/100*(SIZES.width),
+          left:20/100*(SIZES.width) }}>
+          Supermarket signup
         </Text>
-        <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
+        <Text style={{ color: COLORS.grey, fontSize: 4/100*(SIZES.width), marginVertical: 2/100*(SIZES.width) ,top:10/100*(SIZES.width)}}>
           Enter Your Details for Supermarket Information
         </Text>
         <View style={{ marginVertical: 10 }}>
@@ -170,9 +186,9 @@ const SupermarketScreen = ({}) => {
           style={{
             color: COLORS.grey,
             textAlign: 'center',
-            fontSize: 16,
+            fontSize: 4/100*(SIZES.width),
             fontWeight: 'bold',
-            marginTop: 45,
+            marginTop: 17/100*(SIZES.width),
           }}
         >
           Already have an account?{' '}

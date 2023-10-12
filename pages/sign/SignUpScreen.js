@@ -5,16 +5,17 @@ import COLORS from '../const/Colors'
 import { SafeAreaView } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler';
 import Input from '../const/Input';
-import Button from '../const/Button'
+import SignButton from '../const/SignButton'
 import Loader from '../const/Loader';
 // import { ToastContainer, toast } from "react-toastify";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { Dimensions,StyleSheet } from 'react-native';
 
 
 const { width } = Dimensions.get('window');
 import BASE_URL from '../../secrets/.SecretConstants';
+import { SIZES } from '../const/Sizes';
 
 
 
@@ -46,27 +47,27 @@ const [loading,setLoading]= React.useState(false);
   valid = false
   }
 
-  // if(!inputs.fullName){
-  //   handleError("please input fullname",'fullName')
-  //   valid = false
-  // }
+  if(!inputs.fullName){
+    handleError("please input fullname",'fullName')
+    valid = false
+  }
 
-  // if(!inputs.password){
-  //   handleError("please input password",'password')
-  //   valid = false
-  // }
+  if(!inputs.password){
+    handleError("please input password",'password')
+    valid = false
+  }
 
-  // if(!inputs.phoneNumber){
-  //   handleError("please input phone Number",'phoneNumber')
-  //   valid = false
-  // }else if(inputs.password.length < 5){
-  //   handleError("Min password length of 5",'phoneNumber')
-  // }
+  if(!inputs.phoneNumber){
+    handleError("please input phone Number",'phoneNumber')
+    valid = false
+  }else if(inputs.password.length < 5){
+    handleError("Min password length of 5",'phoneNumber')
+  }
 
-  // if(!inputs.userName){
-  //   handleError("please input user Name",'userName')
-  //   valid = false
-  // }
+  if(!inputs.userName){
+    handleError("please input user Name",'userName')
+    valid = false
+  }
 
 
  
@@ -82,7 +83,7 @@ const [loading,setLoading]= React.useState(false);
 
 		try {
 			const response = await axios.post(
-				BASE_URL+"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/aUserDashboard" ,
+				BASE_URL+"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/UserDashboard",
           inputs
 			
 			)
@@ -91,19 +92,19 @@ const [loading,setLoading]= React.useState(false);
 		} catch (error) {
       alert(error);
 		}
-    // setLoading(true);
+    setLoading(true);
 
-    // setTimeout(()=>{
-    //   setLoading(false);
-    //   try{
-    //     AsyncStorage.setItem("user",JSON.stringify(response.data))
-    //     navigation.navigate('LoginScreen')
-    //   }catch (error){
-    //     alert('Error','Something went wrong', error)
-    //   } 
-    // })
+    setTimeout(()=>{
+      setLoading(false);
+      try{
+        AsyncStorage.setItem("user",JSON.stringify(response.data))
+        navigation.navigate('LoginScreen')
+      }catch (error){
+        alert('Error','Something went wrong', error)
+      } 
+    })
 
-    navigation.navigate("/user_dashboard");
+    navigation.navigate('UserDashboard');
 
 }
 const handleOnChange = (text,input)=>{
@@ -115,21 +116,24 @@ const handleError =(errorMessage,input)=>{
 }
 
   return (
-    <SafeAreaView className="flex-1" style={{backgroundColor: COLORS.green,height:900}}>
+    <SafeAreaView style={{backgroundColor: COLORS.green}}>
     <Loader visible ={loading}/>
     {/* <ToastContainer /> */}
       <ScrollView
          contentContainerStyle={{
             // paddingTop:'200%',
+            paddingVertical: 40/100*(SIZES.width),
             paddingHorizontal:20,
+            width:SIZES.width,
            }}>
-            <Text style={{color:COLORS.white, fontSize:40, fontWeight:'bold',top:0}}>
+            <Text style={{color:COLORS.white, fontSize:10/100*(SIZES.width), fontWeight:'bold',top:10/100*(SIZES.width)}}>
               Register
             </Text>
-            <Text style={{color:COLORS.grey, fontSize:18, marginVertical:10,top:0}}>
+            <Text style={{color:COLORS.grey, fontSize:4.5/100*(SIZES.width), marginVertical:10,top:10/100*(SIZES.width)}}>
               Enter Your Details to register
             </Text>
-               <View style={{marginVertical:1}}>
+               <View style={{marginVertical:1/100*(SIZES.width)}}>
+
             <Input 
               placeholder="Enter your email address"
               iconName="email-outline"
@@ -180,16 +184,16 @@ const handleError =(errorMessage,input)=>{
               handleError(null,'userName')}
               onChangeText={(text) => handleOnChange(text, 'userName')}
             />
-           <Button title="SignUp" onPress={validate}/>
+           <SignButton title="SignUp" onPress={validate}/>
             
             <Text onPress={()=> navigation.navigate('LoginScreen')}
               style={{
                 color:COLORS.grey,
                 textAlign:'center',
-                fontSize:16,
+                fontSize:4/100*(SIZES.width),
                 fontWeight:'bold',
-                top:30,
-                left:20,
+                top:15/100*(SIZES.width),
+                left:10,
               }}>
               
               <Text>
@@ -204,14 +208,3 @@ const handleError =(errorMessage,input)=>{
 export default SignUpScreen;
 
 
-const style = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  text: {
-    fontSize: width < 400 ? 16 : 24,
-    fontWeight: 'bold',
-  },
-});
