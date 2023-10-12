@@ -1,4 +1,4 @@
-import { Text, Keyboard, Alert, View,TextInput} from 'react-native'
+import { Text, Keyboard, Alert, View,Image} from 'react-native'
 import React, { useState } from 'react';
 // import React from 'react'
 import COLORS from '../const/Colors'
@@ -79,12 +79,22 @@ const LoginScreen = ({ navigation }) => {
       <Loader visible={loading} />
       <ScrollView contentContainerStyle={styles.container}
       >
+         <Image
+            source={require('../../assets/theme/applogo.png')}
+          style={{left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          top:-4/100*(SIZES.width)
+          }}
+          />
         <Text style={{ color: COLORS.white, fontSize: 6 / 100 * (SIZES.width),
-         fontWeight: 'bold', top: 40}}>
+         fontWeight: 'bold', top: 20/100*(SIZES.width)}}>
           Supermarket Login
         </Text>
-        <Text style={{ color: COLORS.grey, fontSize: 15, marginVertical: 10, top: 30 }}>
-          Enter Your Details to Log in
+        <Text style={{ color: COLORS.grey, fontSize: 5/100*(SIZES.width), marginVertical: 10, top: 20/100*(SIZES.width) }}>
+          Enter Your Details to Login
         </Text>
 
         <View className="Image">
@@ -96,7 +106,7 @@ const LoginScreen = ({ navigation }) => {
               width: 400 / 100 * (SIZES.width), 
               height: 20 / 100 * (SIZES.height),
                alignItems: "center",
-               top:2/100*(SIZES.width)
+               top:8/100*(SIZES.width)
             }}
           />
         </View>
@@ -148,7 +158,7 @@ const LoginScreen = ({ navigation }) => {
             textAlign: 'center',
             fontSize: 3.5 / 100 * (SIZES.width),
             fontWeight: 'bold',
-            top: 8/100*(SIZES.width),
+            top: 17/100*(SIZES.width),
             left: 20,
           }}>
 
@@ -173,6 +183,7 @@ const styles = StyleSheet.create({
     height: SIZES.height,
     backgroundColor: COLORS.green,
     paddingHorizontal: 3 / 100 * (SIZES.width),
+    height:900/100*(SIZES.width)
   },
   container: {
     // flex: 1,
@@ -191,7 +202,6 @@ const styles = StyleSheet.create({
     display:'flex',
     backgroundColor: "blue",
     position: "relative",
-    // zIndex: 999
     overlayColor: "red"
   },
 });

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text} from 'react-native';
+import { View, Text,Image} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AnotherButton from '../const/AnotherButton'
 import { Dimensions,StyleSheet } from 'react-native';
 import CartButton from '../const/CartButton';
+import { SIZES } from '../const/Sizes';
 // import Expo from 'expo'
 
 const { width } = Dimensions.get('window');
@@ -46,6 +47,17 @@ export default function CodeScanner({navigation}) {
 
   return (
     <View style={styles.container}>
+
+<Image
+            source={require('../../assets/theme/applogo.png')}
+          style={{left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          top:-4/100*(SIZES.width)
+          }}
+          />
       {hasPermission === null ? (<Text style={styles.text}>Camera permission?</Text>) : hasPermission === false ? (
         <Text style={styles.text}>No access to camera</Text>
       ) : (
@@ -110,5 +122,5 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontSize: width < 400 ? 16 : 24,
     // fontWeight: 'bold',
-  },
+  },
 });

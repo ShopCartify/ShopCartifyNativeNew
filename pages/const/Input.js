@@ -99,7 +99,7 @@ const Input = ({
   const [hidePassword, setHidePassword] = useState(password);
 
   return (
-    <View style={{ marginBottom: 20 }}>
+    <View style={{ marginBottom: 20}}>
       <Text style={styles.label}>{label}</Text>
       <View
         style={[
@@ -143,7 +143,7 @@ const Input = ({
         )}
       </View>
       {error && (
-        <Text style={{ color: COLORS.red, top: 5}}>
+        <Text style={{ color: COLORS.red, top:12/100*(SIZES.width),left:3/100*(SIZES.width)}}>
           {error}
         </Text>
       )}
@@ -153,15 +153,16 @@ const Input = ({
 
 const styles = StyleSheet.create({
   label: {
-    marginVertical: 5,
+    marginVertical: 2,
     fontSize: 3.5/100*(SIZES.width),
     // fontSize: 14/100*(SIZES.width),
     color: COLORS.grey,
-    top: 5,
+    top: 10/100*(SIZES.width),
+    left:2/100*(SIZES.width)
   },
   inputContainer: {
     height: 6/100*(SIZES.height),
-    top:1/100*(SIZES.width),
+    top:12/100*(SIZES.width),
     backgroundColor: COLORS.light,
     borderRadius: 10,
     flexDirection: 'row',

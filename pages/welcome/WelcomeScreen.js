@@ -133,7 +133,7 @@ import SignUpScreen from '../sign/SignUpScreen';
 /> */}
 <Text style={styles.tet}>
       Are you a {" "}
-      <Text style={styles.highlight}>ShopCartify user,</Text>
+      <Text style={styles.highlight}>ShopCartify user, </Text>
       Click to get started    
     </Text>
             
@@ -142,7 +142,7 @@ import SignUpScreen from '../sign/SignUpScreen';
 <WelcomeButton title= 'Get started' onPress={handleScreen}
     style={{
     marginTop: 100,
-    top: 15 / 100 * (SIZES.width),
+    top: 10 / 100 * (SIZES.width),
   }}
 
 />
@@ -150,7 +150,7 @@ import SignUpScreen from '../sign/SignUpScreen';
 <WelcomeButton title= 'Get started' onPress={handleNavigation} 
     style={{
     marginTop: 100,
-    top: 18 / 100 * (SIZES.width),
+    top: 6 / 100 * (SIZES.width),
   }}
   />  
         <Text style={styles.text}>
@@ -183,16 +183,16 @@ highlight: {
     paddingBottom: 10/100*(SIZES.height),
   },
     text: {
-      fontSize: 4/100*(SIZES.width), 
+      fontSize: 2.9/100*(SIZES.width), 
       alignItems: 'center', 
       fontWeight:'bold' ,
-      top:-10/100*(SIZES.width),
+      top:-18/100*(SIZES.width),
       width:67/100*(SIZES.width),
       color:COLORS.light,
       
     },
     tet:{
-      fontSize: 4/100*(SIZES.width), 
+      fontSize: 2.9/100*(SIZES.width), 
       alignItems: 'center', 
       fontWeight:'bold' ,
       top:33/100*(SIZES.width),
@@ -273,7 +273,7 @@ highlight: {
   qrcode: {
    width: 40/100*(SIZES.width),
    height:25/100*(SIZES.height),
-    top:-3.5/100*(SIZES.width) 
+    top:-4.9/100*(SIZES.width) 
   },
   getStarted:{
   width:20/100*(SIZES.width)

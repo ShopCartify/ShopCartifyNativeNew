@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Switch, Alert} from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Switch, Alert,Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage for data storage
 import Input from '../const/Input';
 import Button from '../const/Button';
 import Loader from '../const/Loader';
 import COLORS from '../const/Colors';
 import { Dimensions,StyleSheet } from 'react-native';
+import { SIZES } from '../const/Sizes';
 
 
 const { width } = Dimensions.get('window');
@@ -73,11 +74,26 @@ const PersonalScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
       <Loader visible={loading} />
+      <Image
+            source={require('../../assets/theme/applogo.png')}
+          style={{left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          top:4/100*(SIZES.width)
+          }}
+          />
       <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
-        <Text style={{ color: COLORS.white, fontSize: 25, fontWeight: 'bold', marginTop: 40 }}>
+        <Text style={{ color: COLORS.white, 
+        fontSize: 5/100*(SIZES.width), 
+        fontWeight: 'bold', 
+        marginTop: 28/100*(SIZES.width),left:15/100*(SIZES.width)}}>
           Update User Information
         </Text>
-        <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
+        <Text style={{ color: COLORS.grey,
+         fontSize: 4/100*(SIZES.width),
+         left:5/100*(SIZES.width) ,marginVertical: 10 }}>
           Enter Your Details for Personal Information
         </Text>
         <View style={{ marginVertical: 10 }}>
@@ -107,16 +123,16 @@ const PersonalScreen = ({ navigation }) => {
           />
       
         </View>
-        <Text style={{ color: COLORS.white, fontSize: 18, marginTop: 20 }}>Notifications</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-          <Text style={{ color: COLORS.grey, flex: 1 }}>Promotions:</Text>
+        <Text style={{ color: 'red', fontSize: 3/100*(SIZES.height), marginTop: 10/100*(SIZES.width) }}>Notifications</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5/100*(SIZES.width) }}>
+          <Text style={{ color:'orange', flex: 1 }}>Promotions:</Text>
           <Switch
             value={promotionsEnabled}
             onValueChange={(value) => setPromotionsEnabled(value)}
           />
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-          <Text style={{ color: COLORS.grey, flex: 1 }}>Advertising:</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 2/100*(SIZES.width) }}>
+          <Text style={{ color:'orange', flex: 1 }}>Advertising:</Text>
           <Switch
             value={advertisingEnabled}
             onValueChange={(value) => setAdvertisingEnabled(value)}
@@ -139,7 +155,5 @@ const style = StyleSheet.create({
   text: {
     fontSize: width < 400 ? 16 : 24, 
     fontWeight: 'bold',
-  },
+  },
 });
-
-

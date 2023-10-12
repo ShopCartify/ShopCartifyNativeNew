@@ -1,15 +1,12 @@
-import React from 'react';
-import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator, TouchableOpacity} from 'react-native';
-import { useNavigation, Link } from '@react-navigation/native';
-import { useState, useEffect } from 'react';
-
-import {FontAwesome} from 'react-native-vector-icons/FontAwesome';
-
+import React, { useEffect, useState } from 'react';
+import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator, TouchableOpacity ,Image} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { SIZES } from '../const/Sizes';
 
 const SupermarketAdmin = () => {
-
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -24,50 +21,72 @@ const SupermarketAdmin = () => {
   return (
     <SafeAreaView style={styles.allwrap}>
       <ScrollView>
+      <Image
+            source={require('../../assets/theme/applogo.png')}
+          style={{left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          top:-2/100*(SIZES.width)
+          }}
+          />
+        <Text style={styles.titext}>Supermarket Admin</Text>
         {loading ? (
           <View style={styles.loader}>
             <ActivityIndicator size="large" color="orange" />
           </View>
-        ) : (
+        ) :
+         (
           <View style={styles.wrapper}>
-            <View>
+            <View style={styles.sectionsOne}>
               <Text style={styles.pro}>Products</Text>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('PScreen')}
               >
-                <FontAwesome name="search" size={30} color="white" />
-                <Text style={styles.inputText}>Search Products</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="search" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Search Products</Text>
+                </View>
               </TouchableOpacity>
-              
+
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('ViewAllProducts')}
               >
-                <FontAwesome name="list" size={30} color="white" />
-                <Text style={styles.inputText}>View All Products</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="list" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>View All Products</Text>
+                </View>
               </TouchableOpacity>
 
               <TouchableOpacity
                 style={styles.inputa}
                 onPress={() => navigation.navigate('AddProductScreen')}
               >
-                <FontAwesome name="plus" size={30} color="white" />
-                <Text style={styles.inputText}>Add Products</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="plus" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Add Products</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('RemoveProducts')}
               >
-                <FontAwesome name="remove" size={30} color="white" />
-                <Text style={styles.inputText}>Remove Products</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="remove" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Remove Products</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('UpdateProducts')}
               >
-                <FontAwesome name="edit" size={30} color="white" />
-                <Text style={styles.inputText}>Update Products</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="edit" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Update Products</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
@@ -77,8 +96,10 @@ const SupermarketAdmin = () => {
                 style={styles.inputs}
                 onPress={() => navigation.navigate('ConfirmPayment')}
               >
-                <FontAwesome name="check" size={30} color="white" />
-                <Text style={styles.inputText}>Confirm/Approve payment</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="check" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Confirm/Approve payment</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
@@ -88,15 +109,19 @@ const SupermarketAdmin = () => {
                 style={styles.inputs}
                 onPress={() => navigation.navigate('PurchaseHistory')}
               >
-                <FontAwesome name="history" size={30} color="white" />
-                <Text style={styles.inputText}>Purchase History</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="history" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Purchase History</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('TransactionHistory')}
               >
-                <FontAwesome name="history" size={30} color="white" />
-                <Text style={styles.inputText}>Transaction History</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="history" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Transaction History</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
@@ -106,22 +131,28 @@ const SupermarketAdmin = () => {
                 style={styles.inputs}
                 onPress={() => navigation.navigate('InviteAdmin')}
               >
-                <FontAwesome name="user-plus" size={30} color="white" />
-                <Text style={styles.inputText}>Invite Admin</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="user-plus" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Invite Admin</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('AllSupermarketAdmins')}
               >
-                <FontAwesome name="users" size={30} color="white" />
-                <Text style={styles.inputText}>All supermarket admins</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="users" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>All supermarket admins</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('AllCheckoutAdmins')}
               >
-                <FontAwesome name="users" size={30} color="white" />
-                <Text style={styles.inputText}>All checkout admins</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="users" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>All checkout admins</Text>
+                </View>
               </TouchableOpacity>
             </View>
 
@@ -131,29 +162,37 @@ const SupermarketAdmin = () => {
                 style={styles.inputs}
                 onPress={() => navigation.navigate('ViewNotifications')}
               >
-                <FontAwesome name="bell" size={30} color="white" />
-                <Text style={styles.inputText}>View notifications</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="bell" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>View notifications</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('SendReport')}
               >
-                <FontAwesome name="send" size={30} color="white" />
-                <Text style={styles.inputText}>Send report</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="send" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Send report</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('RespondToReports')}
               >
-                <FontAwesome name="comments" size={30} color="white" />
-                <Text style={styles.inputText}>Respond to reports</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="comments" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Respond to reports</Text>
+                </View>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('Logout')}
               >
-                <FontAwesome name="sign-out" size={30} color="white" />
-                <Text style={styles.inputText}>Log out</Text>
+                <View style={styles.iconTextContainer}>
+                  <FontAwesome name="sign-out" size={15} color="white" style={styles.icon} />
+                  <Text style={styles.inputText}>Log out</Text>
+                </View>
               </TouchableOpacity>
             </View>
           </View>
@@ -164,13 +203,15 @@ const SupermarketAdmin = () => {
 };
 
 const styles = StyleSheet.create({
+  
+
   iconTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
 
   icon: {
-    marginRight: 10,
+    marginRight: 4/100*(SIZES.width), 
   },
 
   allwrap:{
@@ -179,32 +220,32 @@ const styles = StyleSheet.create({
 
   loader: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#4b4b88',
-    paddingTop:350,
-    paddingBottom:500,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   title:{
-    marginTop: 45,
-    marginBottom: 15,
+    marginTop: 4/100*(SIZES.width),
+    marginBottom: 15/100*(SIZES.width),
   },
 
   titext:{
-    fontSize: 25,
+    fontSize: 5/100*(SIZES.width),
     fontWeight: 'bold',
     color: 'white',
-    marginTop: 20,
-    marginBottom: 20, 
+    marginTop: 25/100*(SIZES.width),
+    marginBottom: 10/100*(SIZES.width), 
     textAlign: 'center',
   },
 
   inputs: {
     color: 'white',
-    fontSize: 15,
+    // fontSize: 15/100*(SIZES.width),
     marginVertical: 9,
     paddingLeft: 20,
+  },
+  inputText:{
+    color: 'white'
   },
 
   inputa: {

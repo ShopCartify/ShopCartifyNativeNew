@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 import { Link, useNavigation } from '@react-navigation/native';
 import { SIZES } from '../const/Sizes';
+import LottieView from 'lottie-react-native';
 
 const CheckoutAdmin = () => {
   
@@ -51,6 +52,16 @@ const CheckoutAdmin = () => {
                 <Link to="/" style={checky.inputs}>Log out</Link>
             </View>
           </View>
+
+          <View className="Image">
+                <LottieView 
+                source={require('../../assets/theme/admin.json')}
+                autoPlay
+                loop
+                style={{width: 500/100*(SIZES.width), height: 70/100*(SIZES.width),left:6/100*(SIZES.width)
+                }}
+                />
+            </View> 
          </View>
       </ScrollView>
     </SafeAreaView>

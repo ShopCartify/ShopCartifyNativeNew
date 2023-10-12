@@ -44,6 +44,7 @@ const ProductDisplay = ({}) => {
 	   value = JSON.parse(await AsyncStorage.getItem("uniqueCart"))
 	  
 	   setUniqueCartId(JSON.stringify(value.uniqueCartId))
+	   console.log(data);
 		
 		try {
 			const response = await axios.get(
@@ -61,7 +62,7 @@ const ProductDisplay = ({}) => {
 
 	  			setNotLoading(true)
 
-			// console.log(response.data.data);
+			console.log(response.data.data);
 			}
 			
       

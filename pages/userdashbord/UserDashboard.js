@@ -3,6 +3,7 @@ import { View, ScrollView, Text, SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation, Link } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';
 import { Dimensions } from 'react-native';
+import { SIZES } from '../const/Sizes';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -55,6 +56,48 @@ fetchData();
         <View style={styles.wrapper}>
           <View style={styles.title}>
             <Text style={styles.titext}>User dashboard</Text>
+
+          </View>      
+          <View style={styles.sectionsOne}>
+            <Text style={styles.pro}>Information</Text>
+            <View>
+                <Link to="/scan" style={styles.inputs}>Scan</Link>
+            </View>
+
+            
+            <View>
+                <Link to="/SupermarketScreen" style={styles.inputs}>Own a Supermarket</Link>
+            </View>
+
+            <View>
+                <Link to="/WelcomeScreen" style={styles.inputs}>Home button</Link>
+            </View>
+
+            <View>
+                <Link to="/PersonalScreen" style={styles.inputs}>Personal information</Link>
+            </View>
+
+            <View>
+                <Link to="/Items" style={styles.inputs}>View Cart</Link>
+            </View>
+            <View>
+                <Link to="/WishList" style={styles.inputs}>View Wishlist</Link>
+            </View>
+
+             <View>
+                <Link to="/CreateFamily" style={styles.inputs}>CreateFamily</Link>
+            </View> 
+            <View className="Image">
+                <LottieView 
+                source={require('../../assets/theme/GIRL.json')}
+                autoPlay
+                loop
+                style={{width: 550/100*(SIZES.width), height: 80/100*(SIZES.width),right:40,
+                }}
+                />
+            </View> 
+
+
           </View>
           <View style={styles.sectionsOne}>
            <Text> Welcome <Text style={styles.pro}> {email}</Text> </Text>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, TouchableOpacity,Image } from 'react-native';
 // import Loader from '../const/Loader';
 // import ImagePicker from 'react-native-image-picker';
 import COLORS from '../const/Colors'
@@ -8,6 +8,7 @@ import AddBut from '../const/AddBut'
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
 import BASE_URL from '../../secrets/.SecretConstants';
+import { SIZES } from '../const/Sizes';
 
 
 
@@ -46,11 +47,27 @@ const AddProduct = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green }}>
 <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}> 
-    <Text style={{ color: COLORS.white, fontSize: 40, fontWeight: 'bold', marginTop: 40 }}>
+          <Image
+          source={require('../../assets/theme/applogo.png')}
+          style={{left:25/100*(SIZES.width), 
+          resizeMode: "contain",
+          position: "absolute",
+          aspectRatio: 2,
+          width: 45/100*(SIZES.width),
+          top:4/100*(SIZES.width)
+          }}
+          />
+      
+    <Text style={{ color: COLORS.white, 
+    fontSize: 7/100*(SIZES.width), 
+    fontWeight: 'bold', 
+    marginTop: 30/100*(SIZES.width),
+    left:23/100*(SIZES.width)}}>
 Add Product
 </Text>
- <Text style={{ color: COLORS.grey, fontSize: 18, marginVertical: 10 }}>
-Enter Your Details for Personal Information
+ <Text style={{ color: COLORS.grey, 
+ fontSize: 4/100*(SIZES.width),
+  top:4/100*(SIZES.width)}}>
     </Text> 
  <View style={{ marginVertical: 10 }}>
           <Input
@@ -83,24 +100,26 @@ Enter Your Details for Personal Information
                 source={require('../../assets/theme/animationbb.json')}
                 autoPlay
                 loop
-                style={{width: 250, height: 150,top:-10,left:30,
+                style={{width:200/100*(SIZES.width),
+                 height: 50/100*(SIZES.width),
+                 top:2/100*(SIZES.width),left:30,
                 }}
                 />
             </View>
 
  </View>
-       <TouchableOpacity style={{height:90,top:-50}}>
+       <TouchableOpacity style={{height:25/100*(SIZES.height),top:-10/100*(SIZES.width)}}>
       <AddBut title="Select Image" />
       {product.productImageUrl ? (
         <Image source={{ uri: product.productImageUrl }} style={styles.image} />
        ) : null}
        </TouchableOpacity>
-       <TouchableOpacity style={{height:100,top:-60}}>
+       <TouchableOpacity style={{height:20/100*(SIZES.height),top:-35/100*(SIZES.width)}}>
        <AddBut title="Upload Image"  />
       {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>
 
-      <TouchableOpacity style={{height:100,top:-80}}>
+      <TouchableOpacity style={{height:20/100*(SIZES.width),top:-50/100*(SIZES.width)}}>
        <AddBut title="Add Product" onPress={handleSubmit} />
        </TouchableOpacity>
        </ScrollView>
