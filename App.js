@@ -67,49 +67,32 @@ const App = () => {
       ) : ( 
          <Stack.Navigator screenOptions={{ headerShown: false }}>  
 
-
-           {/* <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> 
+           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> 
           <Stack.Screen name="HomeScreen" component={HomeScreen} /> 
           <Stack.Screen name="LoginScreen" component={LoginScreen} /> 
-          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
-          {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
-          {/* <Stack.Screen name="AddproductScreen" component={AddProduct} /> */}
-          {/* <Stack.Screen name="user_dashboard" component={UserDashboard} />  */}
-           {/* <Stack.Screen name="WishList" component={WishList} /> */}
-          {/* <Stack.Screen name="scan" component={CodeScanner} />  */}
-          {/* <Stack.Screen name="Items" component={Items} /> */}
-          {/* <Stack.Screen name="SupermarketAdmin" component={SupermarketAdmin} /> */}
-          {/* <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} /> */}
-          {/* <Stack.Screen name="AdminScreen" component={DashHome} />  */}
-          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> */}
-          {/* <Stack.Screen name ="productDisplay" component={ProductDisplay}/>      */}
-          {/* <Stack.Screen name ="min" component={Admins}/> */}
-          {/* <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/>  */}
-           {/* <Stack.Screen name ="createFamily" component={CreateFamily}/> */}
-          {/* <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
-          <Stack.Screen name ="pay" component={PaystackPayment}/>  */}
-
-
-           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} /> 
-          {/* <Stack.Screen name="HomeScreen" component={HomeScreen} /> */}
-          {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
-          {/* <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  */}
-          {/* <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> */}
-          {/* <Stack.Screen name="AddproductScreen" component={AddProduct} /> */}
-          {/* <Stack.Screen name="user_dashboard" component={UserDashboard} />  */}
-          {/* <Stack.Screen name="WishList" component={WishList} /> */}
-          <Stack.Screen name="scan" component={CodeScanner} />
-          <Stack.Screen name="Items" component={Items} />
-          {/* <Stack.Screen name="SupermarketAdmin" component={SupermarketAdmin} /> */}
-          {/* <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} /> */}
-          {/* <Stack.Screen name="AdminScreen" component={DashHome} />  */}
-          {/* <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} />
-          <Stack.Screen name ="productDisplay" component={ProductDisplay}/>     
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />  
+          <Stack.Screen name="PersonalScreen" component={PersonalScreen} /> 
+          <Stack.Screen name="AddproductScreen" component={AddProduct} /> 
+          <Stack.Screen name="user_dashboard" component={UserDashboard} />
+           <Stack.Screen name="WishList" component={WishList} />
+          <Stack.Screen name="scan" component={CodeScanner} /> 
+          <Stack.Screen name="Items" component={Items} /> 
+          <Stack.Screen name="SupermarketAdmin" component={SupermarketAdmin} /> 
+          <Stack.Screen name="CheckoutScreen" component={CheckoutAdmin} /> 
+          <Stack.Screen name="AdminScreen" component={DashHome} />  
+          <Stack.Screen name="SupermarketScreen" component={SupermarketScreen} /> 
+          <Stack.Screen name ="productDisplay" component={ProductDisplay}/>      
           <Stack.Screen name ="min" component={Admins}/>
-          <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/> 
-          <Stack.Screen name ="createFamily" component={CreateFamily}/>
+           <Stack.Screen name ="ForgotPassword" component={ForgotPassword}/> 
+           <Stack.Screen name ="createFamily" component={CreateFamily}/>
           <Stack.Screen name ="SupermarketLogin" component={SupermarketLogin}/>
-          <Stack.Screen name ="pay" component={PaystackPayment}/>  */}
+          <Stack.Screen name ="pay" component={PaystackPayment}/> 
+
+
+    
+
+
+             
 
         </Stack.Navigator>
       )}  

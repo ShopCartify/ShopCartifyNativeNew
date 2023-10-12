@@ -155,7 +155,5 @@ const style = StyleSheet.create({
   text: {
     fontSize: width < 400 ? 16 : 24, 
     fontWeight: 'bold',
-  },
+  },
 });
-
-

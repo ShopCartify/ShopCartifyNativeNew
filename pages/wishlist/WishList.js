@@ -205,11 +205,4 @@ const wishlistStyles = StyleSheet.create({
   },
 });
 
-export default WishList;
-
-
-
-
-
-
-
+export default WishList;

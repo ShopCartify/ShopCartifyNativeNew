@@ -207,9 +207,10 @@ const handleError =(errorMessage,input)=>{
                 textAlign:'center',
                 fontSize:4/100*(SIZES.width),
                 fontWeight:'bold',
-                top:15/100*(SIZES.width),
-                left:10,
-              }}>  
+                top:45,
+                left:20,
+              }}
+              >
               
               <Text>
               Already have an account?Login 

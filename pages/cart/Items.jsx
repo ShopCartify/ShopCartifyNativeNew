@@ -63,6 +63,9 @@ const Items = ({navigation}) => {
     setItems(updatedItems);
   
     const newTotalPrice = updatedItems.reduce((acc, product) => acc + product.total, 0);
+
+    // setTotalPrice(newTotalPrice);
+
     setTotal(newTotalPrice); // Update this line to setTotal
   };
   
@@ -79,21 +82,25 @@ const Items = ({navigation}) => {
     setItems(updatedItems);
   
     const newTotalPrice = updatedItems.reduce((acc, product) => acc + product.total, 0);
+
+    // setTotalPrice(newTotalPrice);
     setTotal(newTotalPrice); // Update this line to setTotal
+
   };
   
 
 
   const fetchData =useCallback(async ()=>{
-    let value = await AsyncStorage.getItem("uniqueCartId")
-    let data = JSON.stringify(value)
+    let value = await AsyncStorage.getItem("uniqueCart")
+    let data = JSON.parse(value)
     // data = "data"
+    console.log(data.uniqueCartId);
 
   try {
     const response = await axios.get(
-      BASE_URL+"/api/v1/cartProduct/findCartByUniqueCartId/"+ data, 
+      BASE_URL+"/api/v1/cart/findAllCartProductsByUniqueCartId/"+ data.uniqueCartId, 
     );
-    console.log(response.data);
+    // console.log(response.data);
     if (response.status !== 200){
       throw new Error("Product not found")
     }else if (response.status === 200) {

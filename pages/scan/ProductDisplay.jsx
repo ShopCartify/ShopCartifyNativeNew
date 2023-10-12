@@ -13,7 +13,6 @@ import BASE_URL from '../../secrets/.SecretConstants';
 // import WelcomeButton from '../const/WelcomeButton';
 import Button from '../const/Button';
 import AddButton from '../const/ItemButton';
-import { SIZES } from '../const/Sizes';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
@@ -28,10 +27,11 @@ const ProductDisplay = ({}) => {
   const [productDetail , setProductDetail] = useState()
   const [isNotLoading, setNotLoading] = useState(false)
   const[error , setError] = useState()
+  const[uniqueCartId, setUniqueCartId] = useState();
   const[addProductRequest, setAddProductRequest] = useState({
 	"productName": "",
 	"supermarketCode": "",
-	// "cartUniqueId": JSON.parse(AsyncStorage.getItem("uniqueCart")).uniqueCartId,
+	"cartUniqueId": uniqueCartId,
 	"numberOfProducts": 1
   })
   const navigation = useNavigation();
@@ -41,7 +41,10 @@ const ProductDisplay = ({}) => {
     
       let value = await AsyncStorage.getItem("product")
       let data = JSON.stringify(value)
-
+	   value = JSON.parse(await AsyncStorage.getItem("uniqueCart"))
+	  
+	   setUniqueCartId(JSON.stringify(value.uniqueCartId))
+	   console.log(data);
 		
 		try {
 			const response = await axios.get(
@@ -49,7 +52,7 @@ const ProductDisplay = ({}) => {
 					data,
 			
 			);
-			console.log(response.data.data);
+			
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {
@@ -98,8 +101,8 @@ const ProductDisplay = ({}) => {
 
 		console.log(response.data);
 
-		alert( productName + " added")
-		navigation.navigate("WelcomeScreen")
+		
+		// navigation.navigate("scan")
 
 		}
 		
@@ -155,16 +158,6 @@ const ProductDisplay = ({}) => {
     <SafeAreaView style={pros.holder}>
     <ScrollView>   
        {/* <View > */}
-	   <Image
-            source={require('../../assets/theme/applogo.png')}
-          style={{left:25/100*(SIZES.width), 
-          resizeMode: "contain",
-          position: "absolute",
-          aspectRatio: 2,
-          width: 45/100*(SIZES.width),
-          top:10/100*(SIZES.width)
-          }}
-          />
       
         <Text style={pros.titleText}>Product Details</Text>
 		 <View>
@@ -206,16 +199,15 @@ const pros = StyleSheet.create({
 	holder:{
 		flex:1,  
 		backgroundColor:'#4b4b88', 
-		// paddingTop: 200,
+		paddingTop: 200,
 	},
 
 	titleText:{
 		textAlign: 'center',
 		fontSize:20,
 		fontWeight: 'bold',
-		// marginBottom:10,
+		marginBottom:10,
 		color: 'white',
-		top:35/100*(SIZES.width)
 	},
 	text: {
 		fontSize: width < 400 ? 16 : 24, 
@@ -243,7 +235,7 @@ const pros = StyleSheet.create({
 		// width: 500,
 		flex:1,
 		// alignContent: 'center',
-		marginTop: 50/100*(SIZES.width),
+		marginTop: 10,
 		marginHorizontal: 10,
 		backgroundColor:'white',
 		borderRadius: 10,
@@ -270,4 +262,6 @@ const pros = StyleSheet.create({
 
 });
 
-export default ProductDisplay;
+export default ProductDisplay;
+
+
