@@ -83,12 +83,7 @@ const ProductDisplay = ({}) => {
 		const response = await axios.post(
 			BASE_URL+
 			"/api/v1/cart/addToCart",
-			{
-				"productName": "frontend product",
-				"supermarketCode": "q97y7",
-				"cartUniqueId": "cart",
-				"numberOfProducts": 1
-			  }
+		productDetail
 		
 		);
 		console.log(response);
@@ -99,7 +94,10 @@ const ProductDisplay = ({}) => {
 			AsyncStorage.setItem("cartUniqueId", JSON.stringify(response))
 
 		console.log(response.data);
-		
+
+		alert( productName + " added")
+		navigation.navigate("WelcomeScreen")
+
 		}
 		
   
@@ -139,7 +137,12 @@ const ProductDisplay = ({}) => {
 		// navigation.navigate("scan");
 	}
 
-	
+	const handleViewCart =()=>{
+		navigation.navigate('Items')
+	} 	
+	const handleScanAgain =()=>{
+		navigation.navigate('scan')
+	}
 
 
   return (
@@ -153,7 +156,7 @@ const ProductDisplay = ({}) => {
 			<View  style={pros.wrapProduct}>
 				<View style={pros.container}>
 				{/* <Image source={isNotLoading ?productDetail.productQrCodeUrl : undefined} style={pros.image}/> */}
-				<Image source={{ uri: 'http://res.cloudinary.com/dhhhqruoy/image/upload/v1696927822/ShopCartify/QrcodeImages/bagiM8i6.png' }}
+				<Image source={{ uri: isNotLoading ? productDetail.productQrCodeUrl : "akhj"}}
   					style={pros.image} />
 
 					<View style={pros.miniProduct}>
@@ -170,8 +173,8 @@ const ProductDisplay = ({}) => {
 					</View> */}
 			
 			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={handleCart}/></View>
-			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={'Items'}/></View>
-			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={''}/></View>
+			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View>
+			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
 			
 			</View>
 
