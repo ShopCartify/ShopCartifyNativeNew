@@ -7,8 +7,8 @@ const Loader = ({visible = false})=>{
          visible && (
          <View style={[style.container,{height,width}]}>
             <View style={style.Loader}>
-                <ActivityIndicator size="large" color={COLORS.blue}/>
-                <Text style={{marginRight:10,fontSize:16}}>Loading...</Text>
+                <ActivityIndicator size="large" color={COLORS.yellow}/>
+                <Text style={{marginRight:10,fontSize:16}}></Text>
             </View>
          </View>
          )
@@ -19,7 +19,7 @@ const style = StyleSheet.create({
     container:{
         position:'absolute',
         zIndex:10,
-        backgroundColor:'rgba(0,0,0,0.5',
+        backgroundColor:'rgba(0,0,0,0.5)',
         justifyContent:'center',
     },
     Loader:{

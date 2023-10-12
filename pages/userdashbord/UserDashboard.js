@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 20,
     marginBottom: 20,
-    marginLeft: 60,
+    marginLeft: 110,
   },
   inputs: {
     color: 'white',

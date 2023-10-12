@@ -1,4 +1,4 @@
-const NG_ROK_URL = "https://521e-62-173-45-70.ngrok-free.app "
+const NG_ROK_URL = "https://6794-62-173-45-70.ngrok-free.app"
 
  const LOCAL_HOST_URL =  "http://localhost:1961"
 
