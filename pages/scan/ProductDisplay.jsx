@@ -124,7 +124,7 @@ const ProductDisplay = ({}) => {
 
 	// 	if (productsArray === null) {
 	// 		productsArray = [];
-			
+			 
 	// 	} else {
 	// 		productsArray = JSON.parse(productsArray);
 	// 	}
@@ -135,7 +135,10 @@ const ProductDisplay = ({}) => {
     
 	// };
 	const handleCart=(event)=>{
-		event.preventDefault();
+		// event.preventDefault();  
+		// setCartItems((prev) =>({
+		// 	...prev, [e.target.name]: event.target.value,
+		// }))
 		addToCartBackend()
 		// navigation.navigate("scan");
 	}

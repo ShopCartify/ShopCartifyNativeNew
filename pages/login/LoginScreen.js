@@ -166,7 +166,7 @@ const LoginScreen = ({ navigation }) => {
               width: 550 / 100 * (SIZES.width), 
               height: 30 / 100 * (SIZES.height),
                alignItems: "center",
-               top:8/100*(SIZES.width)
+               top:5/100*(SIZES.width)
             }}
           />
         </View>

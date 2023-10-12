@@ -108,13 +108,13 @@ Add Product
             </View>
 
  </View>
-       <TouchableOpacity style={{height:25/100*(SIZES.height),top:-10/100*(SIZES.width)}}>
+       <TouchableOpacity style={{height:20/100*(SIZES.height),top:-3/100*(SIZES.width)}}>
       <AddBut title="Select Image" />
       {product.productImageUrl ? (
         <Image source={{ uri: product.productImageUrl }} style={styles.image} />
        ) : null}
        </TouchableOpacity>
-       <TouchableOpacity style={{height:20/100*(SIZES.height),top:-35/100*(SIZES.width)}}>
+       <TouchableOpacity style={{height:20/100*(SIZES.height),top:-28/100*(SIZES.width)}}>
        <AddBut title="Upload Image"  />
       {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>

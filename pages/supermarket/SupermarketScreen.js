@@ -11,6 +11,7 @@ import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
 import { Dimensions,StyleSheet } from 'react-native';
 import BASE_URL from '../../secrets/.SecretConstants';
+import { SIZES } from '../const/Sizes';
 
 
 const { width } = Dimensions.get('window');
