@@ -98,7 +98,7 @@ const Items = ({navigation}) => {
 
   try {
     const response = await axios.get(
-      BASE_URL+"/api/v1/cart/findCartByUniqueCartId/"+ data.uniqueCartId, 
+      BASE_URL+"/api/v1/cart/findAllCartProductsByUniqueCartId/"+ data.uniqueCartId, 
     );
     // console.log(response.data);
     if (response.status !== 200){
