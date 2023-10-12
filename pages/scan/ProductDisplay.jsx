@@ -81,8 +81,8 @@ const ProductDisplay = ({}) => {
   const addToCartBackend =async () => {
 	try {
 		const response = await axios.post(
-			// BASE_URL+
-			"shopcartifybackend-production.up.railway.app/api/v1/cartProduct/addToCart",
+			BASE_URL+
+			"/api/v1/cart/addToCart",
 			{
 				"productName": "frontend product",
 				"supermarketCode": "q97y7",
@@ -99,6 +99,7 @@ const ProductDisplay = ({}) => {
 			AsyncStorage.setItem("cartUniqueId", JSON.stringify(response))
 
 		console.log(response.data);
+		
 		}
 		
   
