@@ -1,5 +1,7 @@
 import  { Paystack, PayStackWebView , paystackProps}  from 'react-native-paystack-webview';
 // import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView,Ljinking } from 'react-native';
+
+
 import { View, Text,StyleSheet, TextInput} from 'react-native';
 import { useState } from 'react';
 import axios from 'axios';
@@ -8,6 +10,7 @@ import Button from '../const/Button';
 import COLORS from '../const/Colors';
 // import { TextInput } from 'react-native-gesture-handler';>
 // import WelcomeButton from '../const/WelcomeButton';
+
 
 
 

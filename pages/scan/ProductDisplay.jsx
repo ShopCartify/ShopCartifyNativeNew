@@ -98,8 +98,8 @@ const ProductDisplay = ({}) => {
 
 		console.log(response.data);
 
-		
-		// navigation.navigate("scan")
+		alert( productName + " added")
+		navigation.navigate("WelcomeScreen")
 
 		}
 		
@@ -185,12 +185,9 @@ const ProductDisplay = ({}) => {
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
 					</View> */}
 			
-			<View style={{marginBottom:10,
-			 marginTop:10,
-			 }}><Button title="Add To Cart" onPress={handleCart}/></View>
-			 
+			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={handleCart}/></View>
 			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View>
-			<View style={{marginBottom:20/100*(SIZES.width),}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
+			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
 			
 			</View>
 

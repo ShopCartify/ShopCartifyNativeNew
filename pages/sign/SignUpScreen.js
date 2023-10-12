@@ -1,5 +1,5 @@
 import { View, Text, Keyboard } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import COLORS from '../const/Colors'
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { SafeAreaView } from 'react-native'
@@ -11,14 +11,11 @@ import Loader from '../const/Loader';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { Dimensions,StyleSheet } from 'react-native';
-
-
-const { width } = Dimensions.get('window');
 import BASE_URL from '../../secrets/.SecretConstants';
 import { SIZES } from '../const/Sizes';
 
 
-
+const { width } = Dimensions.get('window');
 
 const SignUpScreen = ({navigation})=> {
   // const validate = () => {};
@@ -30,8 +27,14 @@ const SignUpScreen = ({navigation})=> {
      showPassword: false,
     userName: "",
   })
+  const [user, setUser] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    userName: "",
+    id: ""
+  })
 
-  
 const [error,setError]= React.useState({});
 const [loading,setLoading]= React.useState(false);
 
@@ -83,16 +86,27 @@ const [loading,setLoading]= React.useState(false);
 
 		try {
 			const response = await axios.post(
-				BASE_URL+"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/UserDashboard",
+				BASE_URL+"/api/v1/auth/register" ,
           inputs
 			
 			)
-      console.log('response is: ' +  response.data.id);
+      console.log('response is: ' +  response.data.data);
       alert('sign up was successful');
+      let responseValue = response.data
+      setUser(responseValue)
+      AsyncStorage.setItem("user", JSON.stringify(responseValue))
+
+      navigation.navigate('user_dashboard');
+
 		} catch (error) {
       alert(error);
+      console.log("network error! ");
 		}
-    setLoading(true);
+    setLoading(true)
+
+    
+    // setLoading(true);
+
 
     setTimeout(()=>{
       setLoading(false);
@@ -103,6 +117,7 @@ const [loading,setLoading]= React.useState(false);
         alert('Error','Something went wrong', error)
       } 
     })
+
 
     navigation.navigate('UserDashboard');
 
@@ -194,7 +209,7 @@ const handleError =(errorMessage,input)=>{
                 fontWeight:'bold',
                 top:15/100*(SIZES.width),
                 left:10,
-              }}>
+              }}>  
               
               <Text>
               Already have an account?Login 

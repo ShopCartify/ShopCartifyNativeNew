@@ -10,12 +10,12 @@ import ImagePicker from 'react-native-image-picker';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
 import { Dimensions,StyleSheet } from 'react-native';
-import { SIZES } from '../const/Sizes';
+import BASE_URL from '../../secrets/.SecretConstants';
 
 
 const { width } = Dimensions.get('window');
 
-let userId = 1
+
 let supermarketCode =  "" 
 
 const SupermarketScreen = ({}) => {
@@ -23,7 +23,7 @@ const SupermarketScreen = ({}) => {
     "supermarketName": "",
     "supermarketEmail": "",
     "cacUrl": "",
-    "registeredUserId": userId,
+    "registeredUserId": 1,
     "supermarketLocation": "",
   });
 
@@ -64,15 +64,16 @@ const SupermarketScreen = ({}) => {
     // alert(inputs.supermarketEmail)
 		try {
 			const response = await axios.post(
-				"https://8f2d-62-173-45-70.ngrok-free.app/api/v1/supermarketAdminController/registerSupermarketAdmin" ,
+				BASE_URL+"/api/v1/supermarketAdminController/registerSupermarketAdmin" ,
           inputs
 			
 			)
       // console.log(response.data);
-      alert(response.data.data)
+      console.log(response.data.data)
       alert("successful registration")
       AsyncStorage.setItem("supermarket",JSON.stringify(response.data.data))  
       // navigation.navigate("SupermarketAdminScreen");
+      navigation.navigate("SupermarketAdmin");
 		} catch (error) {
       console.log(error);
 		}
@@ -87,7 +88,7 @@ const SupermarketScreen = ({}) => {
         // Alert.alert('Error','Something went wrong')
       }
     })
-    navigation.navigate("SupermarketAdmin");
+    // navigation.navigate("SupermarketAdmin");
 
   }
 
@@ -115,27 +116,12 @@ const SupermarketScreen = ({}) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.green}}>
       <Loader visible={loading} />
-      {/* <View style={styles.header}> */}
-          <Image
-            source={require('../../assets/theme/applogo.png')}
-          style={{  left:25/100*(SIZES.width), 
-          resizeMode: "contain",
-          position: "absolute",
-          aspectRatio: 2,
-          width: 45/100*(SIZES.width),
-          }}
-          />
-      
-            {/* </View> */}
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 6/100*(SIZES.width) }}>
-        <Text style={{ color: COLORS.white, fontSize: 5/100*(SIZES.width),
-         fontWeight: 'bold',
-          marginTop: 25/100*(SIZES.width),
-          left:20/100*(SIZES.width) }}>
-          Supermarket signup
+      <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
+        <Text style={{ color: COLORS.white, fontSize: 30, fontWeight: 'bold', marginTop:45, textAlign:'center',}}>
+          Register supermarket
         </Text>
-        <Text style={{ color: COLORS.grey, fontSize: 4/100*(SIZES.width), marginVertical: 2/100*(SIZES.width) ,top:10/100*(SIZES.width)}}>
-          Enter Your Details for Supermarket Information
+        <Text style={{ color: COLORS.grey, fontSize: 15, marginVertical:10, textAlign:'center', }}>
+          Enter supermarket information
         </Text>
         <View style={{ marginVertical: 10 }}>
          
@@ -157,7 +143,7 @@ const SupermarketScreen = ({}) => {
           />
       
           <Input
-            placeholder="Company Location"
+            placeholder="Company location"
             // iconName="location-outline"
             label="Company Location"
             error={error.companyLocation}
@@ -167,7 +153,7 @@ const SupermarketScreen = ({}) => {
            <Input
             placeholder="Enter your CAC Rc no."
             iconName="lock-outline"
-            label="CAC"
+            label="CAC-Rc no."
             // secureTextEntry={true}
             error={error.CAC}
             onFocus={() => handleError(null, 'CAC')}
