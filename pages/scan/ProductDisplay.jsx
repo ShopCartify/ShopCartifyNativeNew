@@ -28,6 +28,7 @@ const ProductDisplay = ({}) => {
   const [isNotLoading, setNotLoading] = useState(false)
   const[error , setError] = useState()
   const[uniqueCartId, setUniqueCartId] = useState();
+  const[btnTittle, setBtnTittle] = useState("Add To Cart");
   const[addProductRequest, setAddProductRequest] = useState({
 	"productName": "",
 	"supermarketCode": "",
@@ -52,21 +53,23 @@ const ProductDisplay = ({}) => {
 					data,
 			
 			);
-			
+			setBtnTittle("Retriving...")
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {
 				
 	  			setProductDetail(response.data.data)
 				setAddProductRequest(response.data.data)
-
+				setBtnTittle('SUCCESS!')
 	  			setNotLoading(true)
 
 			console.log(response.data.data);
+			setBtnTittle("Add To Cart")
 			}
 			
       
 		} catch (error) {
+			setBtnTittle("Product Not Found")
 			if(error.message === "Request failed with status code 500" ){
 				
 				console.log(error.message)
@@ -75,6 +78,7 @@ const ProductDisplay = ({}) => {
 			}else{
 				console.log(error.message);
 			}
+			setBtnTittle("Add To Cart")
 		}
   }, []);
 
@@ -92,6 +96,7 @@ const ProductDisplay = ({}) => {
 		productDetail
 		
 		);
+		setBtnTittle("Adding Product To Cart")
 	
 		if (response.status !== 200){
 			throw new Error("Product not found")
@@ -101,13 +106,15 @@ const ProductDisplay = ({}) => {
 
 		console.log(response.data);
 
-		
-		// navigation.navigate("scan")
+		setBtnTittle("Successful!")
+		navigation.navigate("WelcomeScreen")
 
 		}
 		
   
 	} catch (error) {
+		setBtnTittle(Failed)
+		alert("unable to add product to cart. Try again")
 		if(error.message === "Request failed with status code 500" ){
 			
 			console.log(error.message)
@@ -147,6 +154,7 @@ const ProductDisplay = ({}) => {
 		navigation.navigate('Items')
 	} 	
 	const handleScanAgain =()=>{
+		
 		navigation.navigate('scan')
 	}
 
@@ -178,7 +186,7 @@ const ProductDisplay = ({}) => {
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
 					</View> */}
 			
-			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={handleCart}/></View>
+			<View style={{marginBottom:10, marginTop:10,}}><Button title={btnTittle} onPress={handleCart}/></View>
 			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View>
 			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
 			

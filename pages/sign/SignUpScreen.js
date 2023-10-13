@@ -34,13 +34,14 @@ const SignUpScreen = ({navigation})=> {
     userName: "",
     id: ""
   })
-
+const [btnTittle, setBtnTittle] = useState("SignUp")
 const [error,setError]= React.useState({});
 const [loading,setLoading]= React.useState(false);
 
   const validate = () => {
     let valid = true;
   Keyboard.dismiss();
+  setBtnTittle("Procesing... ")
   if(!inputs.email){
     handleError("please input email",'email')
     valid = false;
@@ -81,17 +82,18 @@ const [loading,setLoading]= React.useState(false);
 }
 
   const register = async ()=>{
-    alert("processing ... "+inputs.firstName)
+    // alert("processing ... "+inputs.firstName)
 
 
 		try {
 			const response = await axios.post(
 				BASE_URL+"/api/v1/auth/register" ,
           inputs
-			
 			)
+      setBtnTittle("Successful...")
       console.log('response is: ' +  response.data.data);
       alert('sign up was successful');
+
       let responseValue = response.data
       setUser(responseValue)
       AsyncStorage.setItem("user", JSON.stringify(responseValue))
@@ -119,7 +121,7 @@ const [loading,setLoading]= React.useState(false);
     })
 
 
-    navigation.navigate('UserDashboard');
+    // navigation.navigate('UserDashboard');
 
 }
 const handleOnChange = (text,input)=>{
@@ -199,7 +201,7 @@ const handleError =(errorMessage,input)=>{
               handleError(null,'userName')}
               onChangeText={(text) => handleOnChange(text, 'userName')}
             />
-           <SignButton title="SignUp" onPress={validate}/>
+           <SignButton title={btnTittle} onPress={validate}/>
             
             <Text onPress={()=> navigation.navigate('LoginScreen')}
               style={{
@@ -210,8 +212,7 @@ const handleError =(errorMessage,input)=>{
                 top:45,
                 left:20,
               }}
-              >
-              
+              >              
               <Text>
               Already have an account?Login 
               </Text>
