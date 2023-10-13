@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, ScrollView, Text, SafeAreaView, StyleSheet, ActivityIndicator, TouchableOpacity ,Image} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, Link } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { SIZES } from '../const/Sizes';
 
 const SupermarketAdmin = () => {
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,15 +62,15 @@ const SupermarketAdmin = () => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity
+              <View
                 style={styles.inputa}
-                onPress={() => navigation.navigate('AddProductScreen')}
+                onPress={() => navigation.navigate({})}
               >
                 <View style={styles.iconTextContainer}>
                   <FontAwesome name="plus" size={15} color="white" style={styles.icon} />
-                  <Text style={styles.inputText}>Add Products</Text>
+                  <Link to={"/AddproductScreen"}><Text style={styles.inputText}>Add Products</Text></Link>
                 </View>
-              </TouchableOpacity>
+              </View>
               <TouchableOpacity
                 style={styles.inputs}
                 onPress={() => navigation.navigate('RemoveProducts')}
@@ -215,6 +216,7 @@ const styles = StyleSheet.create({
   },
 
   allwrap:{
+    flex: 1,
     backgroundColor:'#4b4b88',
   },
 

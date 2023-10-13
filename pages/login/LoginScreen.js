@@ -46,6 +46,7 @@ const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = React.useState(false);
   const [showInput, setShowInput] = useState(false);
   const [isFocused, setIsFocused] = useState(false)
+  const [btnTittle, setBtnTittle] = useState("Login")
 
 
   // const handleCheckboxChange = () => {
@@ -68,9 +69,9 @@ const LoginScreen = ({ navigation }) => {
   };
 
 
-
   const validate = () => {
     ;
+    setBtnTittle("verifying ")
     let valid = true;
     Keyboard.dismiss();
     if (!inputs.email) {
@@ -87,7 +88,7 @@ const LoginScreen = ({ navigation }) => {
     }
   }
   const login = async () => {
-    alert("processing ... ")
+    setBtnTittle("processing ... ")
 
 
     try {
@@ -97,6 +98,7 @@ const LoginScreen = ({ navigation }) => {
 
       )
       // console.log('response is: ' + response.data);
+      setBtnTittle('login successful');
       alert('login successful');
       let responseValue = response.data
       
@@ -106,10 +108,16 @@ const LoginScreen = ({ navigation }) => {
       navigation.navigate('user_dashboard') 
 
     } catch (error) {
-      alert(error);
+      setBtnTittle("error login failed");
       console.log("error");
       console.log(error);
     }
+    setTimeout(() => {
+      setBtnTittle("Login")
+    
+    }, 2000);
+    // setBtnTittle("Login")
+
     // setLoading(true);
     // setTimeout(async()=>{
     //   setLoading(false);
@@ -254,7 +262,7 @@ const LoginScreen = ({ navigation }) => {
             /> */}
            
 
-        <Button title="Login" onPress={validate} />
+        <Button title={btnTittle} onPress={validate} />
         <Text onPress={() => navigation.navigate('SignUpScreen')}
 
           // onPress={validate}

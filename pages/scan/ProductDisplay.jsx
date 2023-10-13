@@ -35,6 +35,7 @@ const {setCartItems} = useContext(CartContext)
   const [isNotLoading, setNotLoading] = useState(false)
   const[error , setError] = useState()
   const[uniqueCartId, setUniqueCartId] = useState();
+  const[btnTittle, setBtnTittle] = useState("Add To Cart");
   const[addProductRequest, setAddProductRequest] = useState({
 	"productName": "",
 	"supermarketCode": "",
@@ -64,21 +65,23 @@ const {setCartItems} = useContext(CartContext)
 					data,
 			
 			);
-			
+			setBtnTittle("Retriving...")
 			if (response.status !== 200){
 				throw new Error("Product not found")
 			}else if (response.status === 200) {
 				
 	  			setProductDetail(response.data.data)
-				setAddProductRequest(response.data.data) //here set details
-				addToCart(productDetail)
+				setAddProductRequest(response.data.data)
+				setBtnTittle('SUCCESS!')
 	  			setNotLoading(true)
 
 			console.log(response.data.data);
+			setBtnTittle("Add To Cart")
 			}
 			
       
 		} catch (error) {
+			setBtnTittle("Product Not Found")
 			if(error.message === "Request failed with status code 500" ){
 				
 				console.log(error.message)
@@ -87,6 +90,7 @@ const {setCartItems} = useContext(CartContext)
 			}else{
 				console.log(error.message);
 			}
+			setBtnTittle("Add To Cart")
 		}
   }, []);
 
@@ -104,20 +108,25 @@ const {setCartItems} = useContext(CartContext)
 		productDetail
 		
 		);
-		console.log("Add to cart res");
-		console.log("Add to cart res --> ", response.data);
-		if (response.status === 200){
+		setBtnTittle("Adding Product To Cart")
+	
+		if (response.status !== 200){
+			throw new Error("Product not found")
+		}else if (response.status === 200) {
 			setCartItems(response.data.data)
 			AsyncStorage.setItem("uniqueCart", JSON.stringify(response.data))
 
-			console.log(response.data);
-		}else if (response.status !== 200) {
-			throw new Error("Product not found")		
-		// navigation.navigate("scan")
+		console.log(response.data);
+
+		setBtnTittle("Successful!")
+		navigation.navigate("WelcomeScreen")
+
 		}
 		
   
 	} catch (error) {
+		setBtnTittle(Failed)
+		alert("unable to add product to cart. Try again")
 		if(error.message === "Request failed with status code 500" ){
 			
 			console.log(error.message)
@@ -160,6 +169,7 @@ const {setCartItems} = useContext(CartContext)
 		navigation.navigate('Items')
 	} 	
 	const handleScanAgain =()=>{
+		
 		navigation.navigate('scan')
 	}
 
@@ -179,6 +189,7 @@ const {setCartItems} = useContext(CartContext)
   					style={pros.image} />
 
 					<View style={pros.miniProduct}>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>supermarket Name:</Text>{isNotLoading ?productDetail.supermarketName : <Text> Loading... </Text>} </Text>
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Name:</Text>{isNotLoading ?productDetail.productName : <Text> Loading... </Text>} </Text>
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Description:</Text>{isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
@@ -191,7 +202,7 @@ const {setCartItems} = useContext(CartContext)
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
 					</View> */}
 			
-			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={addToCartBackend}/></View>
+			<View style={{marginBottom:10, marginTop:10,}}><Button title={btnTittle} onPress={handleCart}/></View>
 			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View>
 			<View style={{marginBottom:20/100*(SIZES.width),}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
 			

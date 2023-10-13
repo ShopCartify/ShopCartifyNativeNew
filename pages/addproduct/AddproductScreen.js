@@ -14,12 +14,13 @@ import { SIZES } from '../const/Sizes';
 
 const AddProduct = () => {
   const [error, setError] = useState('');
+  const [btnTitle, setBtnTittle] = useState("Add Product");
   const [product, setProduct] = useState({
     productName: '',
     productPrice: '0.00',
     productDescription: '',
     productImageUrl: '', 
-    supermarketCode: 'nA0f5',
+    supermarketCode: '',
   });
 
     
@@ -28,7 +29,7 @@ const AddProduct = () => {
   };
 
   const handleSubmit = async () => {
-    
+    setBtnTittle("Process...")
     try {
         const response = await axios.post(
           BASE_URL+"/api/v1/productController/addNewProduct" ,
@@ -39,6 +40,7 @@ const AddProduct = () => {
 
     } catch (error) {
       setError(error.message || 'An error occurred while submitting the form.');
+      setBtnTittle("Unsuccessful!!")
       // toast.error('Error submitting form:', error);
       alert('Error submitting form:', error)
     }
@@ -86,6 +88,7 @@ Add Product
             // onFocus={() => handleError(null, 'productPrice')}
             onChangeText={(text) => handleOnChange(text, 'productPrice')}
           />
+        
             <Input
             placeholder="Enter your product description"
            
@@ -94,7 +97,14 @@ Add Product
             // onFocus={() => handleError(null, 'productDescription')}
             onChangeText={(text) => handleOnChange(text, 'productDescription')}
           />
-
+    <Input
+            placeholder="Enter your supermarket code"
+           
+            label="Supermarket Code"
+            error={error.supermarketCode}
+            // onFocus={() => handleError(null, 'productDescription')}
+            onChangeText={(text) => handleOnChange(text, 'supermarketCode')}
+          />
           <View className="Image">
                 <LottieView 
                 source={require('../../assets/theme/animationbb.json')}
@@ -120,8 +130,8 @@ Add Product
       {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>
 
-      <TouchableOpacity style={{height:8/100*(SIZES.width),top:-37/100*(SIZES.width)}}>
-       <AddBut title="Add Product" onPress={handleSubmit} />
+      <TouchableOpacity style={{height:20/100*(SIZES.width),top:-50/100*(SIZES.width)}}>
+       <AddBut title={btnTitle} onPress={handleSubmit} />
        </TouchableOpacity>
        </View>
        </ScrollView>

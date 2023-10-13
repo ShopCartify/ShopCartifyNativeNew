@@ -31,6 +31,7 @@ const SupermarketScreen = ({}) => {
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [btnTitle, setBtnTittle] = useState("Sign Up");
   const [selectedImage, setSelectedImage] = useState(null); // State for selected image
 
   const navigation = useNavigation();
@@ -63,6 +64,7 @@ const SupermarketScreen = ({}) => {
   };
   const register = async ()=>{
     // alert(inputs.supermarketEmail)
+    setBtnTittle("Loading...")
 		try {
 			const response = await axios.post(
 				BASE_URL+"/api/v1/supermarketAdminController/registerSupermarketAdmin" ,
@@ -70,10 +72,12 @@ const SupermarketScreen = ({}) => {
 			
 			)
       // console.log(response.data);
+      setBtnTittle("On Boarding...")
       console.log(response.data.data)
       alert("successful registration")
       AsyncStorage.setItem("supermarket",JSON.stringify(response.data.data))  
       // navigation.navigate("SupermarketAdminScreen");
+
       navigation.navigate("SupermarketAdmin");
 		} catch (error) {
       console.log(error);
@@ -167,7 +171,7 @@ const SupermarketScreen = ({}) => {
           <Text>{selectedImage ? 'Yes' : ''}</Text>
           <Button title="Pick an Image" />
         </View> */}
-        <Button title="Sign Up" onPress={register} />
+        <Button title={btnTitle} onPress={register} />
         <Text
           onPress={() => navigation.navigate('SupermarketLogin')}
           style={{
