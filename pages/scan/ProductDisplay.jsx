@@ -174,6 +174,7 @@ const ProductDisplay = ({}) => {
   					style={pros.image} />
 
 					<View style={pros.miniProduct}>
+						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>supermarket Name:</Text>{isNotLoading ?productDetail.supermarketName : <Text> Loading... </Text>} </Text>
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Name:</Text>{isNotLoading ?productDetail.productName : <Text> Loading... </Text>} </Text>
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Description:</Text>{isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
