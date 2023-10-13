@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text,Image} from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AnotherButton from '../const/AnotherButton'
-import { Dimensions,StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import CartButton from '../const/CartButton';
 import { SIZES } from '../const/Sizes';
+// import { useCart } from './CartContext'; 
 // import Expo from 'expo'
 
 const { width } = Dimensions.get('window');
@@ -14,10 +15,12 @@ const { width } = Dimensions.get('window');
 const product = "product";
 
 
-export default function CodeScanner({navigation}) {
-  const [hasPermission, setHasPermission] = useState(null);  
+export default function CodeScanner({ navigation }) {
+  const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [scannedData, setScannedData] = useState(null);
+
+
 
   useEffect(() => {
     (async () => {
@@ -29,17 +32,17 @@ export default function CodeScanner({navigation}) {
   // useEffect(() => {
   //   Expo.BarCodeScanner.startScanningAsync();
   //   const scanAgain = BarCodeScanner.addListener('barCodeScanned', handleBarCodeScanned);
-  
+
   //   return () => {
   //     scanAgain.remove();
   //   };
   // }, []);
- 
+
   const handleBarCodeScanned = ({ type, data }) => {
 
     setScanned(true);
     setScannedData(data);
-
+   
     AsyncStorage.setItem(product, data)
     navigation.navigate('productDisplay')
   };
@@ -48,16 +51,17 @@ export default function CodeScanner({navigation}) {
   return (
     <View style={styles.container}>
 
-<Image
-            source={require('../../assets/theme/applogo.png')}
-          style={{left:25/100*(SIZES.width), 
+      <Image
+        source={require('../../assets/theme/applogo.png')}
+        style={{
+          left: 25 / 100 * (SIZES.width),
           resizeMode: "contain",
           position: "absolute",
           aspectRatio: 2,
-          width: 45/100*(SIZES.width),
-          top:-4/100*(SIZES.width)
-          }}
-          />
+          width: 45 / 100 * (SIZES.width),
+          top: -4 / 100 * (SIZES.width)
+        }}
+      />
       {hasPermission === null ? (<Text style={styles.text}>Camera permission?</Text>) : hasPermission === false ? (
         <Text style={styles.text}>No access to camera</Text>
       ) : (
@@ -68,7 +72,7 @@ export default function CodeScanner({navigation}) {
           />
         </View>
       )}
-      
+
       {/* {scannedData && (
         <View style={styles.dataContainer}>
           <Text style={styles.text}>Item:</Text>
@@ -77,13 +81,13 @@ export default function CodeScanner({navigation}) {
       )} */}
 
       {scanned && (
-          
+
         <View style={styles.cartButt1}>
-          <CartButton title="View Cart"  onPress={()=>  navigation.navigate('Items')}/>
+          <CartButton title="View Cart" onPress={() => navigation.navigate('Items')} />
         </View>
-          )}
+      )}
     </View>
-    
+
   );
 }
 
@@ -95,8 +99,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffc107',
   },
 
-  cartButt1:{
-    height: 100, 
+  cartButt1: {
+    height: 100,
     // left:15,
     // top: 10,
   },
@@ -122,5 +126,5 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontSize: width < 400 ? 16 : 24,
     // fontWeight: 'bold',
-  },
+  },
 });

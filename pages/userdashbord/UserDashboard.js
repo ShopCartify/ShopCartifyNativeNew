@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   pro: {
-    color: 'grey',
+    color: 'orange',
     fontSize: 15,
     fontStyle: 'italic',
     fontWeight: 'bold',

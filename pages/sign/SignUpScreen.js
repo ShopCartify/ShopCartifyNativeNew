@@ -141,7 +141,7 @@ const handleError =(errorMessage,input)=>{
             paddingHorizontal:20,
             width:SIZES.width,
            }}>
-            <Text style={{color:COLORS.white, fontSize:10/100*(SIZES.width), fontWeight:'bold',top:10/100*(SIZES.width)}}>
+            <Text style={{color:COLORS.white, fontSize:8/100*(SIZES.width), fontWeight:'bold',top:10/100*(SIZES.width)}}>
               Register
             </Text>
             <Text style={{color:COLORS.grey, fontSize:4.5/100*(SIZES.width), marginVertical:10,top:10/100*(SIZES.width)}}>
@@ -207,7 +207,7 @@ const handleError =(errorMessage,input)=>{
                 textAlign:'center',
                 fontSize:4/100*(SIZES.width),
                 fontWeight:'bold',
-                top:45,
+                top:15/100*(SIZES.width),
                 left:20,
               }}
               >

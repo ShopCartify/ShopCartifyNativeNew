@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
@@ -13,6 +13,7 @@ import BASE_URL from '../../secrets/.SecretConstants.js';
 
 import COLORS from '../const/Colors.js';
 import { SIZES } from '../const/Sizes.js';
+import { CartContext } from '../store/CartContext.js';
 
 
 
@@ -20,11 +21,13 @@ const products = "products";
 
 
 const Items = ({navigation}) => {
+  const {cartItems: cartItemContext} = useContext(CartContext)
   const [total, setTotal] = useState(0.0);
   const [valuesFromStorage, setValuesFromStorage] = useState(0.0);
   const [cartProducts, setCartProducts] = useState([])
   const [isloading, setLoading] = useState(true)
-
+console.log("cartItemContext --> ", cartItemContext)
+const [fetchItems, setFetchedItems] = useState([])
   const [items, setItems] = useState([
     {
       desc: "product desc",
@@ -92,6 +95,7 @@ const Items = ({navigation}) => {
 
   const fetchData =useCallback(async ()=>{
     let value = await AsyncStorage.getItem("uniqueCart")
+    console.log("View cart item --> ", value)
     let data = JSON.parse(value)
     // data = "data"
     console.log(data.uniqueCartId);
@@ -137,7 +141,13 @@ fetchData();
     alert(productsArray);
   }
 
+useEffect(()=> {
+  if(cartItemContext !== null){
+    fetchItems.push(cartItemContext)
+  }
+},[])
 
+console.log("fetch items  s --> ", fetchItems)
   const cartItems = items.map((item, index) => (
     <View style={{height:100,top:10/100*(SIZES.width)}}>
     <View style={Styles.productInfo} key={index}>
@@ -181,7 +191,7 @@ fetchData();
       
     
       {/* <View></View> */}
-      <TouchableOpacity style={{height:10/100*(SIZES.height),top:-18/100*(SIZES.width),
+      <TouchableOpacity style={{height:10/100*(SIZES.height),top:18/100*(SIZES.width),
       width:90/100*(SIZES.width),
       left:2/100*(SIZES.width)}} onPress={() => navigation.navigate('productDisplay')}>
         <ItemButton title= "Wish list"/>

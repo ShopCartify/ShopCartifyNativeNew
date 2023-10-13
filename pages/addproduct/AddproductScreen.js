@@ -108,20 +108,22 @@ Add Product
             </View>
 
  </View>
-       <TouchableOpacity style={{height:20/100*(SIZES.height),top:-3/100*(SIZES.width)}}>
+ <View style={{height:(SIZES.height)}}>
+       <TouchableOpacity style={{height:18.8/100*(SIZES.height),top:-3/100*(SIZES.width)}}>
       <AddBut title="Select Image" />
       {product.productImageUrl ? (
         <Image source={{ uri: product.productImageUrl }} style={styles.image} />
        ) : null}
        </TouchableOpacity>
-       <TouchableOpacity style={{height:20/100*(SIZES.height),top:-28/100*(SIZES.width)}}>
+       <TouchableOpacity style={{height:18.8/100*(SIZES.height),top:-20/100*(SIZES.width)}}>
        <AddBut title="Upload Image"  />
       {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>
 
-      <TouchableOpacity style={{height:20/100*(SIZES.width),top:-50/100*(SIZES.width)}}>
+      <TouchableOpacity style={{height:8/100*(SIZES.width),top:-37/100*(SIZES.width)}}>
        <AddBut title="Add Product" onPress={handleSubmit} />
        </TouchableOpacity>
+       </View>
        </ScrollView>
       </SafeAreaView>
    );

@@ -263,7 +263,7 @@ const LoginScreen = ({ navigation }) => {
             textAlign: 'center',
             fontSize: 3.5 / 100 * (SIZES.width),
             fontWeight: 'bold',  
-            top:15/100*(SIZES.width),
+            top:18/100*(SIZES.width),
             left: 10/100*(SIZES.width),
           }}>
 
@@ -310,8 +310,8 @@ const styles = StyleSheet.create({
   },
   loginText:{
     color:COLORS.grey,
-    top:-5/100*(SIZES.width),
-    left:28/100*(SIZES.width),
+    top:-5.5/100*(SIZES.width),
+    left:27/100*(SIZES.width),
     fontSize:4/100*(SIZES.width)
   }
 });

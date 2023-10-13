@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useContext } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native';
@@ -10,10 +10,17 @@ import axios from 'axios';
 import { Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 import BASE_URL from '../../secrets/.SecretConstants';
+import { CartProvider, useCart } from '../store/CartContext';
 // import WelcomeButton from '../const/WelcomeButton';
 import Button from '../const/Button';
-import AddButton from '../const/ItemButton';
+import {CartContext} from '../store/CartContext'
+import { SIZES } from '../const/Sizes';
+// import AddButton from '../const/ItemButton';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
+
+//http://localhost:1961/api/v1/cart/addToCart // RequestBody
+//http://localhost:1961/api/v1/cart/removeFrom //  RequestBody
+// http://localhost:1961/api/v1/cart/findAllCartProductsByUniqueCartId/{{ }} //String {uniqueCartId}
 
 
 
@@ -22,7 +29,7 @@ const products = "products"
 // const productQrCodeUrl = ""
 
 const ProductDisplay = ({}) => {
-
+const {setCartItems} = useContext(CartContext)
   const [storedValue , setStoredValue] = useState()
   const [productDetail , setProductDetail] = useState()
   const [isNotLoading, setNotLoading] = useState(false)
@@ -35,16 +42,21 @@ const ProductDisplay = ({}) => {
 	"numberOfProducts": 1
   })
   const navigation = useNavigation();
+  const {cart, removeFromCart, clearCart, addItemToCart} = useCart()
+
+
 
 
   const fetchData =useCallback(async ()=>{
     
       let value = await AsyncStorage.getItem("product")
+	
       let data = JSON.stringify(value)
+	 
 	   value = JSON.parse(await AsyncStorage.getItem("uniqueCart"))
 	  
 	   setUniqueCartId(JSON.stringify(value.uniqueCartId))
-	   console.log(data);
+	   
 		
 		try {
 			const response = await axios.get(
@@ -58,8 +70,8 @@ const ProductDisplay = ({}) => {
 			}else if (response.status === 200) {
 				
 	  			setProductDetail(response.data.data)
-				setAddProductRequest(response.data.data)
-
+				setAddProductRequest(response.data.data) //here set details
+				addToCart(productDetail)
 	  			setNotLoading(true)
 
 			console.log(response.data.data);
@@ -84,7 +96,7 @@ const ProductDisplay = ({}) => {
 
   const addToCartBackend =async () => {
 
-	console.log(addProductRequest.uniqueCartId);
+	console.log("bvxnbvxbvxbx", productDetail);
 	try {
 		const response = await axios.post(
 			BASE_URL+
@@ -92,18 +104,16 @@ const ProductDisplay = ({}) => {
 		productDetail
 		
 		);
-	
-		if (response.status !== 200){
-			throw new Error("Product not found")
-		}else if (response.status === 200) {
-			
+		console.log("Add to cart res");
+		console.log("Add to cart res --> ", response.data);
+		if (response.status === 200){
+			setCartItems(response.data.data)
 			AsyncStorage.setItem("uniqueCart", JSON.stringify(response.data))
 
-		console.log(response.data);
-
-		
+			console.log(response.data);
+		}else if (response.status !== 200) {
+			throw new Error("Product not found")		
 		// navigation.navigate("scan")
-
 		}
 		
   
@@ -120,33 +130,33 @@ const ProductDisplay = ({}) => {
 
   
   };
-    // const addToCart =async () => {
+    const addToCart =async () => {
 		
 		
-    //   let productsArray = await AsyncStorage.getItem(products);
+      let productsArray = await AsyncStorage.getItem(products);
+	  console.log(addItemToCart(products))
 
-	// 	if (productsArray === null) {
-	// 		productsArray = [];
+		if (productsArray === null) {
+			productsArray = [];
 			 
-	// 	} else {
-	// 		productsArray = JSON.parse(productsArray);
-	// 	}
+		} else {
+			productsArray = JSON.parse(productsArray);
+		}
 
-	// 	productsArray.push(productDetail);
+		productsArray.push(productDetail);
    
-	// 	AsyncStorage.setItem(products, JSON.stringify(productsArray));
+		AsyncStorage.setItem(products, JSON.stringify(productsArray));
     
-	// };
+	};
 	const handleCart=(event)=>{
-		// event.preventDefault();  
-		// setCartItems((prev) =>({
-		// 	...prev, [e.target.name]: event.target.value,
-		// }))
+		event.preventDefault();  
+
 		addToCartBackend()
 		// navigation.navigate("scan");
 	}
 
-	const handleViewCart =()=>{
+	const handleViewCart =()=>{ 
+		  
 		navigation.navigate('Items')
 	} 	
 	const handleScanAgain =()=>{
@@ -181,9 +191,9 @@ const ProductDisplay = ({}) => {
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
 					</View> */}
 			
-			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={handleCart}/></View>
+			<View style={{marginBottom:10, marginTop:10,}}><Button title="Add To Cart" onPress={addToCartBackend}/></View>
 			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View>
-			<View style={{marginBottom:10,}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
+			<View style={{marginBottom:20/100*(SIZES.width),}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
 			
 			</View>
 
@@ -206,8 +216,9 @@ const pros = StyleSheet.create({
 		textAlign: 'center',
 		fontSize:20,
 		fontWeight: 'bold',
-		marginBottom:10,
+		// marginBottom:10,
 		color: 'white',
+		
 	},
 	text: {
 		fontSize: width < 400 ? 16 : 24, 
@@ -235,7 +246,7 @@ const pros = StyleSheet.create({
 		// width: 500,
 		flex:1,
 		// alignContent: 'center',
-		marginTop: 10,
+		marginTop: 20/100*(SIZES.width),
 		marginHorizontal: 10,
 		backgroundColor:'white',
 		borderRadius: 10,

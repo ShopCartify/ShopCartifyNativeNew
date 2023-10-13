@@ -100,10 +100,10 @@ import SignUpScreen from '../sign/SignUpScreen';
 
    
      
+{/* 
+      <WelcomeButton title="Get started"  onPress={()=> navigation.navigate('SignUpScreen')}/>
 
-     {/* <WelcomeButton title="Get started"  onPress={()=> navigation.navigate('SignUpScreen')} */}
-
-     {/* <WelcomeButton
+      <WelcomeButton
       title="Get started"  onPress={()=> navigation.navigate('SupermarketScreen')}
 
           style={{
@@ -112,10 +112,10 @@ import SignUpScreen from '../sign/SignUpScreen';
         top:15/100*(SIZES.width),
        
 
-          }} */}
-        {/* /> */}
+          }} 
+         /> 
 
-        {/* <WelcomeButton
+         <WelcomeButton
   title={isRegistered ? "Register Supermarket" : "Get Started"}
   onPress={() => {
     if (isRegistered) {
@@ -129,8 +129,8 @@ import SignUpScreen from '../sign/SignUpScreen';
   style={{
     marginTop: 100,
     top: 15 / 100 * (SIZES.width),
-  }}
-/> */}
+  }} */}
+{/* />  */}
 <Text style={styles.tet}>
       Are you a {" "}
       <Text style={styles.highlight}>ShopCartify user, </Text>
@@ -187,8 +187,9 @@ highlight: {
       alignItems: 'center', 
       fontWeight:'bold' ,
       top:-18/100*(SIZES.width),
-      width:67/100*(SIZES.width),
+      width:77/100*(SIZES.width),
       color:COLORS.light,
+      left:7/100*(SIZES.width)
       
     },
     tet:{
@@ -196,8 +197,9 @@ highlight: {
       alignItems: 'center', 
       fontWeight:'bold' ,
       top:33/100*(SIZES.width),
-      width:67/100*(SIZES.width),
+      width:77/100*(SIZES.width),
       color:COLORS.light,
+      left:7/100*(SIZES.width)
 
 
     },
