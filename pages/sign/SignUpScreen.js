@@ -51,27 +51,27 @@ const [loading,setLoading]= React.useState(false);
   valid = false
   }
 
-  if(!inputs.fullName){
-    handleError("please input fullname",'fullName')
-    valid = false
-  }
+  // if(!inputs.fullName){
+  //   handleError("please input fullname",'fullName')
+  //   valid = false
+  // }
 
-  if(!inputs.password){
-    handleError("please input password",'password')
-    valid = false
-  }
+  // if(!inputs.password){
+  //   handleError("please input password",'password')
+  //   valid = false
+  // }
 
-  if(!inputs.phoneNumber){
-    handleError("please input phone Number",'phoneNumber')
-    valid = false
-  }else if(inputs.password.length < 5){
-    handleError("Min password length of 5",'phoneNumber')
-  }
+  // if(!inputs.phoneNumber){
+  //   handleError("please input phone Number",'phoneNumber')
+  //   valid = false
+  // }else if(inputs.password.length < 5){
+  //   handleError("Min password length of 5",'phoneNumber')
+  // }
 
-  if(!inputs.userName){
-    handleError("please input user Name",'userName')
-    valid = false
-  }
+  // if(!inputs.userName){
+  //   handleError("please input user Name",'userName')
+  //   valid = false
+  // }
 
 
  
@@ -84,14 +84,16 @@ const [loading,setLoading]= React.useState(false);
   const register = async ()=>{
     // alert("processing ... "+inputs.firstName)
 
-
+// console.log(inputs);
 		try {
 			const response = await axios.post(
 				BASE_URL+"/api/v1/auth/register" ,
           inputs
 			)
+      // let value = JSON.stringify(response)
       setBtnTittle("Successful...")
-      console.log('response is: ' +  response.data.data);
+      // console.log(value);
+      console.log('response is: ' +  response.data);
       alert('sign up was successful');
 
       let responseValue = response.data
@@ -101,7 +103,7 @@ const [loading,setLoading]= React.useState(false);
       navigation.navigate('user_dashboard');
 
 		} catch (error) {
-      alert(error);
+      alert("network error");
       console.log("network error! ");
 		}
     setLoading(true)

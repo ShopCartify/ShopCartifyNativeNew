@@ -21,6 +21,7 @@ const AddProduct = () => {
     productDescription: '',
     productImageUrl: '', 
     supermarketCode: '',
+    supermarketAdminEmail:"",
   });
 
     
@@ -96,6 +97,14 @@ Add Product
             error={error.productDescription}
             // onFocus={() => handleError(null, 'productDescription')}
             onChangeText={(text) => handleOnChange(text, 'productDescription')}
+          />
+           <Input
+            placeholder="Enter your official email"
+           
+            label="Supermarket Admin Email"
+            error={error.supermarketAdminEmail}
+            // onFocus={() => handleError(null, 'productDescription')}
+            onChangeText={(text) => handleOnChange(text, 'supermarketAdminEmail')}
           />
     <Input
             placeholder="Enter your supermarket code"

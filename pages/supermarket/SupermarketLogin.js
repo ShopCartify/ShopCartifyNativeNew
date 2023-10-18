@@ -50,7 +50,7 @@ const LoginScreen = ({ navigation }) => {
   const login = async () => {
     alert("processing ... ")
 
-
+log(inputs)
     try {
       const response = await axios.post(
         BASE_URL + '/api/v1/auth/login',
@@ -62,7 +62,7 @@ const LoginScreen = ({ navigation }) => {
       navigation.navigate('user_dashboard')
 
     } catch (error) {
-      alert(error);
+      alert("Network error. ");
     }
    
   }
