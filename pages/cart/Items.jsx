@@ -22,6 +22,7 @@ const products = "products";
 
 const Items = ({navigation}) => {
   const {cartItems: cartItemContext} = useContext(CartContext)
+  let value = AsyncStorage.getItem("uniqueCart")
   const [total, setTotal] = useState(0.0);
   const [valuesFromStorage, setValuesFromStorage] = useState(0.0);
   const [cartProducts, setCartProducts] = useState([])
@@ -34,21 +35,21 @@ const [fetchItems, setFetchedItems] = useState([])
       price: 250,
       productName: "Coke",
       quantity: 0,
-      total: 0,
+      total: 250,
     },
     {
       desc: "product desc",
       price: 100,
       productName: "Water",
       quantity: 0,
-      total: 0,
+      total: 100,
     },
     {
       desc: "product desc",
       price: 500,
       productName: "Pizza",
       quantity: 0,
-      total: 0,
+      total: 500,
     },
   ]);
 
@@ -94,17 +95,18 @@ const [fetchItems, setFetchedItems] = useState([])
 
 
   const fetchData =useCallback(async ()=>{
-    let value = await AsyncStorage.getItem("uniqueCart")
-    console.log("View cart item --> ", value)
-    let data = JSON.parse(value)
+    let data = JSON.parse(await value)
     // data = "data"
-    console.log(data.uniqueCartId);
+    console.log("vvvv --> ",data);
 
   try {
     const response = await axios.get(
-      BASE_URL+"/api/v1/cart/findAllCartProductsByUniqueCartId/"+ data.uniqueCartId, 
-    );
-    // console.log(response.data);
+      BASE_URL+"/api/v1/cart/findAllCartProductsByUniqueCartId/",{
+        params: {
+            uniqueCartId: data.uniqueCartId
+        }
+    })
+    console.log("Etrrrrr --> ",response.data);
     if (response.status !== 200){
       throw new Error("Product not found")
     }else if (response.status === 200) {
@@ -146,25 +148,37 @@ useEffect(()=> {
     fetchItems.push(cartItemContext)
   }
 },[])
-
-console.log("fetch items  s --> ", fetchItems)
-  const cartItems = items.map((item, index) => (
+var v = {}
+console.log("fetch items  s --> ", v)
+/*
+{"data":
+ [{"id": 1, 
+ "productDescription": "new product description", 
+ "productImageUrl": "url from cloudinary", 
+ "productName": "Ice Cream", 
+ "productPrice": 105.39,
+  "productQuantity": 0, 
+  "supermarketCode": "e4d4e", 
+  "uniqueCartId": "hT1i2mZ2y7"}],
+ "successFul": true}
+*/
+  const cartItems = items.map((value, index) => (
     <View style={{height:100,top:10/100*(SIZES.width)}}>
     <View style={Styles.productInfo} key={index}>
       
-      <Text style={Styles.productName}>{item.productName}</Text>
-      <Text style={Styles.productDesc}>{item.desc}</Text>
-      <Text style={Styles.price}>{item.price}</Text>
+      <Text style={Styles.productName}>{value.productName}</Text>
+      <Text style={Styles.productDesc}>{value.productDescription}</Text>
+      <Text style={Styles.price}>{value.productPrice}</Text>
       <View style={Styles.quantitySection}>
-        <TouchableOpacity style={Styles.incrementDecrementButton} onPress={() => decrement(item)}>
+        <TouchableOpacity style={Styles.incrementDecrementButton} onPress={() => decrement(value)}>
           <Text style={Styles.buttonText}> - </Text>
         </TouchableOpacity>
-        <Text style={Styles.quantity}>{item.quantity}</Text>
-        <TouchableOpacity style={Styles.incrementDecrementButton} onPress={() => increment(item)}>
+        <Text style={Styles.quantity}>{value.productQuantity}</Text>
+        <TouchableOpacity style={Styles.incrementDecrementButton} onPress={() => increment(value)}>
           <Text style={Styles.buttonText}> + </Text>
         </TouchableOpacity>
       </View>
-      <Text style={Styles.totalCost}>Total: N{item.total}</Text>
+      <Text style={Styles.totalCost}>Total: N{value.total}</Text>
     </View>
     </View>
   ));

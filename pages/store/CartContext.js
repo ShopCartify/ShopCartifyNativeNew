@@ -1,7 +1,7 @@
 // CartContext.js
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { createContext, useContext, useState,useEffect} from 'react';
+import React, { createContext, useContext, useState,useEffect, useCallback} from 'react';
 import BASE_URL from '../../secrets/.SecretConstants';
 
 export const CartContext = createContext();
@@ -32,22 +32,34 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  useEffect(() => {
-    const updateCartItems = async () => {
-        console.log("uniqueCartId 1 uniqueCartId --> ", uniqueCartId.uniqueCartId)
-      const response = await axios.get(BASE_URL+`/api/v1/cart/findAllCartProductsByUniqueCartId/${uniqueCartId.uniqueCartId}`);
-      if (response.status === 200) {
-        setCartItems(response.data);
-        setLoading(false)
-      } else {
-        // Handle error here
-      }
-    };
+  const viewCartItems = useCallback(async ()=> {
+    try {
+        const cardItId = JSON.parse(await uniqueCartId)
+        const url = `${BASE_URL}/api/v1/cart/findAllCartProductsByUniqueCartId`
+        console.log("Url --> ", url)
+        const response = await axios.get(url,{
+            params: {
+                uniqueCartId: cardItId.uniqueCartId
+            }
+        });
+        console.log("get cart items res --> ")
+        if (response.status === 200) {
+            setCartItems(response.data);
+        } else {
+            // Handle error here
+        }
+    } catch (error) {
+        console.log("get cart items error --> ", error)
+    }
+  },[])
 
-    updateCartItems();
-  }, [cartItems]);
+  useEffect(() => {
+    viewCartItems()
+  }, [cartItems,viewCartItems]);
 
   console.log("jdgjgjh --> ", cartItems)
+  console.log("uniqueCartId 1 uniqueCartId --> ", uniqueCartId)
+
   return (
     <CartContext.Provider value={{ cart, addItemToCart, removeFromCart, clearCart, cartItems, setCartItems }}>
       {children}

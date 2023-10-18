@@ -30,6 +30,7 @@ const products = "products"
 
 const ProductDisplay = ({}) => {
 const {setCartItems} = useContext(CartContext)
+const cartId = AsyncStorage.getItem("uniqueCart")
   const [storedValue , setStoredValue] = useState()
   const [productDetail , setProductDetail] = useState()
   const [isNotLoading, setNotLoading] = useState(false)
@@ -119,7 +120,7 @@ const {setCartItems} = useContext(CartContext)
 		console.log(response.data);
 
 		setBtnTittle("Successful!")
-		navigation.navigate("WelcomeScreen")
+		// navigation.navigate("WelcomeScreen")
 
 		}
 		
@@ -164,13 +165,12 @@ const {setCartItems} = useContext(CartContext)
 		// navigation.navigate("scan");
 	}
 
-	const handleViewCart =()=>{ 
-		  
+	const handleViewCart =()=>{
 		navigation.navigate('Items')
 	} 	
 	const handleScanAgain =()=>{
 		
-		navigation.navigate('scan')
+		// navigation.navigate('scan')
 	}
 
 
@@ -201,10 +201,12 @@ const {setCartItems} = useContext(CartContext)
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Description:</Text>{isNotLoading ? productDetail.productDescription : <Text> Loading... </Text>}</Text>
 						<Text style={pros.txt}><Text style={{fontSize:15, fontWeight:'bold',}}>Price:</Text>{isNotLoading ? productDetail.productPrice : <Text> Loading... </Text>}</Text>
 					</View> */}
-			
+{/* 			
 			<View style={{marginBottom:10, marginTop:10,}}><Button title={btnTittle} onPress={handleCart}/></View>
-			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View>
-			<View style={{marginBottom:20/100*(SIZES.width),}}><Button title="Scan Again" onPress={handleScanAgain}/></View>
+			<View style={{marginBottom:10,}}><Button title="View Cart" onPress={handleViewCart}/></View> */}
+			<View style={{marginBottom:5/100*(SIZES.width),}}><Button title="Add to Cart" onPress={handleCart}/></View>
+			<View style={{marginBottom:5/100*(SIZES.width),}}><Button title="View Cart" onPress={handleViewCart}/></View>
+			<View style={{marginBottom:20/100*(SIZES.width),}}><Button title="Scan Item" onPress={handleScanAgain}/></View>
 			
 			</View>
 

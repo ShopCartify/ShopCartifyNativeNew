@@ -21,6 +21,7 @@ const AddProduct = () => {
     productDescription: '',
     productImageUrl: '', 
     supermarketCode: '',
+    supermarketAdminEmail:"",
   });
 
     
@@ -97,6 +98,14 @@ Add Product
             // onFocus={() => handleError(null, 'productDescription')}
             onChangeText={(text) => handleOnChange(text, 'productDescription')}
           />
+           <Input
+            placeholder="Enter your official email"
+           
+            label="Supermarket Admin Email"
+            error={error.supermarketAdminEmail}
+            // onFocus={() => handleError(null, 'productDescription')}
+            onChangeText={(text) => handleOnChange(text, 'supermarketAdminEmail')}
+          />
     <Input
             placeholder="Enter your supermarket code"
            
@@ -118,14 +127,13 @@ Add Product
             </View>
 
  </View>
- <View style={{height:(SIZES.height)}}>
-       <TouchableOpacity style={{height:18.8/100*(SIZES.height),top:-3/100*(SIZES.width)}}>
+       <TouchableOpacity style={{height:25/100*(SIZES.height),top:-10/100*(SIZES.width)}}>
       <AddBut title="Select Image" />
       {product.productImageUrl ? (
         <Image source={{ uri: product.productImageUrl }} style={styles.image} />
        ) : null}
        </TouchableOpacity>
-       <TouchableOpacity style={{height:18.8/100*(SIZES.height),top:-20/100*(SIZES.width)}}>
+       <TouchableOpacity style={{height:20/100*(SIZES.height),top:-35/100*(SIZES.width)}}>
        <AddBut title="Upload Image"  />
       {error ? <Text >{error}</Text> : null}
       </TouchableOpacity>
@@ -133,10 +141,10 @@ Add Product
       <TouchableOpacity style={{height:20/100*(SIZES.width),top:-50/100*(SIZES.width)}}>
        <AddBut title={btnTitle} onPress={handleSubmit} />
        </TouchableOpacity>
-       </View>
        </ScrollView>
       </SafeAreaView>
    );
       
  };
- export default AddProduct;
+ export default AddProduct;s
+ 
